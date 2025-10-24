@@ -61,18 +61,18 @@ export function Connect() {
       const submitData = {
         name: formData.name.trim(),
         email: formData.email.trim(),
-        organization: formData.organization.trim() || 'Not specified',
+        organization: formData.organization.trim() || "Not specified",
         message: formData.message.trim(),
-        to: 'hello@turbo-ai.ca',
+        to: "hello@turbo-ai.ca",
         subject: `New Contact Form Submission from ${formData.name.trim()}`,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       // Submit to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(submitData),
       });
@@ -92,7 +92,7 @@ export function Connect() {
         message: "",
       });
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error("Form submission error:", error);
       showToast(
         "Sorry, there was an error sending your message. Please try again.",
         "error"
