@@ -83,14 +83,14 @@ export const copy = {
   credentials: {
     id: "credentials",
     intro:
-      "Since 2019, Turbo AI has partnered with institutional investors, financial institutions, and technology innovators to deliver measurable transformation.",
+      "Since 2014, Turbo AI has partnered with institutional investors, financial institutions, and technology innovators to deliver measurable transformation.",
     stats: [
       { value: "87%", label: "Client Retention Rate" },
       { value: "£8.2M", label: "Annual Cost Savings Delivered" },
       { value: "12+", label: "Fortune 500 Engagements" },
     ],
     endorsements:
-      "Endorsed by the University of Oxford, IIT Bombay, and the British Embassy.",
+      "Endorsed by the University of Nottingham, with core team members from IIT Bombay, and recognized by the British Embassy for entrepreneurship.",
   },
   expertise: {
     id: "expertise",

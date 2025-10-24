@@ -3,6 +3,7 @@ import { Container, Section, Divider } from "./Container";
 import { SectionLink } from "./SectionLink";
 import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
+import heroVideo from "../assets/hero_bg.mp4";
 
 export function Hero() {
   const { addElement } = useReveal(60);
@@ -18,10 +19,29 @@ export function Hero() {
   return (
     <Section
       id={copy.hero.id}
-      className="min-h-screen flex items-center justify-center relative pt-header"
+      className="min-h-screen flex items-center justify-center relative pt-header overflow-hidden"
       as="section"
     >
-      <Container className="text-center">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
+        aria-hidden="true"
+      >
+        <source src={heroVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Video Overlay */}
+      <div
+        className="absolute inset-0 bg-black/60 z-10"
+        aria-hidden="true"
+      ></div>
+
+      <Container className="text-center relative z-20">
         <div className="hero-content max-w-4xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
           {/* Title */}
           <h1
@@ -75,7 +95,7 @@ export function Hero() {
         </div>
 
         {/* Scroll cue */}
-        <div className="scroll-cue" aria-hidden="true">
+        <div className="scroll-cue relative z-20" aria-hidden="true">
           <svg
             width="24"
             height="24"

@@ -376,23 +376,27 @@
   /* Mobile navigation styles */
   .mobile-nav-link {
     display: block;
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 300ms ease-out, background-color 300ms ease-out;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 300ms ease-out;
     padding: 1rem 1.5rem;
     font-size: 1.125rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
+    background-color: transparent;
   }
 
   .mobile-nav-link:hover,
   .mobile-nav-link:focus {
     color: #ffffff;
-    background-color: rgba(59, 130, 246, 0.05);
+    background-color: rgba(59, 130, 246, 0.15);
+    transform: translateX(4px);
   }
 
   .mobile-nav-link.aria-current {
-    color: #3b82f6;
-    background-color: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    background-color: rgba(59, 130, 246, 0.2);
+    border-left: 4px solid #3b82f6;
   }
 
   .mobile-nav-link::after {
@@ -405,7 +409,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.1),
+      rgba(59, 130, 246, 0.2),
       transparent
     );
   }

@@ -3,6 +3,11 @@ import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
 import StatNumber from "./StatNumber";
 
+// Import logos
+import nottinghamLogo from "../assets/university-of-nottingham_logo.png";
+import iitbLogo from "../assets/iit-b_logo.png";
+import oxfordLogo from "../assets/oxford_logo.png";
+
 export function Credentials() {
   const { addElement } = useReveal(60);
 
@@ -49,10 +54,61 @@ export function Credentials() {
           <div className="text-center">
             <p
               ref={addElement}
-              className="text-lg text-midGray max-w-3xl mx-auto leading-relaxed"
+              className="text-lg text-midGray max-w-3xl mx-auto leading-relaxed mb-12"
             >
               {copy.credentials.endorsements}
             </p>
+
+            {/* Premium Logo Section */}
+            <div ref={addElement} className="mt-12">
+              <h3 className="text-sm uppercase tracking-widest text-blue-300/80 mb-8 font-medium">
+                Trusted By
+              </h3>
+
+              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-4xl mx-auto">
+                {/* University of Nottingham */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10">
+                    <img
+                      src={nottinghamLogo}
+                      alt="University of Nottingham"
+                      className="h-16 w-auto mx-auto object-contain filter brightness-90 hover:brightness-110 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* IIT Bombay */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10">
+                    <img
+                      src={iitbLogo}
+                      alt="IIT Bombay"
+                      className="h-16 w-auto mx-auto object-contain filter brightness-90 hover:brightness-110 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* British Embassy - Text Badge */}
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-8 py-6 hover:border-blue-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10">
+                    <div className="text-center">
+                      <div className="text-blue-300 text-xs uppercase tracking-wider font-medium mb-1">
+                        British Embassy
+                      </div>
+                      <div className="text-white/90 text-sm font-semibold">
+                        Entrepreneurship
+                      </div>
+                      <div className="text-blue-400/70 text-xs mt-1">
+                        Recognition
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

@@ -48,6 +48,20 @@ export function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -142,40 +156,50 @@ export function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div
-            id="mobile-menu"
-            className="mobile-menu absolute top-full left-0 right-0 bg-charcoal/98 backdrop-blur-md border-b border-emeraldTint/10 lg:hidden"
-          >
-            <nav
-              role="navigation"
-              aria-label="Mobile navigation"
-              className="py-4"
+          <>
+            {/* Backdrop overlay */}
+            <div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+
+            {/* Mobile menu */}
+            <div
+              id="mobile-menu"
+              className="mobile-menu absolute top-full left-0 right-0 bg-charcoal border border-emeraldTint/20 shadow-2xl lg:hidden z-50"
             >
-              <ul className="space-y-2">
-                {site.nav.items.map((item) => (
-                  <li key={item.href}>
-                    <SectionLink
-                      href={item.href}
-                      className={`mobile-nav-link ${
-                        activeSection === item.href.replace("#", "")
-                          ? "aria-current"
-                          : ""
-                      }`}
-                      onClick={handleLinkClick}
-                      aria-current={
-                        activeSection === item.href.replace("#", "")
-                          ? "page"
-                          : undefined
-                      }
-                      aria-label={`Navigate to ${item.label} section`}
-                    >
-                      {item.label}
-                    </SectionLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+              <nav
+                role="navigation"
+                aria-label="Mobile navigation"
+                className="py-2"
+              >
+                <ul className="space-y-0">
+                  {site.nav.items.map((item) => (
+                    <li key={item.href}>
+                      <SectionLink
+                        href={item.href}
+                        className={`mobile-nav-link ${
+                          activeSection === item.href.replace("#", "")
+                            ? "aria-current"
+                            : ""
+                        }`}
+                        onClick={handleLinkClick}
+                        aria-current={
+                          activeSection === item.href.replace("#", "")
+                            ? "page"
+                            : undefined
+                        }
+                        aria-label={`Navigate to ${item.label} section`}
+                      >
+                        {item.label}
+                      </SectionLink>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </>
         )}
       </Container>
     </header>
