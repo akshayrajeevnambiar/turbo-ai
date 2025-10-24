@@ -6,7 +6,6 @@ import StatNumber from "./StatNumber";
 // Import logos
 import nottinghamLogo from "../assets/university-of-nottingham_logo.png";
 import iitbLogo from "../assets/iit-b_logo.png";
-import oxfordLogo from "../assets/oxford_logo.png";
 
 export function Credentials() {
   const { addElement } = useReveal(60);

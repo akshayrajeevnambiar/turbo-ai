@@ -1083,3 +1083,23 @@
     -webkit-line-clamp: none;
   }
 }
+
+/* Marquee animation for credentials bands */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* because we duplicated the list */
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite; /* slow & premium */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}

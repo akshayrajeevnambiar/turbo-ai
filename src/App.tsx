@@ -1,7 +1,7 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
-import { Credentials } from "./components/Credentials";
+import CredentialsGrid from "./components/CredentialsGrid";
 import { Expertise } from "./components/Expertise";
 import { Impact } from "./components/Impact.tsx";
 import { Perspectives } from "./components/Perspectives";
@@ -19,7 +19,7 @@ function App() {
       <main id="main" role="main">
         <Hero />
         <About />
-        <Credentials />
+        <CredentialsGrid />
         <Expertise />
         <Impact />
         <Perspectives />
