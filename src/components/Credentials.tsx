@@ -25,7 +25,7 @@ export function Credentials() {
             <div className="grid md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
               {copy.credentials.stats.map((stat, index) => (
                 <div key={index} ref={addElement} className="text-center">
-                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emeraldNeon mb-3 sm:mb-4">
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emeraldNeon stat-number mb-3 sm:mb-4">
                     <StatNumber
                       value={stat.value}
                       delayMs={index * 120}

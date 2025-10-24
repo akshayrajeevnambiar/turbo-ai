@@ -3,7 +3,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Credentials } from "./components/Credentials";
 import { Expertise } from "./components/Expertise";
-import { Impact } from "./components/Impact";
+import { Impact } from "./components/Impact.tsx";
 import { Perspectives } from "./components/Perspectives";
 import { Connect } from "./components/Connect";
 import { Footer } from "./components/Footer";

@@ -2,7 +2,19 @@
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Preconnect to font origins for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon set -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Viewport and mobile optimization -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
@@ -14,10 +26,17 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+
+    <!-- SEO Meta Tags -->
     <meta
       name="description"
       content="We design and deploy intelligent systems for enterprises navigating complexity."
     />
+    <meta
+      name="keywords"
+      content="AI, Machine Learning, Enterprise Intelligence, Technology Consulting, Digital Transformation"
+    />
+    <meta name="author" content="Turbo AI" />
     <meta name="theme-color" content="#0A0A0A" />
 
     <!-- Open Graph -->
@@ -28,8 +47,11 @@
       content="We design and deploy intelligent systems for enterprises navigating complexity."
     />
     <meta property="og:url" content="https://turbo-ai.co.uk" />
-    <meta property="og:image" content="/og.svg" />
+    <meta property="og:image" content="https://turbo-ai.co.uk/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Turbo AI" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -38,9 +60,38 @@
       name="twitter:description"
       content="We design and deploy intelligent systems for enterprises navigating complexity."
     />
-    <meta name="twitter:image" content="/og.svg" />
+    <meta name="twitter:image" content="https://turbo-ai.co.uk/og.jpg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://turbo-ai.co.uk/" />
+
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <title>Turbo AI — Architecting Intelligence</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Turbo AI",
+        "url": "https://turbo-ai.co.uk",
+        "logo": "https://turbo-ai.co.uk/favicon.svg",
+        "description": "We design and deploy intelligent systems for enterprises navigating complexity.",
+        "foundingDate": "2014",
+        "sameAs": [],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "GB"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Business",
+          "url": "https://turbo-ai.co.uk/#connect"
+        }
+      }
+    </script>
 
     <!-- Skip link for accessibility -->
     <style>
@@ -50,14 +101,27 @@
         left: 0;
         z-index: 9999;
         padding: 1rem;
-        background: #39ff14;
+        background: #3b82f6;
         color: #0a0a0a;
         font-weight: 600;
         transform: translateY(-100%);
         transition: transform 0.3s ease;
+        text-decoration: none;
+        font-family: system-ui, sans-serif;
       }
       .skip-link:focus {
         transform: translateY(0);
+        outline: 2px solid #1d4ed8;
+        outline-offset: 2px;
+      }
+
+      /* Preload critical fonts */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
       }
     </style>
   </head>

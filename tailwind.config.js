@@ -1,15 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
+    "./src/**/*.{vue,svelte}", // Future-proofing
+  ],
   theme: {
     extend: {
       colors: {
         charcoal: "#0A0A0A",
         charcoalDeep: "#0F0F0F",
         white: "#FFFFFF",
-        emerald: "#2D5016",
-        emeraldNeon: "#39FF14",
-        emeraldTint: "#3A6A2E",
+        emerald: "#1E40AF", // Changed to blue-700
+        emeraldNeon: "#3B82F6", // Changed to blue-500 (bright blue)
+        emeraldTint: "#1D4ED8", // Changed to blue-600
         navy: "#1E293B",
         midGray: "#78716C",
       },

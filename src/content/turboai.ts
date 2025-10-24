@@ -25,9 +25,9 @@ export const tokens = {
     charcoal: "#0A0A0A",
     charcoalDeep: "#0F0F0F",
     white: "#FFFFFF",
-    emerald: "#2D5016",
-    emeraldNeon: "#39FF14",
-    emeraldTint: "#3A6A2E",
+    emerald: "#1E40AF", // Changed to blue-700
+    emeraldNeon: "#3B82F6", // Changed to blue-500 (bright blue)
+    emeraldTint: "#1D4ED8", // Changed to blue-600
     navy: "#1E293B",
     midGray: "#78716C",
   },
@@ -116,6 +116,42 @@ export const copy = {
         title: "Digital Architecture",
         body: "Modernization, scalable platforms, and engineering practices that reduce risk and accelerate delivery.",
       },
+      {
+        id: "04",
+        slug: "remote-infrastructure-management",
+        title: "Remote Infrastructure Management",
+        body: "24/7 monitoring, optimization, and maintenance of distributed systems with proactive incident resolution.",
+      },
+      {
+        id: "05",
+        slug: "cyber-security-solutions",
+        title: "Cyber Security Solutions",
+        body: "Comprehensive security architecture, threat detection, and compliance frameworks for enterprise resilience.",
+      },
+      {
+        id: "06",
+        slug: "ai-data-insights",
+        title: "AI & Data Insights",
+        body: "Advanced analytics, machine learning models, and data science capabilities for strategic decision-making.",
+      },
+      {
+        id: "07",
+        slug: "offshore-development",
+        title: "Offshore Development",
+        body: "Distributed engineering teams delivering scalable software solutions with rigorous quality standards.",
+      },
+      {
+        id: "08",
+        slug: "cloud-solutions",
+        title: "Cloud Solutions",
+        body: "Multi-cloud architecture, migration strategies, and optimization for performance, security, and cost efficiency.",
+      },
+      {
+        id: "09",
+        slug: "quality-engineering",
+        title: "Quality Engineering",
+        body: "Automated testing frameworks, continuous integration, and quality assurance processes for reliable delivery.",
+      },
     ],
     cta: { label: "Request Detailed Capabilities →", href: "#connect" },
   },
@@ -168,7 +204,7 @@ export const copy = {
     body: "Whether you're evaluating a strategic initiative, conducting due diligence, or exploring AI transformation, we're here to help.",
     fields: ["name", "email", "organization", "message"],
     cta: { label: "Send Message", href: "#connect" },
-    email: "hello@turbo-ai.co.uk",
+    email: "hello@turbo-ai.ca",
     privacy:
       "We only use your information to respond to your inquiry. No marketing lists.",
   },

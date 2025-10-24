@@ -20,17 +20,12 @@ export default function StatNumber({
 }: StatNumberProps) {
   const reduced = useReducedMotion();
   const [display, setDisplay] = useState(String(value));
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const announcedRef = useRef(false);
   const rafRef = useRef<number>(0);
   const elementRef = useRef<HTMLSpanElement>(null);
 
-  const meta = useMemo(() => {
-    const parsed = parseFormattedNumber(value);
-    // Debug logging
-    console.log(`StatNumber parsing "${value}":`, parsed);
-    return parsed;
-  }, [value]);
+  const meta = useMemo(() => parseFormattedNumber(value), [value]);
 
   // Start value should be 10-25% higher than target for countdown effect
   const start = useMemo(() => {
@@ -41,56 +36,44 @@ export default function StatNumber({
   // Cubic ease-out for smooth deceleration
   const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
 
-  // Watch for the parent element to be revealed by IntersectionObserver
+  // Use IntersectionObserver to trigger animation when element comes into view
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
-    // Check if the parent container has the 'revealed' class
-    const checkRevealed = () => {
-      const parent = element.closest('.reveal');
-      const isRevealed = parent && parent.classList.contains('revealed');
-      console.log(`StatNumber "${value}" reveal check:`, { parent: !!parent, isRevealed });
-      if (isRevealed) {
-        setShouldAnimate(true);
-      }
-    };
-
-    // Initial check
-    checkRevealed();
-
-    // Set up a MutationObserver to watch for class changes on parent
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          checkRevealed();
-        }
-      });
-    });
-
-    // Find the parent with reveal class and observe it
-    const revealParent = element.closest('.reveal');
-    if (revealParent) {
-      observer.observe(revealParent, {
-        attributes: true,
-        attributeFilter: ['class'],
-      });
-    } else {
-      // If no reveal parent found, start animation immediately
-      setShouldAnimate(true);
+    // If reduced motion, start immediately
+    if (reduced) {
+      setHasStarted(true);
+      return;
     }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -20% 0px", // Start animation when element is 20% visible
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(element);
 
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [hasStarted, reduced]);
 
   useEffect(() => {
     // Reset announcement flag when value changes
     announcedRef.current = false;
 
     // If reduced motion is preferred, value is not numeric, or animation shouldn't start yet
-    if (reduced || isNaN(meta.numeric) || !shouldAnimate) {
+    if (reduced || isNaN(meta.numeric) || !hasStarted) {
       setDisplay(String(value));
       return;
     }
@@ -124,7 +107,7 @@ export default function StatNumber({
 
       if (flickerPhase) {
         // Gentle flicker - small random variation that decreases over time
-        const flickerIntensity = (1 - progress / 0.55) * 0.02; // Decreases from 2% to 0%
+        const flickerIntensity = (1 - progress / 0.55) * 0.04; // Slightly stronger flicker for visibility
         const jitter = (Math.random() - 0.5) * meta.numeric * flickerIntensity;
         displayValue += jitter;
       }
@@ -150,7 +133,16 @@ export default function StatNumber({
         cancelAnimationFrame(rafRef.current);
       }
     };
-  }, [value, durationMs, delayMs, flicker, reduced, meta.numeric, start, shouldAnimate]);
+  }, [
+    value,
+    durationMs,
+    delayMs,
+    flicker,
+    reduced,
+    meta.numeric,
+    start,
+    hasStarted,
+  ]);
 
   return (
     <span
@@ -158,10 +150,10 @@ export default function StatNumber({
       aria-live="polite"
       className={className}
       style={{
-        // Micro-glow effect using emeraldTint at low opacity for premium feel
-        textShadow: `0 0 10px ${tokens.colors.emeraldTint}1A`, // 1A = ~10% opacity in hex
+        // Blue glow effect using emeraldTint (now blue) for premium feel
+        textShadow: `0 0 4px ${tokens.colors.emeraldNeon}4D, 0 0 8px ${tokens.colors.emeraldNeon}33, 0 0 12px ${tokens.colors.emeraldNeon}1A`, // Blue glow layers
         letterSpacing: "-0.01em",
-        color: tokens.colors.white,
+        color: tokens.colors.emeraldNeon, // Use blue color instead of white
         // Reserve width to prevent layout shift
         minWidth: "1ch",
         display: "inline-block",
