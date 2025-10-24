@@ -1,6 +1,7 @@
 import { Container, Section, Divider } from "./Container";
 import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
+import StatNumber from "./StatNumber";
 
 export function Credentials() {
   const { addElement } = useReveal(60);
@@ -25,9 +26,13 @@ export function Credentials() {
               {copy.credentials.stats.map((stat, index) => (
                 <div key={index} ref={addElement} className="text-center">
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-emeraldNeon mb-3 sm:mb-4">
-                    {stat.value}
+                    <StatNumber
+                      value={stat.value}
+                      delayMs={index * 120}
+                      className="font-bold"
+                    />
                   </div>
-                  <div className="text-base sm:text-lg text-white/80">
+                  <div className="text-base sm:text-lg text-white/80 uppercase tracking-wider opacity-75">
                     {stat.label}
                   </div>
                 </div>
