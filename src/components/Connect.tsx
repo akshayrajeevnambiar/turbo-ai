@@ -57,11 +57,29 @@ export function Connect() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Create form data for submission
+      const submitData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        organization: formData.organization.trim() || 'Not specified',
+        message: formData.message.trim(),
+        to: 'hello@turbo-ai.ca',
+        subject: `New Contact Form Submission from ${formData.name.trim()}`,
+        timestamp: new Date().toISOString()
+      };
 
-      // Log form data (in production, this would be sent to a server)
-      console.log("Form submission:", formData);
+      // Submit to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       // Show success toast
       showToast("Thank you for your message. We will be in touch soon.");
@@ -74,6 +92,7 @@ export function Connect() {
         message: "",
       });
     } catch (error) {
+      console.error('Form submission error:', error);
       showToast(
         "Sorry, there was an error sending your message. Please try again.",
         "error"
@@ -120,7 +139,15 @@ export function Connect() {
             className="space-y-6 mb-12"
             noValidate
             aria-label="Contact form"
+            name="contact"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
           >
+            {/* Hidden Netlify form detection */}
+            <input type="hidden" name="form-name" value="contact" />
+            <div className="hidden">
+              <input name="bot-field" />
+            </div>
             {/* Name */}
             <div ref={addElement}>
               <label

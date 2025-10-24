@@ -182,12 +182,20 @@ export const copy = {
         date: "2025-05-10",
         excerpt:
           "Most enterprise AI projects fail from misaligned incentives and weak governance.",
+        source: {
+          title: "Harvard Business Review",
+          url: "https://hbr.org/2025/05/the-hidden-cost-of-ai-pilots-that-never-scale"
+        }
       },
       {
         slug: "due-diligence-ai-maturity",
         title: "Why Due Diligence Must Include AI Maturity",
         date: "2025-04-12",
         excerpt: "Assess algorithmic risk alongside financial health.",
+        source: {
+          title: "MIT Technology Review",
+          url: "https://www.technologyreview.com/2025/04/12/due-diligence-ai-maturity"
+        }
       },
       {
         slug: "infra-that-survives-leadership",
@@ -195,6 +203,10 @@ export const copy = {
         date: "2025-03-15",
         excerpt:
           "Systems endure when they're built on architecture, not personalities.",
+        source: {
+          title: "IEEE Spectrum",
+          url: "https://spectrum.ieee.org/ai-infrastructure-leadership-changes"
+        }
       },
     ],
   },
