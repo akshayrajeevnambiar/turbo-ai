@@ -12,7 +12,7 @@ export const site = {
     items: [
       { label: "Home", href: "#hero" },
       { label: "About", href: "#about" },
-      { label: "Expertise", href: "#expertise" },
+      { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
       { label: "Perspectives", href: "#perspectives" },
       { label: "Connect", href: "#connect" },
@@ -50,7 +50,7 @@ export const tokens = {
     transitionMs: 275,
     easing: "ease-out",
     allowParallax: true,
-    allowScrollJacking: true,
+    allowScrollJacking: false,
     parallax: { maxDepth: 0.6, lerp: 0.12, mobileDisabledBelowPx: 768 },
     scrollJacking: {
       enabledSections: [
@@ -94,7 +94,7 @@ export const copy = {
   },
   expertise: {
     id: "expertise",
-    heading: "Our Expertise",
+    heading: "Our Services",
     intro:
       "We combine strategic clarity with technical depth to build systems that last.",
     items: [
