@@ -77,6 +77,13 @@ export function Footer() {
               >
                 {copy.connect.email}
               </a>
+              <a
+                href={`tel:${copy.connect.phone}`}
+                className="footer-link text-sm block"
+                aria-label={`Call us at ${copy.connect.phone}`}
+              >
+                {copy.connect.phone}
+              </a>
               <SectionLink
                 href="#connect"
                 className="footer-link text-sm"

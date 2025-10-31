@@ -234,6 +234,7 @@ export const copy = {
     fields: ["name", "email", "organization", "message"],
     cta: { label: "Send Message", href: "#connect" },
     email: "hello@turbo-ai.ca",
+    phone: "+18257472650",
     privacy:
       "We only use your information to respond to your inquiry. No marketing lists.",
   },
