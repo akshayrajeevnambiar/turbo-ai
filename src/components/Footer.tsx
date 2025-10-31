@@ -2,17 +2,13 @@ import { useState } from "react";
 import { Container } from "./Container";
 import { SectionLink } from "./SectionLink";
 import { Modal } from "./Modal";
-import { TermsOfUseContent } from "./LegalContent";
+import { PrivacyPolicyContent, TermsOfUseContent } from "./LegalContent";
 import { site, copy } from "../content/turboai";
 
 export function Footer() {
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const currentYear = new Date().getFullYear();
-
-  const handlePrivacyClick = () => {
-    window.dispatchEvent(new CustomEvent('navigate', { detail: 'privacy-policy' }));
-    window.history.pushState({}, '', '/privacy-policy');
-  };
 
   // Derive services from expertise items
   const services = copy.expertise.items.map((item) => ({
@@ -100,7 +96,7 @@ export function Footer() {
           </div>
           <div className="flex gap-6 text-xs">
             <button
-              onClick={handlePrivacyClick}
+              onClick={() => setIsPrivacyModalOpen(true)}
               className="text-midGray hover:text-white transition-colors duration-200"
               aria-label="Read our Privacy Policy"
             >
@@ -117,7 +113,15 @@ export function Footer() {
         </div>
       </Container>
 
-      {/* Terms Modal */}
+      {/* Legal Modals */}
+      <Modal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+        title="Privacy Policy"
+      >
+        <PrivacyPolicyContent />
+      </Modal>
+
       <Modal
         isOpen={isTermsModalOpen}
         onClose={() => setIsTermsModalOpen(false)}
