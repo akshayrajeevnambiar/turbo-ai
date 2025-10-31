@@ -103,10 +103,7 @@ export function Header() {
             {site.nav.items.map((item) => (
               <li key={item.href}>
                 {item.dropdown ? (
-                  <Dropdown
-                    label={item.label}
-                    items={item.dropdown}
-                  />
+                  <Dropdown label={item.label} items={item.dropdown} />
                 ) : (
                   <SectionLink
                     href={item.href}

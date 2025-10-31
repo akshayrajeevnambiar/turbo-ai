@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import type { DropdownItem } from '../content/turboai';
+import { useState, useRef, useEffect } from "react";
+import type { DropdownItem } from "../content/turboai";
 
 interface DropdownProps {
   label: string;
@@ -14,25 +14,28 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Close dropdown on escape key
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, []);
 
   return (
@@ -45,14 +48,21 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
         aria-label={`${label} menu`}
       >
         {label}
-        <svg 
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          className={`w-4 h-4 transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
 
@@ -67,13 +77,28 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
                 rel={item.external ? "noopener noreferrer" : undefined}
                 className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-emeraldTint/10 transition-colors duration-200"
                 onClick={() => setIsOpen(false)}
-                aria-label={item.external ? `Visit ${item.label} (opens in new tab)` : `Navigate to ${item.label}`}
+                aria-label={
+                  item.external
+                    ? `Visit ${item.label} (opens in new tab)`
+                    : `Navigate to ${item.label}`
+                }
               >
                 <div className="flex items-center justify-between">
                   {item.label}
                   {item.external && (
-                    <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    <svg
+                      className="w-3 h-3 opacity-60"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
                     </svg>
                   )}
                 </div>
