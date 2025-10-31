@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Container } from "./Container";
 import { SectionLink } from "./SectionLink";
+import { Dropdown } from "./Dropdown";
+import { MobileDropdown } from "./MobileDropdown";
 import { site, tokens } from "../content/turboai";
 
 export function Header() {
@@ -100,22 +102,29 @@ export function Header() {
           <ul className="flex items-center space-x-8">
             {site.nav.items.map((item) => (
               <li key={item.href}>
-                <SectionLink
-                  href={item.href}
-                  className={`nav-link ${
-                    activeSection === item.href.replace("#", "")
-                      ? "aria-current"
-                      : ""
-                  }`}
-                  aria-current={
-                    activeSection === item.href.replace("#", "")
-                      ? "page"
-                      : undefined
-                  }
-                  aria-label={`Navigate to ${item.label} section`}
-                >
-                  {item.label}
-                </SectionLink>
+                {item.dropdown ? (
+                  <Dropdown
+                    label={item.label}
+                    items={item.dropdown}
+                  />
+                ) : (
+                  <SectionLink
+                    href={item.href}
+                    className={`nav-link ${
+                      activeSection === item.href.replace("#", "")
+                        ? "aria-current"
+                        : ""
+                    }`}
+                    aria-current={
+                      activeSection === item.href.replace("#", "")
+                        ? "page"
+                        : undefined
+                    }
+                    aria-label={`Navigate to ${item.label} section`}
+                  >
+                    {item.label}
+                  </SectionLink>
+                )}
               </li>
             ))}
           </ul>
@@ -177,23 +186,31 @@ export function Header() {
                 <ul className="space-y-0">
                   {site.nav.items.map((item) => (
                     <li key={item.href}>
-                      <SectionLink
-                        href={item.href}
-                        className={`mobile-nav-link ${
-                          activeSection === item.href.replace("#", "")
-                            ? "aria-current"
-                            : ""
-                        }`}
-                        onClick={handleLinkClick}
-                        aria-current={
-                          activeSection === item.href.replace("#", "")
-                            ? "page"
-                            : undefined
-                        }
-                        aria-label={`Navigate to ${item.label} section`}
-                      >
-                        {item.label}
-                      </SectionLink>
+                      {item.dropdown ? (
+                        <MobileDropdown
+                          label={item.label}
+                          items={item.dropdown}
+                          onItemClick={handleLinkClick}
+                        />
+                      ) : (
+                        <SectionLink
+                          href={item.href}
+                          className={`mobile-nav-link ${
+                            activeSection === item.href.replace("#", "")
+                              ? "aria-current"
+                              : ""
+                          }`}
+                          onClick={handleLinkClick}
+                          aria-current={
+                            activeSection === item.href.replace("#", "")
+                              ? "page"
+                              : undefined
+                          }
+                          aria-label={`Navigate to ${item.label} section`}
+                        >
+                          {item.label}
+                        </SectionLink>
+                      )}
                     </li>
                   ))}
                 </ul>

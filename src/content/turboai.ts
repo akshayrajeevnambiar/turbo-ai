@@ -1,3 +1,9 @@
+export interface DropdownItem {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
 export const site = {
   meta: {
     siteName: "Turbo AI",
@@ -12,6 +18,13 @@ export const site = {
     items: [
       { label: "Home", href: "#hero" },
       { label: "About", href: "#about" },
+      { 
+        label: "Products", 
+        href: "#", 
+        dropdown: [
+          { label: "Seismic AI", href: "https://seismic-ai.com", external: true }
+        ]
+      },
       { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
       { label: "Perspectives", href: "#perspectives" },
