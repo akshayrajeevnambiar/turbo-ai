@@ -16,6 +16,13 @@
     scroll-padding-top: var(--header-h);
   }
 
+  /* Disable smooth scrolling on mobile for better native experience */
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     margin: 0;
     min-height: 100vh;
