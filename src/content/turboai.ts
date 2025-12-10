@@ -31,6 +31,7 @@ export const site = {
       },
       { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
+      { label: "Clientele", href: "#clientele" },
       { label: "Perspectives", href: "#perspectives" },
       { label: "Connect", href: "#connect" },
     ],
@@ -238,6 +239,67 @@ export const copy = {
     privacy:
       "We only use your information to respond to your inquiry. No marketing lists.",
   },
+};
+
+export const clientele = {
+  id: "clientele",
+  heading: "Our Clientele",
+  lead: "Trusted by leading organizations across diverse industries worldwide.",
+  segments: [
+    {
+      category: "Sports & Apparel",
+      clients: [{ name: "Dragon Aire Pins", url: "https://dragonairepins.com/" }],
+    },
+    {
+      category: "Health",
+      clients: [
+        { name: "RJM Diagnostics", url: "https://rjmdiagnostics.com/" },
+        { name: "Dr. Jacob Eapen", url: "https://www.drjacobeapen.com/" },
+      ],
+    },
+    {
+      category: "Electronics",
+      clients: [
+        { name: "H6 Systems", url: "http://h6systems.com/" },
+        { name: "Rapid Tech", url: "https://rapid-tech.com/" },
+      ],
+    },
+    {
+      category: "Medical Equipment",
+      clients: [{ name: "Tangent", url: "https://www.tangent.com/" }],
+    },
+    {
+      category: "Payment Solutions",
+      clients: [
+        { name: "Merchant Pro Inc", url: "https://www.merchantproinc.com/" },
+        { name: "Final Swipe", url: "https://www.finalswipe.com/" },
+        { name: "i-Payout", url: "https://www.i-payout.com/" },
+      ],
+    },
+    {
+      category: "Investigation",
+      clients: [{ name: "ICU Investigations", url: "https://icu.icu-is.com/" }],
+    },
+    {
+      category: "Wigs",
+      clients: [{ name: "Crown Units", url: "https://crownunits.com/" }],
+    },
+    {
+      category: "Travel & Tourism",
+      clients: [
+        { name: "Funday Holidays", url: "https://www.fundayholidays.com/" },
+        { name: "Quick Kerala Holidays", url: "http://www.quickeralaholidays.com/" },
+      ],
+    },
+    {
+      category: "Salon",
+      clients: [{ name: "Celebrity Salons", url: "http://www.celebritysalons.com/" }],
+    },
+    {
+      category: "Security",
+      clients: [{ name: "Teyseer Security", url: "https://www.teyseer-security.com/" }],
+    },
+  ],
 };
 
 export const about = {
