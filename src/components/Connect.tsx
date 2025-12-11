@@ -57,28 +57,34 @@ export function Connect() {
     setIsSubmitting(true);
 
     try {
-      // Create form data for submission
-      const submitData = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        organization: formData.organization.trim() || "Not specified",
-        message: formData.message.trim(),
-        to: "hello@turbo-ai.ca",
-        subject: `New Contact Form Submission from ${formData.name.trim()}`,
-        timestamp: new Date().toISOString(),
-      };
+      // Create form data for Web3Forms
+      const submitData = new FormData();
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      
+      if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
+        throw new Error("Web3Forms access key not configured");
+      }
+      
+      submitData.append("access_key", accessKey);
+      submitData.append("name", formData.name.trim());
+      submitData.append("email", formData.email.trim());
+      submitData.append("organization", formData.organization.trim() || "Not specified");
+      submitData.append("message", formData.message.trim());
+      submitData.append("subject", `New Contact Form Submission from ${formData.name.trim()}`);
+      submitData.append("from_name", "Turbo AI Contact Form");
+      // Add both email addresses
+      submitData.append("cc", "jude@turbo-ai.ca,akshayrajeevnambiar@gmail.com");
 
-      // Submit to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      // Submit to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
+        body: submitData,
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.message || "Form submission failed");
       }
 
       // Show success toast
@@ -139,15 +145,7 @@ export function Connect() {
             className="space-y-6 mb-12"
             noValidate
             aria-label="Contact form"
-            name="contact"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
           >
-            {/* Hidden Netlify form detection */}
-            <input type="hidden" name="form-name" value="contact" />
-            <div className="hidden">
-              <input name="bot-field" />
-            </div>
             {/* Name */}
             <div ref={addElement}>
               <label
