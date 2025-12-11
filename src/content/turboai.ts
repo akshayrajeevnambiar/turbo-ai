@@ -34,7 +34,6 @@ export const site = {
       { label: "Clientele", href: "#clientele" },
       { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "#perspectives" },
-      { label: "Blog", href: "#blog" },
       { label: "Connect", href: "#connect" },
     ],
   },
