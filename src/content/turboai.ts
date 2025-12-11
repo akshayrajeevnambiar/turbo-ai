@@ -1,3 +1,12 @@
+// Import partner logos
+import damasLogo from "../assets/damas-logo.png";
+import gulfPlantLogo from "../assets/gulf-plant-logo.png";
+import hyundaiLogo from "../assets/hyundai-logo.png";
+import suzukiLogo from "../assets/suzuki-logo.png";
+import tangentLogo from "../assets/tangent-logo.png";
+import toddBrickhouseLogo from "../assets/todd-brickhouse-logo.png";
+import zeibartLogo from "../assets/zeibart-logo.png";
+
 export interface DropdownItem {
   label: string;
   href: string;
@@ -316,13 +325,13 @@ export const partners = {
   heading: "Brands We Partner With",
   lead: "Collaborating with industry leaders across diverse sectors.",
   brands: [
-    { name: "Damas", logo: "/src/assets/damas-logo.png" },
-    { name: "Gulf Plant", logo: "/src/assets/gulf-plant-logo.png" },
-    { name: "Hyundai", logo: "/src/assets/hyundai-logo.png" },
-    { name: "Suzuki", logo: "/src/assets/suzuki-logo.png" },
-    { name: "Tangent", logo: "/src/assets/tangent-logo.png" },
-    { name: "Todd Brickhouse", logo: "/src/assets/todd-brickhouse-logo.png" },
-    { name: "Zeibart", logo: "/src/assets/zeibart-logo.png" },
+    { name: "Damas", logo: damasLogo },
+    { name: "Gulf Plant", logo: gulfPlantLogo },
+    { name: "Hyundai", logo: hyundaiLogo },
+    { name: "Suzuki", logo: suzukiLogo },
+    { name: "Tangent", logo: tangentLogo },
+    { name: "Todd Brickhouse", logo: toddBrickhouseLogo },
+    { name: "Zeibart", logo: zeibartLogo },
   ],
 };
 
