@@ -6,7 +6,6 @@ import { Expertise } from "./components/Expertise";
 import { Impact } from "./components/Impact.tsx";
 import { Partners } from "./components/Partners";
 import { Perspectives } from "./components/Perspectives";
-import { Blog } from "./components/Blog";
 import { Connect } from "./components/Connect";
 import { Footer } from "./components/Footer";
 
@@ -22,7 +21,6 @@ function App() {
         <Impact />
         <Partners />
         <Perspectives />
-        <Blog />
         <Connect />
       </main>
       <Footer />
