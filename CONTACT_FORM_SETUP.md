@@ -2,15 +2,15 @@
 
 ## Overview
 The contact form sends emails to both:
-- jude@turbo-ai.ca (primary)
-- akshayrajeevnambiar@gmail.com (secondary)
+- akshayrajeevnambiar@gmail.com (primary)
+- jude@turbo-ai.ca (secondary/CC)
 
 ## Setup Steps
 
 ### 1. Get Your Web3Forms Access Key
 
 1. Go to https://web3forms.com
-2. Enter your email: **jude@turbo-ai.ca**
+2. Enter your email: **akshayrajeevnambiar@gmail.com**
 3. Click "Get Access Key"
 4. Check your inbox for the access key email
 5. Copy the access key from the email

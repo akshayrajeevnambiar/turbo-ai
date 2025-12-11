@@ -72,8 +72,8 @@ export function Connect() {
       submitData.append("message", formData.message.trim());
       submitData.append("subject", `New Contact Form Submission from ${formData.name.trim()}`);
       submitData.append("from_name", "Turbo AI Contact Form");
-      // Add both email addresses
-      submitData.append("cc", "jude@turbo-ai.ca,akshayrajeevnambiar@gmail.com");
+      // Add secondary email address as CC
+      submitData.append("cc", "jude@turbo-ai.ca");
 
       // Submit to Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {
