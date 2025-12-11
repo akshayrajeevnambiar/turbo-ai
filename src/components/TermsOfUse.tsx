@@ -5,7 +5,9 @@ export function TermsOfUse() {
     <Section className="bg-charcoal text-white py-24">
       <Container>
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8">Terms & Conditions</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-8">
+            Terms & Conditions
+          </h1>
           <div className="text-sm text-white/60 mb-12">
             Last updated: {new Date().toLocaleDateString()}
           </div>
@@ -17,9 +19,9 @@ export function TermsOfUse() {
               </h2>
               <p className="text-white/80 leading-relaxed">
                 By accessing and using this website, you accept and agree to be
-                bound by these Terms and Conditions. If you do not agree with any
-                part of these terms, you must discontinue use of this website
-                immediately.
+                bound by these Terms and Conditions. If you do not agree with
+                any part of these terms, you must discontinue use of this
+                website immediately.
               </p>
             </section>
 
@@ -42,12 +44,14 @@ export function TermsOfUse() {
                   website;
                 </li>
                 <li>
-                  Remove any copyright or proprietary notices from the materials.
+                  Remove any copyright or proprietary notices from the
+                  materials.
                 </li>
               </ul>
               <p className="text-white/80 leading-relaxed mt-4">
                 This license shall automatically terminate if you violate any of
-                these restrictions and may be terminated by Turbo AI at any time.
+                these restrictions and may be terminated by Turbo AI at any
+                time.
               </p>
             </section>
 
@@ -55,7 +59,7 @@ export function TermsOfUse() {
               <h2 className="text-2xl font-semibold mb-4">
                 3. Partner Client Logos and Third-Party Trademarks
               </h2>
-              
+
               <h3 className="text-xl font-semibold mb-3 text-white/90">
                 Authorized Use
               </h3>
@@ -76,7 +80,10 @@ export function TermsOfUse() {
                 <li>Website pages;</li>
                 <li>Marketing brochures;</li>
                 <li>Presentations and capability materials;</li>
-                <li>Other factual representations of capabilities or collaboration.</li>
+                <li>
+                  Other factual representations of capabilities or
+                  collaboration.
+                </li>
               </ul>
 
               <h3 className="text-xl font-semibold mb-3 text-white/90">
@@ -103,8 +110,8 @@ export function TermsOfUse() {
                 Right to Withdraw
               </h3>
               <p className="text-white/80 leading-relaxed mb-4">
-                A logo owner or technology partner may request removal at any time.
-                Turbo AI will comply within a reasonable timeframe.
+                A logo owner or technology partner may request removal at any
+                time. Turbo AI will comply within a reasonable timeframe.
               </p>
 
               <h3 className="text-xl font-semibold mb-3 text-white/90">
@@ -136,16 +143,16 @@ export function TermsOfUse() {
               <h2 className="text-2xl font-semibold mb-4">6. Limitations</h2>
               <p className="text-white/80 leading-relaxed">
                 Turbo AI shall not be liable for any damages arising out of the
-                use or inability to use this website, even if advised of potential
-                damages.
+                use or inability to use this website, even if advised of
+                potential damages.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">7. Governing Law</h2>
               <p className="text-white/80 leading-relaxed">
-                These Terms and Conditions are governed by the laws of Alberta and
-                the applicable federal laws of Canada.
+                These Terms and Conditions are governed by the laws of Alberta
+                and the applicable federal laws of Canada.
               </p>
             </section>
 
