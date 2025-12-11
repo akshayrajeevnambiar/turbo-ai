@@ -11,15 +11,15 @@ export function Partners() {
   return (
     <Section
       id={partners.id}
-      className="bg-white overflow-hidden"
+      className="bg-white overflow-hidden !py-8 md:!py-12"
       aria-labelledby="partners-heading"
     >
       <Container>
-        <div className="text-center mb-4">
+        <div className="text-center mb-6">
           <h2
             id="partners-heading"
             ref={addElement}
-            className="text-2xl md:text-3xl font-bold mb-2 text-charcoal"
+            className="text-2xl md:text-4xl font-bold mb-3 text-charcoal"
           >
             {partners.heading}
           </h2>
@@ -31,7 +31,7 @@ export function Partners() {
           </p>
         </div>
 
-        <div ref={addElement} className="relative">
+        <div ref={addElement} className="relative -mb-2">
           <style>{`
             @keyframes marquee {
               0% {
