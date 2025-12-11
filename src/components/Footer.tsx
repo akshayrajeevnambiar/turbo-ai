@@ -94,7 +94,9 @@ export function Footer() {
                 </SectionLink>
               </div>
               <div className="text-sm text-white/70 leading-relaxed">
-                <div className="font-semibold text-white/90">Light House Corporate Inc.</div>
+                <div className="font-semibold text-white/90">
+                  Light House Corporate Inc.
+                </div>
                 <div>330 – 5th Avenue SW</div>
                 <div>Tower 1, Suite 1800</div>
                 <div>Calgary, AB T2P 0L4</div>
