@@ -34,6 +34,7 @@ export const site = {
       { label: "Clientele", href: "#clientele" },
       { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "#perspectives" },
+      { label: "Blog", href: "#blog" },
       { label: "Connect", href: "#connect" },
     ],
   },
@@ -324,6 +325,32 @@ export const partners = {
     { name: "Tangent", logo: "/src/assets/tangent-logo.png" },
     { name: "Todd Brickhouse", logo: "/src/assets/todd-brickhouse-logo.png" },
     { name: "Zeibart", logo: "/src/assets/zeibart-logo.png" },
+  ],
+};
+
+export const blog = {
+  id: "blog",
+  heading: "From Our Blog",
+  lead: "Stay updated with our latest insights and announcements.",
+  posts: [
+    {
+      title: "LinkedIn Update",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7403675619848470528",
+      platform: "LinkedIn",
+      icon: "linkedin",
+    },
+    {
+      title: "Twitter/X Post",
+      url: "https://x.com/_turbo_ai_/status/1997923006103068743?s=20",
+      platform: "X (Twitter)",
+      icon: "twitter",
+    },
+    {
+      title: "Facebook Post",
+      url: "https://www.facebook.com/share/p/1BvHsBbPvZ/",
+      platform: "Facebook",
+      icon: "facebook",
+    },
   ],
 };
 
