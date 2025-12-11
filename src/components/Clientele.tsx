@@ -12,11 +12,20 @@ export function Clientele() {
       aria-labelledby="clientele-heading"
     >
       <Container>
-        <div className="text-center mb-16" ref={addElement}>
-          <h2 id="clientele-heading" className="heading-xl mb-4">
+        <div className="text-center mb-16">
+          <h2
+            id="clientele-heading"
+            ref={addElement}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8"
+          >
             {clientele.heading}
           </h2>
-          <p className="lead max-w-3xl mx-auto">{clientele.lead}</p>
+          <p
+            ref={addElement}
+            className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+          >
+            {clientele.lead}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

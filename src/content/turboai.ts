@@ -248,7 +248,9 @@ export const clientele = {
   segments: [
     {
       category: "Sports & Apparel",
-      clients: [{ name: "Dragon Aire Pins", url: "https://dragonairepins.com/" }],
+      clients: [
+        { name: "Dragon Aire Pins", url: "https://dragonairepins.com/" },
+      ],
     },
     {
       category: "Health",
@@ -288,16 +290,23 @@ export const clientele = {
       category: "Travel & Tourism",
       clients: [
         { name: "Funday Holidays", url: "https://www.fundayholidays.com/" },
-        { name: "Quick Kerala Holidays", url: "http://www.quickeralaholidays.com/" },
+        {
+          name: "Quick Kerala Holidays",
+          url: "http://www.quickeralaholidays.com/",
+        },
       ],
     },
     {
       category: "Salon",
-      clients: [{ name: "Celebrity Salons", url: "http://www.celebritysalons.com/" }],
+      clients: [
+        { name: "Celebrity Salons", url: "http://www.celebritysalons.com/" },
+      ],
     },
     {
       category: "Security",
-      clients: [{ name: "Teyseer Security", url: "https://www.teyseer-security.com/" }],
+      clients: [
+        { name: "Teyseer Security", url: "https://www.teyseer-security.com/" },
+      ],
     },
   ],
 };
