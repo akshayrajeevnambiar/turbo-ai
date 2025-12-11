@@ -15,17 +15,17 @@ export function Partners() {
       aria-labelledby="partners-heading"
     >
       <Container>
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <h2
             id="partners-heading"
             ref={addElement}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-charcoal"
+            className="text-2xl md:text-3xl font-bold mb-2 text-charcoal"
           >
             {partners.heading}
           </h2>
           <p
             ref={addElement}
-            className="text-lg md:text-xl text-charcoal/70 max-w-3xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-charcoal/70 max-w-2xl mx-auto"
           >
             {partners.lead}
           </p>
@@ -42,7 +42,7 @@ export function Partners() {
               }
             }
             .marquee-container {
-              animation: marquee 20s linear infinite;
+              animation: marquee 12s linear infinite;
             }
             .marquee-container:hover {
               animation-play-state: paused;
@@ -53,12 +53,12 @@ export function Partners() {
             {brandsList.map((brand, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-center px-8 md:px-12 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+                className="flex items-center justify-center px-6 md:px-8 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
               >
                 <img
                   src={brand.logo}
                   alt={`${brand.name} logo`}
-                  className="h-12 md:h-16 w-auto object-contain"
+                  className="h-10 md:h-12 w-auto object-contain"
                   loading="lazy"
                 />
               </div>
