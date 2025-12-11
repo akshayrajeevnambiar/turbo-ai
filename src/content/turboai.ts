@@ -32,6 +32,7 @@ export const site = {
       { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
       { label: "Clientele", href: "#clientele" },
+      { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "#perspectives" },
       { label: "Connect", href: "#connect" },
     ],
@@ -308,6 +309,25 @@ export const clientele = {
         { name: "Teyseer Security", url: "https://www.teyseer-security.com/" },
       ],
     },
+  ],
+};
+
+export const partners = {
+  id: "partners",
+  heading: "Brands We Partner With",
+  lead: "Collaborating with industry leaders across diverse sectors.",
+  brands: [
+    { name: "Damas", logo: "/src/assets/damas-logo.png" },
+    { name: "Fortune 500", logo: "/src/assets/fortune-500_logo.png" },
+    { name: "Gulf Plant", logo: "/src/assets/gulf-plant-logo.png" },
+    { name: "Hyundai", logo: "/src/assets/hyundai-logo.png" },
+    { name: "IIT Bombay", logo: "/src/assets/iit-b_logo.png" },
+    { name: "Oxford", logo: "/src/assets/oxford_logo.png" },
+    { name: "Suzuki", logo: "/src/assets/suzuki-logo.png" },
+    { name: "Tangent", logo: "/src/assets/tangent-logo.png" },
+    { name: "Todd Brickhouse", logo: "/src/assets/todd-brickhouse-logo.png" },
+    { name: "University of Nottingham", logo: "/src/assets/university-of-nottingham_logo.png" },
+    { name: "Zeibart", logo: "/src/assets/zeibart-logo.png" },
   ],
 };
 
