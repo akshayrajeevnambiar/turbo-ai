@@ -53,12 +53,12 @@ export function Partners() {
             {brandsList.map((brand, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-center px-6 md:px-8 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+                className="flex items-center justify-center px-6 md:px-8 flex-shrink-0 transition-all duration-300"
               >
                 <img
                   src={brand.logo}
                   alt={`${brand.name} logo`}
-                  className="h-10 md:h-12 w-auto object-contain"
+                  className="h-10 md:h-12 w-auto object-contain hover:scale-125 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>
