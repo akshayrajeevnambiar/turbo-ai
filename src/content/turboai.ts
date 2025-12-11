@@ -31,7 +31,6 @@ export const site = {
       },
       { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
-      { label: "Clientele", href: "#clientele" },
       { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "#perspectives" },
       { label: "Connect", href: "#connect" },
