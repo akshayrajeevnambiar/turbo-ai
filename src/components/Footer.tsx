@@ -69,28 +69,36 @@ export function Footer() {
           {/* Column D: Contact */}
           <div className="footer-column">
             <h2 className="kicker">Contact</h2>
-            <div className="space-y-2">
-              <a
-                href={`mailto:${copy.connect.email}`}
-                className="footer-link text-sm block"
-                aria-label={`Send email to ${copy.connect.email}`}
-              >
-                {copy.connect.email}
-              </a>
-              <a
-                href={`tel:${copy.connect.phone}`}
-                className="footer-link text-sm block"
-                aria-label={`Call us at ${copy.connect.phone}`}
-              >
-                {copy.connect.phone}
-              </a>
-              <SectionLink
-                href="#connect"
-                className="footer-link text-sm"
-                aria-label="Start a conversation with our team"
-              >
-                Start a Conversation
-              </SectionLink>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <a
+                  href={`mailto:${copy.connect.email}`}
+                  className="footer-link text-sm block"
+                  aria-label={`Send email to ${copy.connect.email}`}
+                >
+                  {copy.connect.email}
+                </a>
+                <a
+                  href={`tel:${copy.connect.phone}`}
+                  className="footer-link text-sm block"
+                  aria-label={`Call us at ${copy.connect.phone}`}
+                >
+                  {copy.connect.phone}
+                </a>
+                <SectionLink
+                  href="#connect"
+                  className="footer-link text-sm"
+                  aria-label="Start a conversation with our team"
+                >
+                  Start a Conversation
+                </SectionLink>
+              </div>
+              <div className="text-sm text-white/70 leading-relaxed">
+                <div className="font-semibold text-white/90">Light House Corporate Inc.</div>
+                <div>330 – 5th Avenue SW</div>
+                <div>Tower 1, Suite 1800</div>
+                <div>Calgary, AB T2P 0L4</div>
+              </div>
             </div>
           </div>
         </div>
