@@ -322,7 +322,7 @@ export const clientele = {
 
 export const partners = {
   id: "partners",
-  heading: "Brands We Partner With",
+  heading: "Our Clientele",
   lead: "Collaborating with industry leaders across diverse sectors.",
   brands: [
     { name: "Damas", logo: damasLogo },
