@@ -11,7 +11,7 @@ export function Partners() {
   return (
     <Section
       id={partners.id}
-      className="bg-white overflow-hidden !py-8 md:!py-12"
+      className="bg-white overflow-x-hidden !py-8 md:!py-12"
       aria-labelledby="partners-heading"
     >
       <Container>
@@ -31,7 +31,7 @@ export function Partners() {
           </p>
         </div>
 
-        <div ref={addElement} className="relative -mb-2">
+        <div ref={addElement} className="relative -mb-2 overflow-hidden">
           <style>{`
             @keyframes marquee {
               0% {
