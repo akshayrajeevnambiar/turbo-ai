@@ -60,17 +60,23 @@ export function Connect() {
       // Create form data for Web3Forms
       const submitData = new FormData();
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-      
+
       if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
         throw new Error("Web3Forms access key not configured");
       }
-      
+
       submitData.append("access_key", accessKey);
       submitData.append("name", formData.name.trim());
       submitData.append("email", formData.email.trim());
-      submitData.append("organization", formData.organization.trim() || "Not specified");
+      submitData.append(
+        "organization",
+        formData.organization.trim() || "Not specified"
+      );
       submitData.append("message", formData.message.trim());
-      submitData.append("subject", `New Contact Form Submission from ${formData.name.trim()}`);
+      submitData.append(
+        "subject",
+        `New Contact Form Submission from ${formData.name.trim()}`
+      );
       submitData.append("from_name", "Turbo AI Contact Form");
       // Add secondary email address as CC
       submitData.append("cc", "jude@turbo-ai.ca");
