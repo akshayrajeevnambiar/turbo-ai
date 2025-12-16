@@ -1,9 +1,22 @@
 // Import partner logos
+import crownUnitsLogo from "../assets/crownunits-logo.png";
 import damasLogo from "../assets/damas-logo.png";
+import dragonAirePinsLogo from "../assets/dragonairepins-logo.png";
+import drJacobEapenLogo from "../assets/drjacobeapen-logo.png";
+import finalSwipeLogo from "../assets/finalswipe-logo.png";
+import fundayHolidaysLogo from "../assets/funday-holidays-logo.png";
 import gulfPlantLogo from "../assets/gulf-plant-logo.png";
+import h6SystemsLogo from "../assets/h6systems-logo.png";
 import hyundaiLogo from "../assets/hyundai-logo.png";
+import iPayoutLogo from "../assets/i-payout-logo.jpg";
+import icuInvestigativeServicesLogo from "../assets/icu-investigative-services-logo.png";
+import merchantProIncLogo from "../assets/merchantproinc-logo.jpg";
+import quickKeralaHolidayLogo from "../assets/quickkerala-holiday-logo.png";
+import rapidTechLogo from "../assets/rapid-tech-logo.png";
+import rjmDiagnosticsLogo from "../assets/rjmdiagnostics-logo.png";
 import suzukiLogo from "../assets/suzuki-logo.png";
 import tangentLogo from "../assets/tangent-logo.png";
+import teyseerSecurityLogo from "../assets/teyseer-security-logo.jpg";
 import toddBrickhouseLogo from "../assets/todd-brickhouse-logo.png";
 import zeibartLogo from "../assets/zeibart-logo.png";
 
@@ -325,11 +338,24 @@ export const partners = {
   heading: "Our Clientele",
   lead: "Collaborating with industry leaders across diverse sectors.",
   brands: [
+    { name: "Crown Units", logo: crownUnitsLogo },
     { name: "Damas", logo: damasLogo },
+    { name: "Dragon Aire Pins", logo: dragonAirePinsLogo },
+    { name: "Dr. Jacob Eapen", logo: drJacobEapenLogo },
+    { name: "Final Swipe", logo: finalSwipeLogo },
+    { name: "Funday Holidays", logo: fundayHolidaysLogo },
     { name: "Gulf Plant", logo: gulfPlantLogo },
+    { name: "H6 Systems", logo: h6SystemsLogo },
     { name: "Hyundai", logo: hyundaiLogo },
+    { name: "i-Payout", logo: iPayoutLogo },
+    { name: "ICU Investigative Services", logo: icuInvestigativeServicesLogo },
+    { name: "Merchant Pro Inc", logo: merchantProIncLogo },
+    { name: "Quick Kerala Holiday", logo: quickKeralaHolidayLogo },
+    { name: "Rapid Tech", logo: rapidTechLogo },
+    { name: "RJM Diagnostics", logo: rjmDiagnosticsLogo },
     { name: "Suzuki", logo: suzukiLogo },
     { name: "Tangent", logo: tangentLogo },
+    { name: "Teyseer Security", logo: teyseerSecurityLogo },
     { name: "Todd Brickhouse", logo: toddBrickhouseLogo },
     { name: "Zeibart", logo: zeibartLogo },
   ],
