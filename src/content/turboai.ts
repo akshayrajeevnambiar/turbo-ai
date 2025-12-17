@@ -338,38 +338,17 @@ export const partners = {
   heading: "Our Clientele",
   lead: "Collaborating with industry leaders across diverse sectors.",
   brands: [
-    {
-      name: "Crown Units",
-      logo: crownUnitsLogo,
-      url: "https://crownunits.com/",
-    },
     { name: "Damas", logo: damasLogo, url: "https://www.damasjewellery.com/" },
-    {
-      name: "Dragon Aire Pins",
-      logo: dragonAirePinsLogo,
-      url: "https://dragonairepins.com/",
-    },
-    {
-      name: "Dr. Jacob Eapen",
-      logo: drJacobEapenLogo,
-      url: "https://www.drjacobeapen.com/",
-    },
     {
       name: "Final Swipe",
       logo: finalSwipeLogo,
       url: "https://www.finalswipe.com/",
     },
     {
-      name: "Funday Holidays",
-      logo: fundayHolidaysLogo,
-      url: "https://www.fundayholidays.com/",
-    },
-    {
       name: "Gulf Plant",
       logo: gulfPlantLogo,
       url: "https://www.gulfplantqatar.com/",
     },
-    { name: "H6 Systems", logo: h6SystemsLogo, url: "http://h6systems.com/" },
     {
       name: "Hyundai",
       logo: hyundaiLogo,
@@ -386,17 +365,7 @@ export const partners = {
       logo: merchantProIncLogo,
       url: "https://www.merchantproinc.com/",
     },
-    {
-      name: "Quick Kerala Holiday",
-      logo: quickKeralaHolidayLogo,
-      url: "http://www.quickeralaholidays.com/",
-    },
     { name: "Rapid Tech", logo: rapidTechLogo, url: "https://rapid-tech.com/" },
-    {
-      name: "RJM Diagnostics",
-      logo: rjmDiagnosticsLogo,
-      url: "https://rjmdiagnostics.com/",
-    },
     { name: "Suzuki", logo: suzukiLogo, url: "https://www.suzuki.ca/auto/" },
     { name: "Tangent", logo: tangentLogo, url: "https://www.tangent.com/" },
     {

@@ -1,7 +1,9 @@
 # Contact Form Setup Instructions
 
 ## Overview
+
 The contact form sends emails to both:
+
 - akshayrajeevnambiar@gmail.com (primary)
 - jude@turbo-ai.ca (secondary/CC)
 
@@ -18,6 +20,7 @@ The contact form sends emails to both:
 ### 2. Configure Environment Variable
 
 #### Local Development:
+
 1. Open the `.env` file in the project root
 2. Replace `YOUR_ACCESS_KEY_HERE` with your actual access key:
    ```
@@ -25,6 +28,7 @@ The contact form sends emails to both:
    ```
 
 #### Vercel Deployment:
+
 1. Go to your Vercel project dashboard
 2. Navigate to Settings → Environment Variables
 3. Add a new variable:
@@ -57,15 +61,18 @@ The contact form sends emails to both:
 ## Troubleshooting
 
 **Form not sending?**
+
 - Check that the environment variable is set correctly
 - Verify the access key is valid
 - Check browser console for errors
 
 **Emails not arriving?**
+
 - Check spam folders
 - Verify email addresses are correct in Connect.tsx (line with `cc`)
 - Test with Web3Forms dashboard
 
 ## Free Tier Limits
+
 - 250 submissions per month
 - If you need more, upgrade at https://web3forms.com/pricing
