@@ -1,6 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" fill="#0A0A0A"/>
-  <path d="M8 8h16v2H8z" fill="#39FF14"/>
-  <path d="M8 14h12v2H8z" fill="#39FF14"/>
-  <path d="M8 20h8v2H8z" fill="#39FF14"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Dark background matching brand -->
+  <rect width="512" height="512" fill="#141825"/>
+  
+  <!-- Simplified "T" letter mark from Turbo AI logo -->
+  <g transform="translate(140, 100)">
+    <!-- Top horizontal bar -->
+    <rect x="0" y="0" width="240" height="50" fill="#F5F4F7" rx="4"/>
+    
+    <!-- Vertical stroke -->
+    <rect x="95" y="0" width="50" height="320" fill="#36C5F6" rx="4"/>
+    
+    <!-- Accent element -->
+    <circle cx="200" cy="240" r="28" fill="#6FFBFB"/>
+  </g>
 </svg>
