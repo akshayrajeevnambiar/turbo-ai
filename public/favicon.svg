@@ -3,20 +3,31 @@
   <!-- Pure black background -->
   <rect width="512" height="512" fill="#000000"/>
   
-  <!-- Hexagon with geometric internal elements -->
+  <!-- Luxurious hexagon logo -->
   <g transform="translate(256, 256)">
-    <!-- Outer hexagon - white -->
-    <path d="M 0,-120 L 104,-60 L 104,60 L 0,120 L -104,60 L -104,-60 Z" 
-          fill="none" 
-          stroke="#FFFFFF" 
-          stroke-width="12"/>
+    <!-- Main hexagon - neon blue -->
+    <path d="M 0,-140 L 121,-70 L 121,70 L 0,140 L -121,70 L -121,-70 Z" 
+          fill="#00D4FF"/>
     
-    <!-- Inner left chevron - white -->
-    <path d="M -60,-40 L -20,0 L -60,40 L -80,40 L -40,0 L -80,-40 Z" 
+    <!-- Inner hexagon - black -->
+    <path d="M 0,-100 L 87,-50 L 87,50 L 0,100 L -87,50 L -87,-50 Z" 
+          fill="#000000"/>
+    
+    <!-- Three accent triangles forming center pattern -->
+    <!-- Top triangle - white -->
+    <path d="M 0,-60 L 50,-30 L -50,-30 Z" 
           fill="#FFFFFF"/>
     
-    <!-- Inner right chevron - neon blue -->
-    <path d="M 20,-40 L 60,0 L 20,40 L 0,40 L 40,0 L 0,-40 Z" 
+    <!-- Bottom-left triangle - white -->
+    <path d="M -50,30 L 0,60 L -50,0 Z" 
+          fill="#FFFFFF"/>
+    
+    <!-- Bottom-right triangle - neon blue -->
+    <path d="M 50,0 L 50,30 L 0,60 Z" 
           fill="#00D4FF"/>
+    
+    <!-- Center diamond accent - white -->
+    <path d="M 0,-15 L 15,0 L 0,15 L -15,0 Z" 
+          fill="#FFFFFF"/>
   </g>
 </svg>
