@@ -3,21 +3,20 @@
   <!-- Pure black background -->
   <rect width="512" height="512" fill="#000000"/>
   
-  <!-- Three interlocking chevrons forming hexagon-like core -->
+  <!-- Hexagon with geometric internal elements -->
   <g transform="translate(256, 256)">
-    <!-- Top chevron - white -->
-    <path d="M 0,-100 L 60,-60 L 20,-20 L -20,-20 L -60,-60 Z" 
-          fill="#FFFFFF" 
-          stroke="none"/>
+    <!-- Outer hexagon - white -->
+    <path d="M 0,-120 L 104,-60 L 104,60 L 0,120 L -104,60 L -104,-60 Z" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          stroke-width="12"/>
     
-    <!-- Bottom-right chevron - neon blue (highlighted) -->
-    <path d="M 60,20 L 100,80 L 60,100 L 20,100 L -20,60 L 20,20 Z" 
-          fill="#00D4FF" 
-          stroke="none"/>
+    <!-- Inner left chevron - white -->
+    <path d="M -60,-40 L -20,0 L -60,40 L -80,40 L -40,0 L -80,-40 Z" 
+          fill="#FFFFFF"/>
     
-    <!-- Bottom-left chevron - white -->
-    <path d="M -60,20 L -20,60 L -60,100 L -100,100 L -100,80 L -60,40 Z" 
-          fill="#FFFFFF" 
-          stroke="none"/>
+    <!-- Inner right chevron - neon blue -->
+    <path d="M 20,-40 L 60,0 L 20,40 L 0,40 L 40,0 L 0,-40 Z" 
+          fill="#00D4FF"/>
   </g>
 </svg>
