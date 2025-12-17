@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- Dark background matching brand -->
-  <rect width="512" height="512" fill="#141825"/>
+  <!-- Pure black background -->
+  <rect width="512" height="512" fill="#000000"/>
   
-  <!-- Simplified "T" letter mark from Turbo AI logo -->
-  <g transform="translate(140, 100)">
-    <!-- Top horizontal bar -->
-    <rect x="0" y="0" width="240" height="50" fill="#F5F4F7" rx="4"/>
+  <!-- Three interlocking chevrons forming hexagon-like core -->
+  <g transform="translate(256, 256)">
+    <!-- Top chevron - white -->
+    <path d="M 0,-100 L 60,-60 L 20,-20 L -20,-20 L -60,-60 Z" 
+          fill="#FFFFFF" 
+          stroke="none"/>
     
-    <!-- Vertical stroke -->
-    <rect x="95" y="0" width="50" height="320" fill="#36C5F6" rx="4"/>
+    <!-- Bottom-right chevron - neon blue (highlighted) -->
+    <path d="M 60,20 L 100,80 L 60,100 L 20,100 L -20,60 L 20,20 Z" 
+          fill="#00D4FF" 
+          stroke="none"/>
     
-    <!-- Accent element -->
-    <circle cx="200" cy="240" r="28" fill="#6FFBFB"/>
+    <!-- Bottom-left chevron - white -->
+    <path d="M -60,20 L -20,60 L -60,100 L -100,100 L -100,80 L -60,40 Z" 
+          fill="#FFFFFF" 
+          stroke="none"/>
   </g>
 </svg>
