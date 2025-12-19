@@ -335,12 +335,12 @@ export default function OurImpactEditorial({
           {/* SUPPORTING CARDS */}
           {supporting.map((cs) => (
             <Fragment key={cs.id}>
-              <article className="relative group bg-neutral-950 border border-blue-500/20 hover:border-blue-400/40 overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10">
+              <article className="relative group bg-neutral-950 border border-blue-500/20 hover:border-blue-400/40 overflow-hidden transition-all duration-900 hover:shadow-lg hover:shadow-blue-500/10">
                 {cs.image && (
                   <img
                     src={cs.image}
                     alt=""
-                    className="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-900 group-hover:scale-[1.03]"
                     aria-hidden="true"
                   />
                 )}
@@ -351,7 +351,7 @@ export default function OurImpactEditorial({
 
                 {/* Neon glow effect on hover */}
                 <div
-                  className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-900"
                   aria-hidden="true"
                 ></div>
 

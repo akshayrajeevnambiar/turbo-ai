@@ -1,5 +1,6 @@
 // Import partner logos
 import damasLogo from "../assets/damas-logo.png";
+import h6systemsLogo from "../assets/h6systems-logo.png";
 import finalSwipeLogo from "../assets/finalswipe-logo.png";
 import gulfPlantLogo from "../assets/gulf-plant-logo.png";
 import hyundaiLogo from "../assets/hyundai-logo.png";
@@ -277,8 +278,8 @@ export const clientele = {
     {
       category: "Electronics",
       clients: [
-        { name: "H6 Systems", url: "http://h6systems.com/" },
-        { name: "Rapid Tech", url: "https://rapid-tech.com/" },
+          { name: "H6 Systems", url: "http://h6systems.com/" },
+          { name: "Rapid Tech", url: "https://rapid-tech.com/" },
       ],
     },
     {
@@ -332,6 +333,7 @@ export const partners = {
   lead: "Collaborating with industry leaders across diverse sectors.",
   brands: [
     { name: "Damas", logo: damasLogo, url: "https://www.damasjewellery.com/" },
+    { name: "H6 Systems", logo: h6systemsLogo, url: "http://h6systems.com/" },
     {
       name: "Final Swipe",
       logo: finalSwipeLogo,
