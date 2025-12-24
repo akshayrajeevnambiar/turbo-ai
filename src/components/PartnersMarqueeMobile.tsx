@@ -59,12 +59,6 @@ export function PartnersMarqueeMobile() {
         >
           {partners.heading}
         </h2>
-        <p
-          ref={addElement}
-          className="text-base text-charcoal/70 max-w-2xl mx-auto px-4"
-        >
-          {partners.lead}
-        </p>
       </div>
       <div
         className="overflow-x-hidden"
