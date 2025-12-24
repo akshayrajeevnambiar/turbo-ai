@@ -1102,8 +1102,16 @@
 }
 
 
+/* Default (desktop) speed */
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* Much faster marquee for mobile */
+@media (max-width: 767px) {
+  .animate-marquee {
+    animation-duration: 6s;
+  }
 }
 .animate-marquee.paused {
   animation-play-state: paused;

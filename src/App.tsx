@@ -5,6 +5,7 @@ import CredentialsGrid from "./components/CredentialsGrid";
 import { Expertise } from "./components/Expertise";
 import { Impact } from "./components/Impact.tsx";
 import { Partners } from "./components/PartnersMarquee";
+import { PartnersMarqueeMobile } from "./components/PartnersMarqueeMobile";
 import { Perspectives } from "./components/Perspectives";
 import { Connect } from "./components/Connect";
 import { Footer } from "./components/Footer";
@@ -19,7 +20,12 @@ function App() {
         <CredentialsGrid />
         <Expertise />
         <Impact />
-        <Partners />
+        <div className="hidden md:block">
+          <Partners />
+        </div>
+        <div className="block md:hidden">
+          <PartnersMarqueeMobile />
+        </div>
         <Perspectives />
         <Connect />
       </main>
