@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Section } from "./Container";
 import { useReveal } from "../hooks/useReveal";
@@ -35,8 +33,13 @@ export function Partners() {
       {/* Edge-to-edge marquee, outside Container */}
       <div className="overflow-x-hidden">
         <div
-          className={`hidden md:flex w-screen animate-marquee whitespace-nowrap${isPaused ? " paused" : ""}`}
-          style={{ marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 50vw)' }}
+          className={`hidden md:flex w-screen animate-marquee whitespace-nowrap${
+            isPaused ? " paused" : ""
+          }`}
+          style={{
+            marginLeft: "calc(50% - 50vw)",
+            marginRight: "calc(50% - 50vw)",
+          }}
         >
           {marqueeBrands.map((brand, idx) => (
             <a

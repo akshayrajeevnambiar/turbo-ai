@@ -20,7 +20,7 @@ export function PartnersMarqueeMobile() {
     const contentWidth = content.scrollWidth;
 
     function animate() {
-      if (!isPaused) {
+      if (!isPaused && content) {
         pos -= speed;
         if (Math.abs(pos) >= contentWidth / 2) {
           pos = 0;
@@ -66,7 +66,11 @@ export function PartnersMarqueeMobile() {
           {partners.lead}
         </p>
       </div>
-      <div className="overflow-x-hidden" ref={containerRef} style={{ width: "100vw", marginLeft: "auto", marginRight: "auto" }}>
+      <div
+        className="overflow-x-hidden"
+        ref={containerRef}
+        style={{ width: "100vw", marginLeft: "auto", marginRight: "auto" }}
+      >
         <div
           ref={contentRef}
           className="flex whitespace-nowrap"

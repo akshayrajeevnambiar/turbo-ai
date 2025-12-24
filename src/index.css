@@ -1101,7 +1101,6 @@
   } /* because we duplicated the list */
 }
 
-
 /* Default (desktop) speed */
 .animate-marquee {
   animation: marquee 30s linear infinite;
