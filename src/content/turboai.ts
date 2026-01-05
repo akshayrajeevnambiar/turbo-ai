@@ -1,5 +1,6 @@
 // Import partner logos
 import damasLogo from "../assets/damas-logo.png";
+import caseConstructionLogo from "../assets/case-construction-equipment-logo.webp";
 import h6systemsLogo from "../assets/h6systems-logo.png";
 import finalSwipeLogo from "../assets/finalswipe-logo.png";
 import gulfPlantLogo from "../assets/gulf-plant-logo.png";
@@ -344,6 +345,11 @@ export const partners = {
       logo: gulfPlantLogo,
       url: "https://www.gulfplantqatar.com/",
     },
+      {
+        name: "Case Construction",
+        logo: caseConstructionLogo,
+        url: "https://www.casece.com/"
+      },
     {
       name: "Hyundai",
       logo: hyundaiLogo,
