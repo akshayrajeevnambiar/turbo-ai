@@ -279,8 +279,8 @@ export const clientele = {
     {
       category: "Electronics",
       clients: [
-          { name: "H6 Systems", url: "http://h6systems.com/" },
-          { name: "Rapid Tech", url: "https://rapid-tech.com/" },
+        { name: "H6 Systems", url: "http://h6systems.com/" },
+        { name: "Rapid Tech", url: "https://rapid-tech.com/" },
       ],
     },
     {
@@ -345,11 +345,11 @@ export const partners = {
       logo: gulfPlantLogo,
       url: "https://www.gulfplantqatar.com/",
     },
-      {
-        name: "Case Construction",
-        logo: caseConstructionLogo,
-        url: "https://www.casece.com/"
-      },
+    {
+      name: "Case Construction",
+      logo: caseConstructionLogo,
+      url: "https://www.casece.com/"
+    },
     {
       name: "Hyundai",
       logo: hyundaiLogo,
