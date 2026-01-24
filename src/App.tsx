@@ -5,6 +5,7 @@ import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { AITransformation } from "./pages/AITransformation";
 import { StrategicIntelligence } from "./pages/StrategicIntelligence";
+import { RemoteInfrastructureManagement } from "./pages/RemoteInfrastructureManagement";
 import { tokens } from "./content/turboai";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ai-transformation" element={<AITransformation />} />
         <Route path="/strategic-intelligence" element={<StrategicIntelligence />} />
+        <Route path="/remote-infrastructure-management" element={<RemoteInfrastructureManagement />} />
       </Routes>
       <Footer />
     </>

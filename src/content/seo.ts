@@ -32,4 +32,11 @@ export const seoConfig: Record<string, PageSEO> = {
         url: `${baseUrl}/strategic-intelligence`,
         keywords: "strategic intelligence, due diligence, market research, data modelling, technology forecasting, competitive intelligence",
     },
+    remoteInfrastructureManagement: {
+        title: "Remote Infrastructure Management Canada — Turbo AI",
+        description: "24/7 monitoring, optimization, and maintenance of distributed systems. Proactive issue resolution for Canada's always-on economy.",
+        image: `${baseUrl}/assets/remote-infrastructure-hero.png`,
+        url: `${baseUrl}/remote-infrastructure-management`,
+        keywords: "remote infrastructure management, RIM Canada, IT infrastructure monitoring, 24/7 IT support, distributed systems management, managed IT services Canada",
+    },
 };

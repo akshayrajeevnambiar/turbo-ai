@@ -52,6 +52,7 @@ export const site = {
         dropdown: [
           { label: "AI Transformation", href: "/ai-transformation" },
           { label: "Strategic Intelligence", href: "/strategic-intelligence" },
+          { label: "Remote Infrastructure Management", href: "/remote-infrastructure-management" },
           { label: "All Services", href: "#expertise" },
         ],
       },
@@ -165,6 +166,7 @@ export const copy = {
         slug: "remote-infrastructure-management",
         title: "Remote Infrastructure Management",
         body: "24/7 monitoring, optimization, and maintenance of distributed systems with proactive incident resolution.",
+        href: "/remote-infrastructure-management",
       },
       {
         id: "05",
