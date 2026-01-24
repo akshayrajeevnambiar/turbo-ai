@@ -155,6 +155,7 @@ export const copy = {
         slug: "strategic-intelligence",
         title: "Strategic Intelligence",
         body: "Due diligence that integrates technology research, data modeling, and market insight.",
+        href: "/strategic-intelligence",
       },
       {
         id: "03",
