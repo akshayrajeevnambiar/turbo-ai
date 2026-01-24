@@ -1,34 +1,45 @@
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { About } from "./components/About";
-import CredentialsGrid from "./components/CredentialsGrid";
-import { Expertise } from "./components/Expertise";
-import { Impact } from "./components/Impact.tsx";
-import { Partners } from "./components/PartnersMarquee";
-import { PartnersMarqueeMobile } from "./components/PartnersMarqueeMobile";
-import { Perspectives } from "./components/Perspectives";
-import { Connect } from "./components/Connect";
 import { Footer } from "./components/Footer";
+import { Home } from "./pages/Home";
+import { AITransformation } from "./pages/AITransformation";
+import { tokens } from "./content/turboai";
 
 function App() {
+  const { pathname, hash } = useLocation();
+
+  // Handle scroll to hash on route change
+  useEffect(() => {
+    // If there is a hash, scroll to it
+    if (hash) {
+      const sectionId = hash.replace("#", "");
+      // slight delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const headerHeight = tokens.layout.headerH;
+          const targetY = element.offsetTop - headerHeight;
+
+          window.scrollTo({
+            top: targetY,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    } else {
+      // If no hash and path changed, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
   return (
     <>
       <Header />
-      <main id="main" role="main">
-        <Hero />
-        <About />
-        <CredentialsGrid />
-        <Expertise />
-        <Impact />
-        <div className="hidden md:block">
-          <Partners />
-        </div>
-        <div className="block md:hidden">
-          <PartnersMarqueeMobile />
-        </div>
-        <Perspectives />
-        <Connect />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ai-transformation" element={<AITransformation />} />
+      </Routes>
       <Footer />
     </>
   );

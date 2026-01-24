@@ -46,7 +46,14 @@ export const site = {
           },
         ],
       },
-      { label: "Services", href: "#expertise" },
+      {
+        label: "Services",
+        href: "#",
+        dropdown: [
+          { label: "AI Transformation", href: "/ai-transformation" },
+          { label: "All Services", href: "#expertise" },
+        ],
+      },
       { label: "Our Impact", href: "#impact" },
       { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "#perspectives" },
@@ -138,6 +145,7 @@ export const copy = {
         slug: "ai-transformation",
         title: "AI Transformation",
         body: "End-to-end design, build, and operationalization of intelligent systems accountable for outcomes.",
+        href: "/ai-transformation",
       },
       {
         id: "02",

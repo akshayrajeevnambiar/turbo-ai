@@ -13,7 +13,7 @@ export function Footer() {
   // Derive services from expertise items
   const services = copy.expertise.items.map((item) => ({
     label: item.title,
-    href: `#expertise-${item.slug}`,
+    href: "href" in item ? (item as any).href : `#expertise-${item.slug}`,
   }));
 
   // Company navigation items
@@ -42,7 +42,13 @@ export function Footer() {
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-sm text-white/70">{service.label}</span>
+                  <SectionLink
+                    href={service.href}
+                    className="footer-link text-sm"
+                    aria-label={`Navigate to ${service.label}`}
+                  >
+                    {service.label}
+                  </SectionLink>
                 </li>
               ))}
             </ul>
