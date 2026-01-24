@@ -52,6 +52,7 @@ export const site = {
         dropdown: [
           { label: "AI Transformation", href: "/ai-transformation" },
           { label: "Strategic Intelligence", href: "/strategic-intelligence" },
+          { label: "Digital Architecture", href: "/digital-architecture" },
           { label: "Remote Infrastructure Management", href: "/remote-infrastructure-management" },
           { label: "All Services", href: "#expertise" },
         ],
@@ -160,6 +161,7 @@ export const copy = {
         slug: "digital-architecture",
         title: "Digital Architecture",
         body: "Modernization, scalable platforms, and engineering practices that reduce risk and accelerate delivery.",
+        href: "/digital-architecture",
       },
       {
         id: "04",

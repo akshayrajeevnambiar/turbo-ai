@@ -39,4 +39,11 @@ export const seoConfig: Record<string, PageSEO> = {
         url: `${baseUrl}/remote-infrastructure-management`,
         keywords: "remote infrastructure management, RIM Canada, IT infrastructure monitoring, 24/7 IT support, distributed systems management, managed IT services Canada",
     },
+    digitalArchitecture: {
+        title: "Digital Architecture Canada — Turbo AI",
+        description: "Modern platforms and engineering practices that scale with your business. Build a foundation for growth without the technical debt.",
+        image: `${baseUrl}/assets/digital-architecture-hero.png`,
+        url: `${baseUrl}/digital-architecture`,
+        keywords: "digital architecture Canada, modern software engineering, platform engineering, legacy modernization, cloud architecture, scalable systems, technical debt reduction",
+    },
 };
