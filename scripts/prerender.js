@@ -84,6 +84,48 @@ async function prerender() {
             console.log(`Saved ${route} to ${distPath}`);
         }
 
+        // --- Generate robots.txt and sitemap.xml dynamically ---
+
+        // Load env variables (assume production mode for verify, or development if local)
+        // Since we are running 'vite preview', we might be in production mode context, but let's check .env
+        // We can't easily use vite's loadEnv in this script without complex setup if vite isn't fully initialized.
+        // EASIER: Manually parse .env for this simple script or use a regex since we know the format.
+
+        let baseUrl = 'https://turbo-ai.ca'; // default fallback
+        try {
+            const envPath = path.resolve(process.cwd(), '.env');
+            if (fs.existsSync(envPath)) {
+                const envContent = fs.readFileSync(envPath, 'utf-8');
+                const match = envContent.match(/VITE_BASE_URL=(.*)/);
+                if (match && match[1]) {
+                    baseUrl = match[1].trim();
+                }
+            }
+        } catch (e) {
+            console.warn('Could not read .env file, using default base URL:', e);
+        }
+
+        console.log(`Generating SEO files for base URL: ${baseUrl}`);
+
+        // Generate robots.txt
+        const robotsContent = `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml`;
+        fs.writeFileSync(path.resolve('dist', 'robots.txt'), robotsContent);
+        console.log('Generated dist/robots.txt');
+
+        // Generate sitemap.xml
+        const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes.map(route => `  <url>
+    <loc>${baseUrl}${route === '/' ? '' : route}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+        fs.writeFileSync(path.resolve('dist', 'sitemap.xml'), sitemapContent);
+        console.log('Generated dist/sitemap.xml');
+
     } catch (err) {
         console.error('Error during pre-rendering:', err);
         process.exit(1);
