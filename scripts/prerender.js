@@ -46,7 +46,9 @@ async function prerender() {
     const routes = [
         '/',
         '/ai-transformation',
-        '/strategic-intelligence'
+        '/strategic-intelligence',
+        '/remote-infrastructure-management',
+        '/digital-architecture'
     ];
 
     try {
