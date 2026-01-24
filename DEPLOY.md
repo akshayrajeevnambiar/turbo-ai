@@ -71,7 +71,7 @@ VERCEL_ORG_ID=your_org_id
 VERCEL_PROJECT_ID=your_project_id
 ```
 
-**Custom Domain**: Add `turbo-ai.co.uk` in Vercel dashboard → Project → Settings → Domains
+**Custom Domain**: Add `turbo-ai.ca` in Vercel dashboard → Project → Settings → Domains
 
 ---
 

@@ -82,7 +82,7 @@ frame-ancestors 'none';
 {
   "@type": "Organization",
   "name": "Turbo AI",
-  "url": "https://turbo-ai.co.uk",
+  "url": "https://turbo-ai.ca",
   "foundingDate": "2019"
 }
 ```

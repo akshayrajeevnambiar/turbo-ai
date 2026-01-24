@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: "prompt",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "og.jpg"],
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "og.jpg", "robots.txt", "sitemap.xml"],
       manifest: {
         name: "Turbo AI — Architecting Intelligence",
         short_name: "Turbo AI",
@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,woff2}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,woff2,txt,xml}"],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -139,6 +139,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 5173,
     host: true,
+    allowedHosts: ["f933e8531818.ngrok-free.app"],
   },
 
   // Preview server configuration

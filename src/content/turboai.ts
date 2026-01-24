@@ -24,7 +24,7 @@ export interface DropdownItem {
 export const site = {
   meta: {
     siteName: "Turbo AI",
-    domain: "turbo-ai.co.uk",
+    domain: "turbo-ai.ca",
     defaultTitle: "Turbo AI — Architecting Intelligence",
     description:
       "We design and deploy intelligent systems for enterprises navigating complexity.",

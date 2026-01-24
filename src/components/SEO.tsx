@@ -17,6 +17,7 @@ export function SEO({ pageKey }: SEOProps) {
         <Helmet defer={false} prioritizeSeoTags>
             <title>{meta.title}</title>
             <meta name="description" content={meta.description} />
+            {meta.keywords && <meta name="keywords" content={meta.keywords} />}
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content="website" />

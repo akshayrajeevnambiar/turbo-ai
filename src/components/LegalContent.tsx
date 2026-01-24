@@ -331,10 +331,10 @@ export const TermsOfUseContent = () => (
         If you have any questions about these Terms of Use, please contact us
         at:{" "}
         <a
-          href="mailto:legal@turbo-ai.co.uk"
+          href="mailto:legal@turbo-ai.ca"
           className="text-blue-400 hover:text-blue-300 transition-colors"
         >
-          legal@turbo-ai.co.uk
+          legal@turbo-ai.ca
         </a>
       </p>
     </section>
