@@ -107,11 +107,10 @@ export function Header() {
                 ) : (
                   <SectionLink
                     href={item.href}
-                    className={`nav-link ${
-                      activeSection === item.href.replace("#", "")
+                    className={`nav-link ${activeSection === item.href.replace("#", "")
                         ? "aria-current"
                         : ""
-                    }`}
+                      }`}
                     aria-current={
                       activeSection === item.href.replace("#", "")
                         ? "page"
@@ -192,11 +191,10 @@ export function Header() {
                       ) : (
                         <SectionLink
                           href={item.href}
-                          className={`mobile-nav-link ${
-                            activeSection === item.href.replace("#", "")
+                          className={`mobile-nav-link ${activeSection === item.href.replace("#", "")
                               ? "aria-current"
                               : ""
-                          }`}
+                            }`}
                           onClick={handleLinkClick}
                           aria-current={
                             activeSection === item.href.replace("#", "")

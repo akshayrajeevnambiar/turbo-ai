@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { DropdownItem } from "../content/turboai";
+import { SectionLink } from "./SectionLink";
 
 interface DropdownProps {
   label: string;
@@ -49,9 +50,8 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
       >
         {label}
         <svg
-          className={`w-4 h-4 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+            }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -70,11 +70,9 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
         <div className="absolute top-full left-0 mt-2 w-48 bg-charcoalDeep/95 backdrop-blur-md border border-emeraldTint/20 rounded-lg shadow-xl z-50">
           <div className="py-2">
             {items.map((item, index) => (
-              <a
+              <SectionLink
                 key={index}
                 href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
                 className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-emeraldTint/10 transition-colors duration-200"
                 onClick={() => setIsOpen(false)}
                 aria-label={
@@ -102,7 +100,7 @@ export function Dropdown({ label, items, className = "" }: DropdownProps) {
                     </svg>
                   )}
                 </div>
-              </a>
+              </SectionLink>
             ))}
           </div>
         </div>
