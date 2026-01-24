@@ -51,6 +51,7 @@ export const site = {
         href: "#",
         dropdown: [
           { label: "AI Transformation", href: "/ai-transformation" },
+          { label: "Strategic Intelligence", href: "/strategic-intelligence" },
           { label: "All Services", href: "#expertise" },
         ],
       },
