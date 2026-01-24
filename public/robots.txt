@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://turbo-ai.co.uk/sitemap.xml
+Sitemap: https://turbo-ai.ca/sitemap.xml
