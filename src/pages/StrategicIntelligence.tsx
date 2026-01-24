@@ -4,12 +4,14 @@ import { SectionLink } from "../components/SectionLink";
 import heroBg from "../assets/Hero Background.jpg";
 import insightImg from "../assets/Insight Visualization.jpg";
 import mapImg from "../assets/Canadian Context Map.jpg";
+import { SEO } from "../components/SEO";
 
 export function StrategicIntelligence() {
     const { addElement } = useReveal(40);
 
     return (
         <main className="bg-charcoal" role="main">
+            <SEO pageKey="strategicIntelligence" />
             {/* Hero Section */}
             <section className="relative min-h-[85vh] flex items-center justify-center pt-24 pb-12 overflow-hidden bg-charcoalDeep">
                 {/* Background Image */}

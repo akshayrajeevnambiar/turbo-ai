@@ -43,23 +43,46 @@ async function prerender() {
     });
     const page = await browser.newPage();
 
+    const routes = [
+        '/',
+        '/ai-transformation',
+        '/strategic-intelligence'
+    ];
+
     try {
-        // Navigate to the page
-        await page.goto(serverUrl, { waitUntil: 'networkidle0' });
+        for (const route of routes) {
+            console.log(`Pre-rendering ${route}...`);
 
-        // Wait for the root element to be populated (the React app)
-        await page.waitForSelector('#root div');
+            // Navigate to the page
+            await page.goto(`${serverUrl}${route === '/' ? '' : route}`, { waitUntil: 'networkidle0' });
 
-        // Give it a moment for any final animations or effects (optional but safer for "premium" visuals)
-        await new Promise(r => setTimeout(r, 500));
+            // Wait for the root element to be populated
+            await page.waitForSelector('#root div');
 
-        // Get the HTML
-        const html = await page.content();
+            // Give it a moment for any final animations or effects
+            await new Promise(r => setTimeout(r, 500));
 
-        // Replace the original index.html
-        const distPath = path.resolve('dist', 'index.html');
-        fs.writeFileSync(distPath, html);
-        console.log(`Pre-rendered HTML saved to ${distPath}`);
+            // Get the HTML
+            const html = await page.content();
+
+            // Determine write path
+            let distPath;
+            if (route === '/') {
+                distPath = path.resolve('dist', 'index.html');
+            } else {
+                // Remove leading slash for folder creation
+                const folder = route.substring(1);
+                const dir = path.resolve('dist', folder);
+
+                if (!fs.existsSync(dir)) {
+                    fs.mkdirSync(dir, { recursive: true });
+                }
+                distPath = path.join(dir, 'index.html');
+            }
+
+            fs.writeFileSync(distPath, html);
+            console.log(`Saved ${route} to ${distPath}`);
+        }
 
     } catch (err) {
         console.error('Error during pre-rendering:', err);

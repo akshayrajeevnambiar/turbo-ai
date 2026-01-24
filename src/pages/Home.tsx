@@ -7,10 +7,12 @@ import { Partners } from "../components/PartnersMarquee";
 import { PartnersMarqueeMobile } from "../components/PartnersMarqueeMobile";
 import { Perspectives } from "../components/Perspectives";
 import { Connect } from "../components/Connect";
+import { SEO } from "../components/SEO";
 
 export function Home() {
     return (
         <>
+            <SEO pageKey="home" />
             <main id="main" role="main">
                 <Hero />
                 <About />

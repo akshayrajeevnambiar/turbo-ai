@@ -4,12 +4,14 @@ import { SectionLink } from "../components/SectionLink";
 import heroImage from "../assets/ai-trans-hero.png";
 import processImage from "../assets/ai-trans-img1.jpg";
 import networkingImage from "../assets/ai-trans-networkinglines.jpg";
+import { SEO } from "../components/SEO";
 
 export function AITransformation() {
     const { addElement } = useReveal(40);
 
     return (
         <main className="bg-charcoal" role="main">
+            <SEO pageKey="aiTransformation" />
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 overflow-hidden bg-charcoalDeep">
                 {/* Background Image with Overlay */}
