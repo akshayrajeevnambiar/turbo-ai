@@ -319,7 +319,7 @@ export const TermsOfUseContent = () => (
       <h2 className="text-xl font-semibold mb-3 text-white">Governing Law</h2>
       <p className="text-white/80 leading-relaxed text-sm">
         These terms and conditions are governed by and construed in accordance
-        with the laws of the United Kingdom.
+        with the laws of Canada.
       </p>
     </section>
 
@@ -331,10 +331,10 @@ export const TermsOfUseContent = () => (
         If you have any questions about these Terms of Use, please contact us
         at:{" "}
         <a
-          href="mailto:legal@turbo-ai.co.uk"
+          href="mailto:legal@turbo-ai.ca"
           className="text-blue-400 hover:text-blue-300 transition-colors"
         >
-          legal@turbo-ai.co.uk
+          legal@turbo-ai.ca
         </a>
       </p>
     </section>

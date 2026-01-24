@@ -85,10 +85,10 @@ export function PrivacyPolicy() {
                 If you have any questions about this Privacy Policy, please
                 contact us at:{" "}
                 <a
-                  href="mailto:privacy@turbo-ai.co.uk"
+                  href="mailto:privacy@turbo-ai.ca"
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  privacy@turbo-ai.co.uk
+                  privacy@turbo-ai.ca
                 </a>
               </p>
             </section>

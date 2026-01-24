@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://turbo-ai.co.uk/sitemap.xml
+Sitemap: https://turbo-ai.ca/sitemap.xml
 
 # Block access to source maps and config files
 Disallow: /*.map$
