@@ -66,7 +66,8 @@ async function prerender() {
         '/remote-infrastructure-management',
         '/digital-architecture',
         '/blog',
-        '/blog/leveraging-ai-expand-customer-base'
+        '/blog/leveraging-ai-expand-customer-base',
+        '/blog/making-generative-ai-truly-work-enterprise-level'
     ];
 
     try {
