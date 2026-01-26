@@ -1,4 +1,5 @@
 import b1 from "../assets/blog/b1.jpg";
+import b2 from "../assets/blog/b2.jpg";
 
 export interface BlogPost {
   slug: string;
@@ -46,6 +47,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "In the current era, many organisations are transitioning from small-scale generative AI (Gen AI) experiments to more ambitious, enterprise-wide deployments.",
     date: "2025-09-21",
     author: "Turbo AI",
+    image: b2,
     tags: ["Gen AI", "Enterprise", "Scale", "Governance"],
     body: `
       <p>In the current era, many organisations are transitioning from small-scale generative AI (Gen AI) experiments to more ambitious, enterprise-wide deployments. However, the pathway from pilot projects to sustained value is fraught with complexity.</p>
