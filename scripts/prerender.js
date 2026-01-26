@@ -64,7 +64,9 @@ async function prerender() {
         '/ai-transformation',
         '/strategic-intelligence',
         '/remote-infrastructure-management',
-        '/digital-architecture'
+        '/digital-architecture',
+        '/blog',
+        '/blog/leveraging-ai-expand-customer-base'
     ];
 
     try {

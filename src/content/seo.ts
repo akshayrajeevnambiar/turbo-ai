@@ -46,4 +46,11 @@ export const seoConfig: Record<string, PageSEO> = {
         url: `${baseUrl}/digital-architecture`,
         keywords: "digital architecture Canada, modern software engineering, platform engineering, legacy modernization, cloud architecture, scalable systems, technical debt reduction",
     },
+    blog: {
+        title: "Insights & Perspectives — Turbo AI",
+        description: "Explore our latest thinking on artificial intelligence, strategic transformation, and digital architecture.",
+        image: `${baseUrl}/og.jpg`,
+        url: `${baseUrl}/blog`,
+        keywords: "AI insights, artificial intelligence blog, digital transformation trends, strategic intelligence articles, Turbo AI blog",
+    },
 };

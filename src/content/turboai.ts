@@ -59,7 +59,7 @@ export const site = {
       },
       { label: "Our Impact", href: "#impact" },
       { label: "Partners", href: "#partners" },
-      { label: "Perspectives", href: "#perspectives" },
+      { label: "Perspectives", href: "/blog" },
       { label: "Connect", href: "#connect" },
     ],
   },
