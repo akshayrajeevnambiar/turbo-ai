@@ -63,56 +63,7 @@ export const site = {
       },
       { label: "Our Impact", href: "#impact" },
       { label: "Partners", href: "#partners" },
-      {
-        label: "Perspectives",
-        href: "/blog",
-        dropdown: [
-          {
-            label: "Leveraging AI to Expand Customer Base",
-            href: "/blog/leveraging-ai-expand-customer-base",
-          },
-          {
-            label: "Making Enterprise Gen AI Work",
-            href: "/blog/making-generative-ai-truly-work-enterprise-level",
-          },
-          {
-            label: "AI: The Undisclosed Engine of E-Commerce",
-            href: "/blog/ai-undisclosed-engine-behind-ecommerce-growth",
-          },
-          {
-            label: "Navigating Risks of Agentic AI",
-            href: "/blog/navigating-risks-agentic-ai-governance-consulting",
-          },
-          {
-            label: "Global State of AI 2025",
-            href: "/blog/global-state-ai-2025-enterprise-transformation",
-          },
-          {
-            label: "Redefining Enterprise Tech Economics",
-            href: "/blog/redefining-enterprise-technology-economics-ai-age",
-          },
-          {
-            label: "2025 AI Business Forecast",
-            href: "/blog/2025-ai-business-forecast-pwc-vision",
-          },
-          {
-            label: "Agentic AI: A Differentiator",
-            href: "/blog/agentic-ai-differentiator-2025-enterprise",
-          },
-          {
-            label: "Bridging the AI Infrastructure Gap",
-            href: "/blog/bridging-ai-infrastructure-gap-strategic-investment",
-          },
-          {
-            label: "AI Adoption in 2025",
-            href: "/blog/ai-adoption-2025-investment-growth-outpaces-enterprise",
-          },
-          {
-            label: "All Perspectives",
-            href: "/blog",
-          },
-        ],
-      },
+      { label: "Perspectives", href: "/blog" },
       { label: "Connect", href: "#connect" },
     ],
   },
