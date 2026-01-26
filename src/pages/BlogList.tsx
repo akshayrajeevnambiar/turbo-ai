@@ -29,9 +29,11 @@ export function BlogList() {
                         <Divider className="mb-16" />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {blogPosts.map((post, index) => (
-                                <BlogCard key={post.slug} post={post} index={index} />
-                            ))}
+                            {[...blogPosts]
+                                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                                .map((post, index) => (
+                                    <BlogCard key={post.slug} post={post} index={index} />
+                                ))}
                         </div>
 
                         {blogPosts.length === 0 && (
