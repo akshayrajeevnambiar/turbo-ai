@@ -1,101 +1,388 @@
-<!DOCTYPE html>
-<html lang="en-GB">
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta
+      name="google-site-verification"
+      content="Qd1nCr8-QOrYrPzpmtgNNHpzQczUCNS8FASfWQAGHO0"
+    />
+    <meta charset="UTF-8" />
 
-<head>
-  <meta name="google-site-verification" content="Qd1nCr8-QOrYrPzpmtgNNHpzQczUCNS8FASfWQAGHO0" />
-  <meta charset="UTF-8" />
+    <!-- Preconnect to font origins for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
 
-  <!-- Preconnect to font origins for faster loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Favicon set -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="32x32"
+      href="/favicon.svg?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="16x16"
+      href="/favicon.svg?v=3"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg?v=3" />
+    <link rel="shortcut icon" href="/favicon.svg?v=3" />
 
-  <!-- Favicon set -->
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon.svg?v=3" />
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon.svg?v=3" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
-  <link rel="shortcut icon" href="/favicon.svg?v=3" />
+    <!-- Viewport and mobile optimization -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-  <!-- Viewport and mobile optimization -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Turbo AI — Canada's AI transformation experts. We design and deploy intelligent systems for Canadian enterprises. Expert AI consulting, machine learning, digital architecture, cyber security solutions since 2014."
+    />
+    <meta
+      name="keywords"
+      content="AI transformation Canada, AI consulting Canada, artificial intelligence Toronto, machine learning services, enterprise AI, digital transformation Canada, strategic intelligence, AI architecture, cyber security solutions, cloud solutions Canada, data analytics, AI strategy, intelligent systems, AI implementation Canada, technology consulting"
+    />
+    <meta name="author" content="Turbo AI" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, notranslate"
+    />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="geo.region" content="CA" />
+    <meta name="geo.placename" content="Canada" />
+    <link rel="alternate" hreflang="en-ca" href="https://turbo-ai.ca/" />
+    <link rel="alternate" hreflang="en" href="https://turbo-ai.ca/" />
 
-  <!-- SEO Meta Tags are managed by React Helmet (components/SEO.tsx) -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="AI Transformation Canada | Turbo AI — Enterprise Intelligence Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Canada's leading AI transformation company. We design and deploy enterprise-grade intelligent systems for Fortune 500 companies. Get strategic AI consulting today."
+    />
+    <meta property="og:url" content="https://turbo-ai.ca" />
+    <meta property="og:image" content="https://turbo-ai.ca/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="og:image:alt"
+      content="Turbo AI - Enterprise AI Transformation Solutions Canada"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:site_name" content="Turbo AI" />
 
-  <meta name="author" content="Turbo AI" />
-  <meta name="theme-color" content="#0A0A0A" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="googlebot" content="index, follow" />
-  <meta name="language" content="English" />
-  <meta name="geo.region" content="GB" />
-  <meta name="geo.placename" content="United Kingdom" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Transformation Canada | Turbo AI" />
+    <meta
+      name="twitter:description"
+      content="Canada's leading AI transformation company. We design and deploy enterprise-grade intelligent systems for Fortune 500 companies. Get strategic AI consulting today."
+    />
+    <meta name="twitter:image" content="https://turbo-ai.ca/og.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Turbo AI - Enterprise AI Transformation Solutions"
+    />
+    <meta name="twitter:creator" content="@_turbo_ai_" />
 
-  <!-- Canonical and Hreflang tags are managed by React Helmet (components/SEO.tsx) -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://turbo-ai.ca/" />
 
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-  <title>Turbo AI — Architecting Intelligence</title>
+    <title>
+      AI Transformation Canada | Turbo AI — Enterprise Intelligence Solutions
+    </title>
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Turbo AI",
+        "alternateName": "Turbo AI - Architecting Intelligence",
+        "url": "https://turbo-ai.ca",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://turbo-ai.ca/favicon.svg",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://turbo-ai.ca/og.jpg",
+        "description": "Turbo AI designs and deploys intelligent systems for enterprises navigating complexity. We provide AI transformation, strategic intelligence, digital architecture, and enterprise solutions. Canada's leading AI consulting firm.",
+        "foundingDate": "2014",
+        "slogan": "Architecting Intelligence",
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Digital Transformation",
+          "Enterprise AI",
+          "Cloud Solutions",
+          "Cyber Security",
+          "Data Analytics"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/turbo-ai",
+          "https://twitter.com/_turbo_ai_",
+          "https://www.facebook.com/turboai"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CA",
+          "addressRegion": "Canada"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "Business Inquiries",
+            "email": "hello@turbo-ai.ca",
+            "telephone": "+18257472650",
+            "url": "https://turbo-ai.ca/#connect"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "Legal",
+            "email": "legal@turbo-ai.ca"
+          }
+        ],
+        "areaServed": ["CA", "US", "EU", "GB"],
+        "serviceType": [
+          "AI Transformation",
+          "Strategic Intelligence",
+          "Digital Architecture",
+          "Cyber Security Solutions",
+          "Cloud Solutions",
+          "Offshore Development"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Turbo AI",
+        "url": "https://turbo-ai.ca",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://turbo-ai.ca/#search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Turbo AI",
+        "image": "https://turbo-ai.ca/og.jpg",
+        "@id": "https://turbo-ai.ca",
+        "url": "https://turbo-ai.ca",
+        "telephone": "+18257472650",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "addressCountry": "CA"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://turbo-ai.ca/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://turbo-ai.ca/#about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Services",
+            "item": "https://turbo-ai.ca/#expertise"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Contact",
+            "item": "https://turbo-ai.ca/#connect"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Turbo AI",
+        "image": "https://turbo-ai.ca/favicon.svg",
+        "url": "https://turbo-ai.ca",
+        "telephone": "+18257472650",
+        "areaServed": ["CA", "US", "EU"],
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CA"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What AI consulting services do you offer in Canada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We provide AI transformation, strategic intelligence, digital architecture, and enterprise solutions tailored for Canadian businesses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can Turbo AI help my enterprise?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We design and deploy intelligent systems that help enterprises navigate complexity through AI transformation and strategic intelligence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What industries do you serve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We serve Fortune 500 companies and enterprises across multiple sectors with expertise in AI transformation, cyber security, and cloud solutions."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AggregateOffer",
+        "@id": "https://turbo-ai.ca/#services",
+        "name": "AI Transformation Services",
+        "description": "Enterprise-grade AI transformation and intelligent systems deployment services",
+        "priceCurrency": "CAD",
+        "priceRange": "$$$",
+        "availability": "https://schema.org/InStock"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": "https://turbo-ai.ca/#about",
+        "name": "About Turbo AI",
+        "url": "https://turbo-ai.ca",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Turbo AI",
+          "url": "https://turbo-ai.ca"
+        }
+      }
+    </script>
 
-  <!-- Structured Data is managed by React Helmet (components/SEO.tsx) -->
+    <!-- Skip link for accessibility -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        padding: 1rem;
+        background: #3b82f6;
+        color: #0a0a0a;
+        font-weight: 600;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        text-decoration: none;
+        font-family: system-ui, sans-serif;
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+        outline: 2px solid #1d4ed8;
+        outline-offset: 2px;
+      }
 
-  <!-- Skip link for accessibility -->
-  <style>
-    .skip-link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      padding: 1rem;
-      background: #3b82f6;
-      color: #0a0a0a;
-      font-weight: 600;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-      text-decoration: none;
-      font-family: system-ui, sans-serif;
-    }
-
-    .skip-link:focus {
-      transform: translateY(0);
-      outline: 2px solid #1d4ed8;
-      outline-offset: 2px;
-    }
-
-    /* Preload critical fonts */
-    @font-face {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400 700;
-      font-display: swap;
-      src: url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFGX5ZFM" height="0" width="0"
-      style="display: none; visibility: hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-PFGX5ZFM");
-  </script>
-  <!-- End Google Tag Manager -->
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
+      /* Preload critical fonts */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PFGX5ZFM"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PFGX5ZFM");
+    </script>
+    <!-- End Google Tag Manager -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

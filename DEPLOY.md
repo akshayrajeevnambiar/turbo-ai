@@ -51,7 +51,6 @@ VITE_ENABLE_PWA=true
    ```
 
 3. **Or use GitHub Integration**:
-
    - Go to [vercel.com](https://vercel.com)
    - Connect your GitHub repository
    - Configure build settings:
@@ -87,7 +86,6 @@ VERCEL_PROJECT_ID=your_project_id
    ```
 
 2. **Or use GitHub Integration**:
-
    - Go to [netlify.com](https://netlify.com)
    - Connect your GitHub repository
    - Build settings:
@@ -115,13 +113,11 @@ NETLIFY_SITE_ID=your_site_id
 **Setup Steps:**
 
 1. **Connect GitHub**:
-
    - Go to [dash.cloudflare.com](https://dash.cloudflare.com)
    - Pages → Create a project → Connect to Git
    - Select your repository
 
 2. **Build Settings**:
-
    - Build Command: `npm run build`
    - Build Output Directory: `dist`
    - Root Directory: `/`
@@ -145,7 +141,6 @@ CLOUDFLARE_PROJECT_NAME=your_project_name
 ### For Vercel
 
 1. **Login to GoDaddy DNS Management**:
-
    - Go to [dcc.godaddy.com](https://dcc.godaddy.com)
    - Select your domain → DNS → Manage Zones
 
@@ -164,7 +159,6 @@ CLOUDFLARE_PROJECT_NAME=your_project_name
    ```
 
 3. **Remove Parked Domain Records**:
-
    - Delete any existing A records pointing to GoDaddy parking
    - Remove any CNAME records for @ or www pointing to GoDaddy
 
@@ -221,7 +215,7 @@ CLOUDFLARE_PROJECT_NAME=your_project_name
 
 **In Vercel**:
 
-- Add both `turbo-ai.co.uk` and `www.turbo-ai.co.uk`
+- Add both `turbo-ai.ca` and `www.turbo-ai.ca`
 - Set one as primary (redirects automatically)
 
 **In Netlify**:
@@ -229,7 +223,7 @@ CLOUDFLARE_PROJECT_NAME=your_project_name
 - Site settings → Domain management → Domain aliases
 - Add redirect rule in `public/_redirects`:
   ```
-  https://www.turbo-ai.co.uk/* https://turbo-ai.co.uk/:splat 301!
+  https://www.turbo-ai.ca/* https://turbo-ai.ca/:splat 301!
   ```
 
 **In Cloudflare**:
@@ -244,8 +238,8 @@ CLOUDFLARE_PROJECT_NAME=your_project_name
 
 ```bash
 # Check if DNS has propagated
-nslookup turbo-ai.co.uk
-dig turbo-ai.co.uk
+nslookup turbo-ai.ca
+dig turbo-ai.ca
 
 # Online tools
 # whatsmydns.net
@@ -266,8 +260,8 @@ dig turbo-ai.co.uk
 ### 4. SEO Validation
 
 - [Google Search Console](https://search.google.com/search-console)
-- Test robots.txt: `https://turbo-ai.co.uk/robots.txt`
-- Test sitemap: `https://turbo-ai.co.uk/sitemap.xml`
+- Test robots.txt: `https://turbo-ai.ca/robots.txt`
+- Test sitemap: `https://turbo-ai.ca/sitemap.xml`
 
 ---
 

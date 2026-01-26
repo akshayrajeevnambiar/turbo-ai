@@ -46,17 +46,7 @@ export const site = {
           },
         ],
       },
-      {
-        label: "Services",
-        href: "#",
-        dropdown: [
-          { label: "AI Transformation", href: "/ai-transformation" },
-          { label: "Strategic Intelligence", href: "/strategic-intelligence" },
-          { label: "Digital Architecture", href: "/digital-architecture" },
-          { label: "Remote Infrastructure Management", href: "/remote-infrastructure-management" },
-          { label: "All Services", href: "#expertise" },
-        ],
-      },
+      { label: "Services", href: "#expertise" },
       { label: "Our Impact", href: "#impact" },
       { label: "Partners", href: "#partners" },
       { label: "Perspectives", href: "/blog" },
@@ -148,28 +138,24 @@ export const copy = {
         slug: "ai-transformation",
         title: "AI Transformation",
         body: "End-to-end design, build, and operationalization of intelligent systems accountable for outcomes.",
-        href: "/ai-transformation",
       },
       {
         id: "02",
         slug: "strategic-intelligence",
         title: "Strategic Intelligence",
         body: "Due diligence that integrates technology research, data modeling, and market insight.",
-        href: "/strategic-intelligence",
       },
       {
         id: "03",
         slug: "digital-architecture",
         title: "Digital Architecture",
         body: "Modernization, scalable platforms, and engineering practices that reduce risk and accelerate delivery.",
-        href: "/digital-architecture",
       },
       {
         id: "04",
         slug: "remote-infrastructure-management",
         title: "Remote Infrastructure Management",
         body: "24/7 monitoring, optimization, and maintenance of distributed systems with proactive incident resolution.",
-        href: "/remote-infrastructure-management",
       },
       {
         id: "05",
@@ -362,7 +348,7 @@ export const partners = {
     {
       name: "Case Construction",
       logo: caseConstructionLogo,
-      url: "https://www.casece.com/"
+      url: "https://www.casece.com/",
     },
     {
       name: "Hyundai",

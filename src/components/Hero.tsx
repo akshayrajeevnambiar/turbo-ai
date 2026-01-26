@@ -51,7 +51,7 @@ export function Hero() {
                 addElement(el);
               }
             }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-heading leading-tight px-4 sm:px-0"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-heading leading-tight px-4 sm:px-0 mt-24"
           >
             {copy.hero.title}
           </h1>
