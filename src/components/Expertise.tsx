@@ -3,6 +3,13 @@ import { SectionLink } from "./SectionLink";
 import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
 
+interface ExpertiseItem {
+  id: string;
+  slug?: string;
+  title: string;
+  body: string;
+}
+
 export function Expertise() {
   const { addElement } = useReveal(60);
 
@@ -29,10 +36,10 @@ export function Expertise() {
           {/* Expertise items */}
           <div className="mb-16">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
-              {copy.expertise.items.map((item) => (
+              {copy.expertise.items.map((item: ExpertiseItem) => (
                 <section
                   key={item.id}
-                  id={`expertise-${item.slug}`}
+                  id={`expertise-${item.slug || item.id}`}
                   ref={addElement}
                   className="expertise-item flex flex-col sm:flex-row gap-4 sm:gap-6 scroll-mt-header text-center sm:text-left"
                 >
@@ -45,9 +52,9 @@ export function Expertise() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    {"href" in item ? (
+                    {"slug" in item ? (
                       <SectionLink
-                        href={(item as any).href}
+                        href={(item as any).slug}
                         className="group inline-block"
                         aria-label={`Learn more about ${item.title}`}
                       >
@@ -71,7 +78,7 @@ export function Expertise() {
                       </SectionLink>
                     ) : (
                       <h3 className="text-xl sm:text-2xl font-semibold text-emeraldNeon mb-3 sm:mb-4">
-                        {item.title}
+                        {item?.title}
                       </h3>
                     )}
                     <p className="text-white/80 leading-relaxed text-base sm:text-lg">
