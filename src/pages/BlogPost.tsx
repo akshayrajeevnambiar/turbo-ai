@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "../components/SEO";
 import { Container, Section, Divider } from "../components/Container";
 import { blogPosts } from "../content/blog";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -34,24 +34,17 @@ export function BlogPost() {
 
     return (
         <>
-            <Helmet>
-                <title>{post.title} | Turbo AI</title>
-                <meta name="description" content={post.excerpt} />
-
-                {/* Open Graph */}
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={post.excerpt} />
-                <meta property="og:image" content={ogImage} />
-                <meta property="article:published_time" content={post.date} />
-                <meta property="article:author" content={post.author} />
-
-                {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:title" content={post.title} />
-                <meta property="twitter:description" content={post.excerpt} />
-                <meta property="twitter:image" content={ogImage} />
-            </Helmet>
+            <SEO
+                title={`${post.title} | Turbo AI`}
+                description={post.excerpt}
+                image={ogImage}
+                type="article"
+                articleMeta={{
+                    publishedTime: post.date,
+                    author: post.author,
+                    tags: post.tags
+                }}
+            />
 
             <main className="min-h-screen bg-charcoal" ref={containerRef}>
                 <article>
