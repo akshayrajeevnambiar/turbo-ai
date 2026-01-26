@@ -1,81 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { VitePWA } from "vite-plugin-pwa";
+
 import { resolve } from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "og.jpg", "robots.txt", "sitemap.xml"],
-      manifest: {
-        name: "Turbo AI — Architecting Intelligence",
-        short_name: "Turbo AI",
-        description:
-          "We design and deploy intelligent systems for enterprises navigating complexity.",
-        theme_color: "#0A0A0A",
-        background_color: "#0A0A0A",
-        display: "standalone",
-        orientation: "portrait",
-        scope: "/",
-        start_url: "/",
-        icons: [
-          {
-            src: "favicon-16x16.png",
-            sizes: "16x16",
-            type: "image/png",
-          },
-          {
-            src: "favicon-32x32.png",
-            sizes: "32x32",
-            type: "image/png",
-          },
-          {
-            src: "apple-touch-icon.png",
-            sizes: "180x180",
-            type: "image/png",
-          },
-        ],
-      },
-      workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,woff2,txt,xml}"],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: "StaleWhileRevalidate",
-            options: {
-              cacheName: "google-fonts-stylesheets",
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "google-fonts-webfonts",
-              expiration: {
-                maxEntries: 30,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-        ],
-      },
-      devOptions: {
-        enabled: mode === "development",
-      },
-    }),
   ],
 
   // Path alias for cleaner imports
@@ -122,7 +53,7 @@ export default defineConfig(({ mode }) => ({
     },
 
     // Minification
-    minify: "terser",
+
 
     // Asset size reporting
     reportCompressedSize: true,

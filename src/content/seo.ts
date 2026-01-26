@@ -49,7 +49,7 @@ export const seoConfig: Record<string, PageSEO> = {
     blog: {
         title: "Insights & Perspectives — Turbo AI",
         description: "Explore our latest thinking on artificial intelligence, strategic transformation, and digital architecture.",
-        image: `${baseUrl}/og.jpg`,
+        image: `${baseUrl}/assets/digital-architecture-hero.png`,
         url: `${baseUrl}/blog`,
         keywords: "AI insights, artificial intelligence blog, digital transformation trends, strategic intelligence articles, Turbo AI blog",
     },

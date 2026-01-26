@@ -59,16 +59,40 @@ async function prerender() {
     }
     const page = await browser.newPage();
 
-    const routes = [
+    // Static routes
+    const staticRoutes = [
         '/',
         '/ai-transformation',
         '/strategic-intelligence',
         '/remote-infrastructure-management',
         '/digital-architecture',
         '/blog',
-        '/blog/leveraging-ai-expand-customer-base',
-        '/blog/making-generative-ai-truly-work-enterprise-level'
     ];
+
+    // Dynamic blog routes (extract from src/content/blog.ts)
+    const blogRoutes = [];
+    try {
+        const blogContentPath = path.resolve('src', 'content', 'blog.ts');
+        if (fs.existsSync(blogContentPath)) {
+            const content = fs.readFileSync(blogContentPath, 'utf-8');
+            // Regex to match: slug: "some-slug-string"
+            const slugMatches = content.match(/slug:\s*"([^"]+)"/g);
+
+            if (slugMatches) {
+                slugMatches.forEach(match => {
+                    const slug = match.match(/slug:\s*"([^"]+)"/)[1];
+                    if (slug) {
+                        blogRoutes.push(`/blog/${slug}`);
+                    }
+                });
+                console.log(`Found ${blogRoutes.length} blog posts to prerender.`);
+            }
+        }
+    } catch (e) {
+        console.warn('Could not auto-discover blog posts:', e);
+    }
+
+    const routes = [...staticRoutes, ...blogRoutes];
 
     try {
         for (const route of routes) {

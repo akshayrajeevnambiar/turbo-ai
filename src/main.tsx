@@ -17,3 +17,6 @@ createRoot(document.getElementById("root")!).render(
     </ErrorBoundary>
   </StrictMode>
 );
+import { unregisterSW } from "./unregisterSW";
+
+unregisterSW();
