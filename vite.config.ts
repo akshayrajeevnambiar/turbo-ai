@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     VitePWA({
-      registerType: "prompt",
+      registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "og.jpg", "robots.txt", "sitemap.xml"],
       manifest: {
         name: "Turbo AI — Architecting Intelligence",
