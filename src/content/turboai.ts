@@ -54,7 +54,7 @@ export const site = {
           { label: "Strategic Intelligence", href: "/strategic-intelligence" },
           { label: "Digital Architecture", href: "/digital-architecture" },
           { label: "Remote Infrastructure", href: "/remote-infrastructure-management" },
-          { label: "Cyber Security", href: "#cyber-security-solutions" },
+          { label: "Cyber Security", href: "/cyber-security-solutions" },
           { label: "AI & Data Insights", href: "#ai-data-insights" },
           { label: "Offshore Development", href: "#offshore-development" },
           { label: "Cloud Solutions", href: "#cloud-solutions" },

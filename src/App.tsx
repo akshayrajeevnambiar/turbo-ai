@@ -7,6 +7,7 @@ import { AITransformation } from "./pages/AITransformation";
 import { StrategicIntelligence } from "./pages/StrategicIntelligence";
 import { RemoteInfrastructureManagement } from "./pages/RemoteInfrastructureManagement";
 import { DigitalArchitecture } from "./pages/DigitalArchitecture";
+import { CyberSecuritySolutions } from "./pages/CyberSecuritySolutions";
 import { BlogList } from "./pages/BlogList";
 import { BlogPost } from "./pages/BlogPost";
 import { tokens } from "./content/turboai";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/strategic-intelligence" element={<StrategicIntelligence />} />
         <Route path="/digital-architecture" element={<DigitalArchitecture />} />
         <Route path="/remote-infrastructure-management" element={<RemoteInfrastructureManagement />} />
+        <Route path="/cyber-security-solutions" element={<CyberSecuritySolutions />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
