@@ -58,7 +58,7 @@ export const site = {
           { label: "AI & Data Insights", href: "/ai-data-insights" },
           { label: "Offshore Development", href: "/offshore-development" },
           { label: "Cloud Solutions", href: "/cloud-solutions" },
-          { label: "Quality Engineering", href: "#quality-engineering" },
+          { label: "Quality Engineering", href: "/quality-engineering" },
         ],
       },
       { label: "Our Impact", href: "#impact" },

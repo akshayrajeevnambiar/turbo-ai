@@ -11,6 +11,7 @@ import { CyberSecuritySolutions } from "./pages/CyberSecuritySolutions";
 import { AIDataInsights } from "./pages/AIDataInsights";
 import { OffshoreDevelopment } from "./pages/OffshoreDevelopment";
 import { CloudSolutions } from "./pages/CloudSolutions";
+import { QualityEngineering } from "./pages/QualityEngineering";
 import { BlogList } from "./pages/BlogList";
 import { BlogPost } from "./pages/BlogPost";
 import { tokens } from "./content/turboai";
@@ -55,6 +56,7 @@ function App() {
         <Route path="/ai-data-insights" element={<AIDataInsights />} />
         <Route path="/offshore-development" element={<OffshoreDevelopment />} />
         <Route path="/cloud-solutions" element={<CloudSolutions />} />
+        <Route path="/quality-engineering" element={<QualityEngineering />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
