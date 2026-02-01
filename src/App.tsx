@@ -8,6 +8,8 @@ import { StrategicIntelligence } from "./pages/StrategicIntelligence";
 import { RemoteInfrastructureManagement } from "./pages/RemoteInfrastructureManagement";
 import { DigitalArchitecture } from "./pages/DigitalArchitecture";
 import { CyberSecuritySolutions } from "./pages/CyberSecuritySolutions";
+import { AIDataInsights } from "./pages/AIDataInsights";
+import { OffshoreDevelopment } from "./pages/OffshoreDevelopment";
 import { BlogList } from "./pages/BlogList";
 import { BlogPost } from "./pages/BlogPost";
 import { tokens } from "./content/turboai";
@@ -49,6 +51,8 @@ function App() {
         <Route path="/digital-architecture" element={<DigitalArchitecture />} />
         <Route path="/remote-infrastructure-management" element={<RemoteInfrastructureManagement />} />
         <Route path="/cyber-security-solutions" element={<CyberSecuritySolutions />} />
+        <Route path="/ai-data-insights" element={<AIDataInsights />} />
+        <Route path="/offshore-development" element={<OffshoreDevelopment />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
