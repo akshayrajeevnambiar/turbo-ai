@@ -66,6 +66,11 @@ async function prerender() {
         '/strategic-intelligence',
         '/remote-infrastructure-management',
         '/digital-architecture',
+        '/cyber-security-solutions',
+        '/ai-data-insights',
+        '/offshore-development',
+        '/cloud-solutions',
+        '/quality-engineering',
         '/blog',
     ];
 
