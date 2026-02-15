@@ -503,8 +503,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "artificial-intelligence-consulting-companies-canada-2026",
-    title: "Artificial Intelligence Consulting Companies: The Top 7 AI Consulting Companies in Canada 2026",
-    excerpt: "Artificial intelligence (AI) is no longer experimental. Across Canada, enterprises are using AI to reduce operational risk, automate decision-making, modernize legacy systems, and gain durable competitive advantage.",
+    title: "Artificial Intelligence Consulting Companies in Canada | Top 7 AI Firms",
+    excerpt: "Discover the top 7 artificial intelligence consulting companies in Canada. Learn how enterprise AI firms like Turbo AI design scalable, secure, and outcome-driven intelligent systems.",
     date: "2026-02-15",
     author: "Turbo AI",
     image: mapImg,
