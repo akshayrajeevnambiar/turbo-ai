@@ -1,4 +1,3 @@
-import { site } from "./turboai";
 
 export interface PageSEO {
     title: string;
