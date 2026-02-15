@@ -511,7 +511,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["AI Consulting", "Canada", "Enterprise AI", "Strategy"],
     body: `
       <p>From fraud detection and claims automation to cloud modernization and predictive analytics, AI is now deeply embedded in how organizations operate. However, successful AI adoption requires more than tools. It demands architectural rigor, governance, domain expertise, and long-term accountability.</p>
-      <p>That’s where artificial intelligence consulting companies come in.</p>
+      <p>That’s where <a href="https://turbo-ai.ca/" class="text-blue-400 hover:underline">artificial intelligence consulting companies</a> come in.</p>
 
       <h2>What Is an Artificial Intelligence Consulting Company?</h2>
       <p>An artificial intelligence consulting company helps organizations design, implement, and operate AI systems aligned with business objectives and risk constraints. Rather than selling generic tools, AI consulting firms work closely with leadership, engineering, and operations teams to:</p>
@@ -544,7 +544,7 @@ export const blogPosts: BlogPost[] = [
         <img src="${turboAiImg}" alt="Turbo AI" class="w-full h-auto object-cover" />
       </div>
       <p><em>Architecting intelligence for enterprises navigating complexity</em></p>
-      <p>Turbo AI is a Canada-based artificial intelligence consulting company specializing in the design, deployment, and operation of intelligent systems built to endure. The firm focuses on enterprises operating in complex, high-risk environments where reliability, governance, and outcomes matter.</p>
+      <p><a href="https://turbo-ai.ca/" class="text-blue-400 hover:underline">Turbo AI</a> is a <a href="https://turbo-ai.ca/" class="text-blue-400 hover:underline">Canada-based artificial intelligence consulting company</a> specializing in the design, deployment, and operation of intelligent systems built to endure. The firm focuses on enterprises operating in complex, high-risk environments where reliability, governance, and outcomes matter.</p>
       <p>Rather than running short-term AI pilots, Turbo AI delivers production-grade systems grounded in strong architecture, data foundations, and measurable impact. The company operates with an engineering-first philosophy and remains independent by design—partnering only where it adds leverage and never outsourcing accountability.</p>
       
       <h4>What differentiates Turbo AI</h4>
@@ -575,7 +575,7 @@ export const blogPosts: BlogPost[] = [
         <li>LLM-powered insurance claims triage compressing multi-day processes into minutes</li>
         <li>Event-driven retail platforms delivering 3× faster releases with resilient uptime</li>
       </ul>
-      <p>Turbo AI is an ideal partner for organizations seeking AI systems that scale, govern, and endure.</p>
+      <p><a href="https://turbo-ai.ca/" class="text-blue-400 hover:underline">Turbo AI</a> is an ideal partner for organizations seeking AI systems that scale, govern, and endure.</p>
 
       <h3>2. Gestisoft</h3>
       <div class="my-8 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
@@ -684,7 +684,7 @@ export const blogPosts: BlogPost[] = [
       <div class="space-y-4">
         <div>
           <h4 class="font-bold text-white">What does an artificial intelligence consulting company do?</h4>
-          <p class="text-gray-300">An AI consulting company helps organizations plan, build, deploy, and operate AI systems aligned with business goals, security requirements, and compliance standards.</p>
+          <p class="text-gray-300">An <a href="https://turbo-ai.ca/" class="text-blue-400 hover:underline">AI consulting company</a> helps organizations plan, build, deploy, and operate AI systems aligned with business goals, security requirements, and compliance standards.</p>
         </div>
         <div>
           <h4 class="font-bold text-white">Why work with a Canadian AI consulting company?</h4>
