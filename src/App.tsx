@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { WhatsAppButton } from "./components/WhatsAppButton";
 import { Home } from "./pages/Home";
 import { AITransformation } from "./pages/AITransformation";
 import { StrategicIntelligence } from "./pages/StrategicIntelligence";
@@ -62,7 +61,6 @@ function App() {
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
       <Footer />
-      <WhatsAppButton />
     </>
   );
 }
