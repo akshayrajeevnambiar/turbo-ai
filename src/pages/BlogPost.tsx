@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Container, Section, Divider } from "../components/Container";
@@ -16,6 +16,29 @@ export function BlogPost() {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+    const [copied, setCopied] = useState(false);
+
+    const handleShareLinkedIn = () => {
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
+    };
+
+    const handleShareX = () => {
+        if (!post) return;
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent(post.title);
+        window.open(`https://x.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
+    };
+
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy link:', err);
+        }
+    };
 
     useEffect(() => {
         if (!post) {
@@ -117,11 +140,43 @@ export function BlogPost() {
                                 <div className="hidden lg:block lg:col-span-2 relative">
                                     <div className="sticky top-32 flex flex-col gap-4">
                                         <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Share</p>
-                                        <button className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5" aria-label="Share on LinkedIn">
+                                        <button
+                                            onClick={handleShareLinkedIn}
+                                            className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5 relative group"
+                                            aria-label="Share on LinkedIn"
+                                        >
                                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                                            <span className="absolute left-12 scale-0 transition-all rounded bg-charcoal border border-white/10 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap shadow-xl">
+                                                Share on LinkedIn
+                                            </span>
                                         </button>
-                                        <button className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5" aria-label="Share on X">
+                                        <button
+                                            onClick={handleShareX}
+                                            className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5 relative group"
+                                            aria-label="Share on X"
+                                        >
                                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                                            <span className="absolute left-12 scale-0 transition-all rounded bg-charcoal border border-white/10 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap shadow-xl">
+                                                Share on X
+                                            </span>
+                                        </button>
+                                        <button
+                                            onClick={handleCopyLink}
+                                            className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 border border-white/5 relative group"
+                                            aria-label="Copy post link"
+                                        >
+                                            {copied ? (
+                                                <svg className="w-4 h-4 text-emeraldNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            ) : (
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                                </svg>
+                                            )}
+                                            <span className="absolute left-12 scale-0 transition-all rounded bg-charcoal border border-white/10 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap shadow-xl">
+                                                {copied ? "Copied!" : "Copy Link"}
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -147,6 +202,48 @@ export function BlogPost() {
                                         prose-hr:border-white/10 prose-hr:my-10"
                                         dangerouslySetInnerHTML={{ __html: post.body }}
                                     />
+
+                                    {/* Share (Mobile/Tablet only) */}
+                                    <div className="flex flex-wrap items-center gap-4 lg:hidden mt-8 mb-6 pb-6 border-b border-white/10">
+                                        <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Share this post:</span>
+                                        <div className="flex gap-3">
+                                            <button
+                                                onClick={handleShareLinkedIn}
+                                                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5"
+                                                aria-label="Share on LinkedIn"
+                                            >
+                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                                            </button>
+                                            <button
+                                                onClick={handleShareX}
+                                                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors border border-white/5"
+                                                aria-label="Share on X"
+                                            >
+                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                                            </button>
+                                            <button
+                                                onClick={handleCopyLink}
+                                                className="h-10 px-4 rounded-full bg-white/5 hover:bg-white/10 flex items-center gap-2 text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200 border border-white/5"
+                                                aria-label="Copy post link"
+                                            >
+                                                {copied ? (
+                                                    <>
+                                                        <svg className="w-4 h-4 text-emeraldNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        <span className="text-emeraldNeon font-mono">Copied!</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                                        </svg>
+                                                        <span>Copy Link</span>
+                                                    </>
+                                                )}
+                                            </button>
+                                        </div>
+                                    </div>
 
                                     <Divider className="my-16" />
 
