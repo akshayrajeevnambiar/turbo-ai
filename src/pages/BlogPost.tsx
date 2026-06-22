@@ -38,6 +38,7 @@ export function BlogPost() {
                 title={`${post.title} | Turbo AI`}
                 description={post.excerpt}
                 image={ogImage}
+                keywords={post.keywords}
                 type="article"
                 articleMeta={{
                     publishedTime: post.date,

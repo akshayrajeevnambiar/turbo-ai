@@ -7,6 +7,7 @@ interface SEOProps {
     description?: string;
     image?: string;
     url?: string;
+    keywords?: string;
     type?: "website" | "article";
     articleMeta?: {
         publishedTime: string;
@@ -15,7 +16,7 @@ interface SEOProps {
     };
 }
 
-export function SEO({ pageKey, title, description, image, url, type = "website", articleMeta }: SEOProps) {
+export function SEO({ pageKey, title, description, image, url, keywords, type = "website", articleMeta }: SEOProps) {
     const configMeta = pageKey ? seoConfig[pageKey] : null;
 
     // Merge config meta with manual props (manual props take precedence)
@@ -24,7 +25,7 @@ export function SEO({ pageKey, title, description, image, url, type = "website",
         description: description || configMeta?.description || "",
         image: image || configMeta?.image || "",
         url: url || configMeta?.url || window.location.href,
-        keywords: configMeta?.keywords || "",
+        keywords: keywords || configMeta?.keywords || "",
     };
 
     const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
