@@ -37,7 +37,7 @@ export function SEO({ pageKey, title, description, image, url, keywords, type = 
         "name": "Turbo AI",
         "alternateName": "Turbo AI - Architecting Intelligence",
         "url": siteUrl,
-        "logo": `${siteUrl}/favicon.svg`,
+        "logo": `${siteUrl}/turbo-ai-logo.png`,
         "description": "Turbo AI designs and deploys intelligent systems for enterprises navigating complexity. We provide AI transformation, strategic intelligence, digital architecture, and enterprise solutions.",
         "foundingDate": "2014",
         "slogan": "Architecting Intelligence",
