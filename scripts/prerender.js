@@ -104,7 +104,7 @@ async function prerender() {
             console.log(`Pre-rendering ${route}...`);
 
             // Navigate to the page
-            await page.goto(`${serverUrl}${route === '/' ? '' : route}`, { waitUntil: 'networkidle0' });
+            await page.goto(`${serverUrl}${route === '/' ? '' : route}`, { waitUntil: 'domcontentloaded' });
 
             // Wait for the root element to be populated
             await page.waitForSelector('#root div');
