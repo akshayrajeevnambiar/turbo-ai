@@ -16,8 +16,11 @@ export function Footer() {
     href: `/${item.slug}`,
   }));
 
-  // Company navigation items
-  const companyLinks = site.nav.items.filter((item) => item.href !== "#hero");
+  // Company navigation items should only include actionable top-level links.
+  const companyLinks = site.nav.items.filter(
+    (item) =>
+      item.href !== "#hero" && item.href !== "#" && !("dropdown" in item),
+  );
 
   return (
     <footer
@@ -40,8 +43,8 @@ export function Footer() {
           <div className="footer-column">
             <h2 className="kicker">Services</h2>
             <ul className="space-y-2">
-              {services.map((service, index) => (
-                <li key={index}>
+              {services.map((service) => (
+                <li key={service.href}>
                   <SectionLink
                     href={service.href}
                     className="footer-link text-sm"
@@ -101,11 +104,10 @@ export function Footer() {
               </div>
               <div className="text-sm text-white/70 leading-relaxed">
                 <div className="font-semibold text-white/90">
-                  Light House Corporate Inc.
+                  Continental Towers
                 </div>
-                <div>330 – 5th Avenue SW</div>
-                <div>Tower 1, Suite 1800</div>
-                <div>Calgary, AB T2P 0L4</div>
+                <div>920 9th Ave SW</div>
+                <div>Calgary, AB, Canada</div>
               </div>
             </div>
           </div>
@@ -120,9 +122,9 @@ export function Footer() {
           <div className="flex items-center gap-6">
             {/* Social Media Links */}
             <div className="flex gap-4">
-              {blog.posts.map((post, idx) => (
+              {blog.posts.map((post) => (
                 <a
-                  key={idx}
+                  key={post.url}
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
