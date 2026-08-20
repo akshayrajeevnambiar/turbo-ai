@@ -103,11 +103,22 @@ export function Footer() {
                 </SectionLink>
               </div>
               <div className="text-sm text-white/70 leading-relaxed">
-                <div className="font-semibold text-white/90">
-                  Continental Towers
+                <div className="space-y-3">
+                  <div>
+                    <div className="font-semibold text-white/90">
+                      Continental Towers
+                    </div>
+                    <div>920 9th Ave SW</div>
+                    <div>Calgary, AB, Canada</div>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white/90">UK Office</div>
+                    <div>The Ingenuity Lab</div>
+                    <div>The University of Nottingham</div>
+                    <div>Innovation Park, Wollaton Road</div>
+                    <div>Nottingham NG8 1BB, United Kingdom</div>
+                  </div>
                 </div>
-                <div>920 9th Ave SW</div>
-                <div>Calgary, AB, Canada</div>
               </div>
             </div>
           </div>

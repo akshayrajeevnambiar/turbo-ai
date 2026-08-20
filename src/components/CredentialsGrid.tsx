@@ -11,7 +11,7 @@ export default function CredentialsGrid() {
         <img
           src={credentialsImage}
           alt="Our Credentials"
-          className="w-full h-auto"
+          className="w-full h-auto max-h-[360px] object-contain mx-auto"
         />
       </div>
     </section>
