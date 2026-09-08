@@ -79,7 +79,7 @@ export function Connect() {
       );
       submitData.append("from_name", "Turbo AI Contact Form");
       // Add secondary email address as CC
-      submitData.append("ccemail", "Jude.tharakan@gmail.com");
+      submitData.append("cc", "jude@turbo-ai.ca");
 
       // Submit to Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {

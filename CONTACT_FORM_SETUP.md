@@ -4,29 +4,24 @@
 
 The contact form sends emails to both:
 
-- akshayrajeevnambiar@gmail.com (primary, controlled by the existing access key)
-- Jude.tharakan@gmail.com (secondary/CC; requires a Web3Forms paid plan)
+- akshayrajeevnambiar@gmail.com (primary)
+- jude@turbo-ai.ca (secondary/CC)
 
 ## Setup Steps
 
 ### 1. Get Your Web3Forms Access Key
 
 1. Go to https://web3forms.com
-2. Enter your primary email: **akshayrajeevnambiar@gmail.com**
+2. Enter your email: **akshayrajeevnambiar@gmail.com**
 3. Click "Get Access Key"
 4. Check your inbox for the access key email
 5. Copy the access key from the email
 
 ### 2. Configure Environment Variable
 
-The primary recipient is determined by the Web3Forms access key, not by an
-email address in the form code. To switch recipients, replace the existing key
-with one registered to **Jude.tharakan@gmail.com** locally and in Vercel, then
-redeploy. Updating this document alone does not change email delivery.
-
 #### Local Development:
 
-1. Open the `.env.local` file in the project root
+1. Open the `.env` file in the project root
 2. Replace `YOUR_ACCESS_KEY_HERE` with your actual access key:
    ```
    VITE_WEB3FORMS_ACCESS_KEY=your-actual-access-key-here
@@ -48,13 +43,13 @@ redeploy. Updating this document alone does not change email delivery.
 1. Fill out all required fields (Name, Email, Message)
 2. Submit the form
 3. Check both email inboxes:
-   - akshayrajeevnambiar@gmail.com (primary)
-   - Jude.tharakan@gmail.com (CC)
+   - jude@turbo-ai.ca
+   - akshayrajeevnambiar@gmail.com
 4. Both should receive the same message
 
 ## Features
 
-- ✅ Sends to 2 email addresses simultaneously when CC is enabled on a paid plan
+- ✅ Sends to 2 email addresses simultaneously
 - ✅ Custom subject line with sender's name
 - ✅ Includes organization field
 - ✅ Form validation
@@ -74,8 +69,7 @@ redeploy. Updating this document alone does not change email delivery.
 **Emails not arriving?**
 
 - Check spam folders
-- Verify the CC email address is correct in Connect.tsx (line with `ccemail`)
-- Confirm your Web3Forms plan supports CC recipients
+- Verify email addresses are correct in Connect.tsx (line with `cc`)
 - Test with Web3Forms dashboard
 
 ## Free Tier Limits
