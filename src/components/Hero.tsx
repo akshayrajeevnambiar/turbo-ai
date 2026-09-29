@@ -4,8 +4,10 @@ import { SectionLink } from "./SectionLink";
 import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
 import heroVideo from "../assets/hero_bg.mp4";
+import { useCmsPage } from "../cms/hooks";
 
 export function Hero() {
+  const cms = useCmsPage();
   const { addElement } = useReveal(60);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -53,7 +55,7 @@ export function Hero() {
             }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-heading leading-tight px-4 sm:px-0 mt-24"
           >
-            {copy.hero.title}
+            {cms?.hero_title || copy.hero.title}
           </h1>
 
           {/* Subhead */}
@@ -61,7 +63,7 @@ export function Hero() {
             ref={addElement}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
-            {copy.hero.subhead}
+            {cms?.hero_description || copy.hero.subhead}
           </p>
 
           {/* Micro copy */}
@@ -75,11 +77,11 @@ export function Hero() {
           {/* CTA */}
           <div ref={addElement} className="pt-2 sm:pt-4">
             <SectionLink
-              href={copy.hero.cta.href}
+              href={cms?.cta_url || copy.hero.cta.href}
               className="cta-link text-base sm:text-lg lg:text-xl inline-block px-6 py-3"
               aria-label="See our impact and case studies"
             >
-              {copy.hero.cta.label}
+              {cms?.cta_text || copy.hero.cta.label}
             </SectionLink>
           </div>
 

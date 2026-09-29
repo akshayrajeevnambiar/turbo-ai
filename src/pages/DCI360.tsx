@@ -7,6 +7,9 @@ import { SectionLink } from "../components/SectionLink";
 import dataCenterImage from "../assets/dci-data-center.webp";
 import "./products.css";
 import "./products-theme.css";
+import { useCmsProduct } from "../cms/hooks";
+import { CmsProductSections } from "../cms/CmsProductSections";
+import { hasCmsProductContent } from "../cms/types";
 
 const capabilities = [
   { icon: ChartBarSquareIcon, title: "Real-time monitoring", detail: "See infrastructure signals and alerts as they happen." },
@@ -57,21 +60,32 @@ function ConceptDashboard() {
 }
 
 export function DCI360() {
+  const cmsEntry = useCmsProduct();
   return (
-    <main className="product-page dci-page">
-      <ProductSEO pageKey="dci360" />
+    <main className={`product-page dci-page ${hasCmsProductContent(cmsEntry) ? "cms-has-content" : ""}`}>
+      <ProductSEO pageKey="dci360" cmsEntry={cmsEntry} />
       <section className="product-hero dci-hero">
-        <img className="dci-hero-image" src={dataCenterImage} alt="Modern data center corridor with server racks" loading="eager" />
+        <img className="dci-hero-image" src={cmsEntry?.hero_image || dataCenterImage} alt="Modern data center corridor with server racks" loading="eager" />
         <div className="dci-hero-shade" />
-        <Container className="product-hero-inner">
+        <div className="dci-hero-racks" aria-hidden="true">
+          {[0, 1, 2].map((rack) => (
+            <span className="dci-rack" key={rack}>
+              <i className="dci-rack-led" />
+              <i className="dci-rack-scan" />
+            </span>
+          ))}
+          <span className="dci-rack-data-path" />
+        </div>
+        <Container className="product-hero-inner dci-hero-inner">
           <p className="product-eyebrow">DATA CENTER INFRASTRUCTURE MANAGEMENT</p>
-          <h1>DCI <span>360</span></h1>
-          <p className="product-hero-subtitle">Intelligent Data Center<br />Infrastructure Management</p>
-          <p className="product-hero-intro">Bring live monitoring, asset intelligence and capacity planning together for data center operations.</p>
-          <a className="product-button dci-button" href="#dci-core">Explore DCI 360 <ArrowLongRightIcon aria-hidden="true" /></a>
+          <h1>{cmsEntry?.hero_title || cmsEntry?.title || <>DCI <span>360</span></>}</h1>
+          <p className="product-hero-subtitle">{cmsEntry?.hero_description || <>Intelligent Data Center<br />Infrastructure Management</>}</p>
+          <p className="product-hero-intro">{cmsEntry?.summary || "Bring live monitoring, asset intelligence and capacity planning together for data center operations."}</p>
+          <a className="product-button dci-button" href={cmsEntry?.cta_url || "#dci-core"}>{cmsEntry?.cta_text || "Explore DCI 360"} <ArrowLongRightIcon aria-hidden="true" /></a>
         </Container>
         <div className="dci-hero-bottom"><Container><span>UNIFIED VISIBILITY</span><span>PROACTIVE OPERATIONS</span><span>INTELLIGENT CONTROLS</span></Container></div>
       </section>
+      <CmsProductSections entry={cmsEntry} />
       <section className="product-section product-copy-section"><Container className="product-copy-layout"><div><p className="product-eyebrow">PRODUCT OVERVIEW</p><h2>Infrastructure intelligence for facility and IT teams.</h2></div><div><p>DCI 360 is Turbo AI's data-centre infrastructure management product concept for teams that need to understand assets, capacity, power, cooling, environment, and incidents in one operating context.</p><p>It addresses a common planning problem: an available rack does not necessarily have usable power, cooling, network, resilience, or maintenance capacity. DCI 360 organizes the evidence so engineers and operators can review a placement, constraint, or incident without reconstructing the estate from disconnected records.</p></div></Container></section>
       <section className="product-section product-copy-section product-copy-alt"><Container><p className="product-eyebrow">THE OPERATIONAL PROBLEM</p><h2>Capacity and incidents cross system boundaries.</h2><div className="product-copy-grid"><article><h3>Infrastructure records drift</h3><p>Moves, additions, and changes may not reach every source, weakening capacity and lifecycle decisions.</p></article><article><h3>Space hides constraints</h3><p>Power paths, cooling zones, workload demand, and resilience requirements determine whether apparent space is genuinely usable.</p></article><article><h3>Alerts lack shared context</h3><p>Facility and IT teams may see different symptoms of the same event, slowing investigation and ownership.</p></article><article><h3>Planning is difficult to audit</h3><p>When assumptions and source dates are not preserved, teams cannot reconstruct why a placement or upgrade was approved.</p></article></div></Container></section>
       <section id="dci-core" className="product-section dci-core">

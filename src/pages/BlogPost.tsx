@@ -1,15 +1,25 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Container, Section, Divider } from "../components/Container";
 import { blogPosts } from "../content/blog";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import ReactMarkdown from "react-markdown";
+import { cmsPublicEnabled } from "../cms/client";
+import { usePublishedEntry } from "../cms/hooks";
+import { CmsSEO } from "../cms/CmsSEO";
+import { CmsNotFound, CmsUnavailable } from "../cms/CmsContentPage";
 
 export function BlogPost() {
     const { slug } = useParams();
-    const navigate = useNavigate();
-    const post = blogPosts.find((p) => p.slug === slug);
+    const { entry: cmsEntry, loading, failed } = usePublishedEntry("blog", slug);
+    const legacyPost = blogPosts.find((p) => p.slug === slug);
+    const post = cmsPublicEnabled
+        ? cmsEntry ? { slug: cmsEntry.slug, title: cmsEntry.title, excerpt: cmsEntry.summary,
+            date: cmsEntry.published_at || cmsEntry.created_at, author: cmsEntry.author,
+            image: cmsEntry.hero_image, tags: cmsEntry.tags, keywords: cmsEntry.seo_keywords, body: cmsEntry.body } : undefined
+        : legacyPost;
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -42,16 +52,12 @@ export function BlogPost() {
     };
 
     useEffect(() => {
-        if (!post) {
-            navigate("/blog", { replace: true });
-        }
-    }, [post, navigate]);
-
-    useEffect(() => {
         window.scrollTo(0, 0);
     }, [slug]);
 
-    if (!post) return null;
+    if (loading) return <main data-cms-loading className="min-h-screen bg-charcoal pt-40 text-center text-slate-300">Loading post…</main>;
+    if (failed) return <CmsUnavailable />;
+    if (!post) return <CmsNotFound />;
 
     // Use a default image if none provided
     const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
@@ -59,7 +65,7 @@ export function BlogPost() {
 
     return (
         <>
-            <SEO
+            {cmsEntry && cmsPublicEnabled ? <CmsSEO entry={cmsEntry} /> : <SEO
                 title={`${post.title} | Turbo AI`}
                 description={post.excerpt}
                 image={ogImage}
@@ -71,7 +77,7 @@ export function BlogPost() {
                     author: post.author,
                     tags: post.tags
                 }}
-            />
+            />}
             <Helmet><script type="application/ld+json">{JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
@@ -139,6 +145,7 @@ export function BlogPost() {
                                     </div>
                                     <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
                                     <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                                    {cmsEntry && cmsEntry.reading_time > 0 && <span>{cmsEntry.reading_time} min read</span>}
                                 </div>
                             </motion.div>
                         </Container>
@@ -212,8 +219,11 @@ export function BlogPost() {
                                         prose-li:text-gray-300 prose-li:mb-2
                                         prose-blockquote:border-l-4 prose-blockquote:border-emeraldNeon prose-blockquote:bg-white/5 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:text-gray-200 prose-blockquote:font-medium prose-blockquote:not-italic
                                         prose-hr:border-white/10 prose-hr:my-10"
-                                        dangerouslySetInnerHTML={{ __html: post.body }}
-                                    />
+                                    >
+                                        {cmsEntry && cmsPublicEnabled
+                                            ? <ReactMarkdown>{cmsEntry.body}</ReactMarkdown>
+                                            : <div dangerouslySetInnerHTML={{ __html: post.body }} />}
+                                    </div>
 
                                     {/* Share (Mobile/Tablet only) */}
                                     <div className="flex flex-wrap items-center gap-4 lg:hidden mt-8 mb-6 pb-6 border-b border-white/10">

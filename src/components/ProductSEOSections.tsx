@@ -4,10 +4,12 @@ import { seoConfig } from "../content/seo";
 import { SEO } from "./SEO";
 import { Container } from "./Container";
 import { SectionLink } from "./SectionLink";
+import { CmsSEO } from "../cms/CmsSEO";
+import type { CmsEntry } from "../cms/types";
 
 type ProductPageKey = "dci360" | "iLakehouse" | "adrs";
 
-export function ProductSEO({ pageKey }: { pageKey: ProductPageKey }) {
+export function ProductSEO({ pageKey, cmsEntry }: { pageKey: ProductPageKey; cmsEntry?: CmsEntry | null }) {
   const meta = seoConfig[pageKey];
   const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
   const schema = {
@@ -22,7 +24,7 @@ export function ProductSEO({ pageKey }: { pageKey: ProductPageKey }) {
 
   return (
     <>
-      <SEO pageKey={pageKey} />
+      {cmsEntry ? <CmsSEO entry={cmsEntry} /> : <SEO pageKey={pageKey} />}
       <Helmet><script type="application/ld+json">{JSON.stringify(schema)}</script></Helmet>
     </>
   );

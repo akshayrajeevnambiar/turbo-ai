@@ -6,6 +6,7 @@ import { Impact } from "../components/Impact.tsx";
 import { Partners } from "../components/PartnersMarquee";
 import { PartnersMarqueeMobile } from "../components/PartnersMarqueeMobile";
 import { TechnologyEcosystem } from "../components/TechnologyEcosystem";
+import { ProductShowcase } from "../components/ProductShowcase";
 import { Perspectives } from "../components/Perspectives";
 import { Connect } from "../components/Connect";
 import { SEO } from "../components/SEO";
@@ -20,6 +21,7 @@ export function Home() {
                 <CredentialsGrid />
                 <Expertise />
                 <Impact />
+                <ProductShowcase />
                 <div className="hidden md:block">
                     <Partners />
                 </div>

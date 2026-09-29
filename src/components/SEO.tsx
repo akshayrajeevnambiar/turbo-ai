@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { seoConfig } from "../content/seo";
+import { useCmsPage } from "../cms/hooks";
+import { useCmsSiteSettings } from "../cms/settings";
 
 interface SEOProps {
     pageKey?: keyof typeof seoConfig;
@@ -8,27 +10,35 @@ interface SEOProps {
     image?: string;
     url?: string;
     keywords?: string;
+    robots?: "index,follow" | "noindex,nofollow";
+    ogTitle?: string;
+    ogDescription?: string;
     type?: "website" | "article";
     articleMeta?: {
         publishedTime: string;
+        updatedTime?: string;
         author: string;
         tags?: string[];
     };
 }
 
-export function SEO({ pageKey, title, description, image, url, keywords, type = "website", articleMeta }: SEOProps) {
+export function SEO({ pageKey, title, description, image, url, keywords, robots, ogTitle, ogDescription, type = "website", articleMeta }: SEOProps) {
     const configMeta = pageKey ? seoConfig[pageKey] : null;
+    const cms = useCmsPage();
+    const settings = useCmsSiteSettings();
+    const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
+    const cmsPath = cms?.kind === "page" ? (cms.slug === "home" ? "/" : `/${cms.slug}`) : cms?.kind === "industry" ? `/industries/${cms.slug}` : cms?.kind === "solution" ? `/solutions/${cms.slug}` : "";
+    const cmsUrl = cms ? cms.canonical_url || `${siteUrl}${cmsPath === "/" ? "" : cmsPath}` : "";
+    const chosenImage = cms?.og_image || cms?.hero_image || image || configMeta?.image || settings.defaultOg;
 
     // Merge config meta with manual props (manual props take precedence)
     const meta = {
-        title: title || configMeta?.title || "Turbo AI",
-        description: description || configMeta?.description || "",
-        image: image || configMeta?.image || "",
-        url: url || configMeta?.url || window.location.href,
-        keywords: keywords || configMeta?.keywords || "",
+        title: cms?.seo_title || title || configMeta?.title || "Turbo AI",
+        description: cms?.seo_description || description || configMeta?.description || "",
+        image: chosenImage ? new URL(chosenImage, siteUrl).href : "",
+        url: cmsUrl || url || configMeta?.url || window.location.href,
+        keywords: cms?.seo_keywords || keywords || configMeta?.keywords || "",
     };
-
-    const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
 
     // Base JSON-LD (Organization) - Always valid
     const organizationSchema = {
@@ -91,7 +101,7 @@ export function SEO({ pageKey, title, description, image, url, keywords, type = 
         "headline": meta.title,
         "image": meta.image ? [meta.image] : [],
         "datePublished": articleMeta.publishedTime,
-        "dateModified": articleMeta.publishedTime, // Assuming no separate modified date for now
+        "dateModified": articleMeta.updatedTime || articleMeta.publishedTime,
         "author": {
             "@type": "Organization", // Or Person if you prefer
             "name": articleMeta.author
@@ -124,6 +134,7 @@ export function SEO({ pageKey, title, description, image, url, keywords, type = 
         <Helmet defer={false} prioritizeSeoTags>
             <title>{meta.title}</title>
             <meta name="description" content={meta.description} />
+            {(cms?.robots || robots) && <meta name="robots" content={cms?.robots || robots} />}
             {meta.keywords && <meta name="keywords" content={meta.keywords} />}
 
             {/* Canonical URL */}
@@ -136,9 +147,10 @@ export function SEO({ pageKey, title, description, image, url, keywords, type = 
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
+            <meta property="og:site_name" content={settings.siteName} />
             <meta property="og:url" content={meta.url} />
-            <meta property="og:title" content={meta.title} />
-            <meta property="og:description" content={meta.description} />
+            <meta property="og:title" content={cms?.og_title || ogTitle || meta.title} />
+            <meta property="og:description" content={cms?.og_description || ogDescription || meta.description} />
             {meta.image && <meta property="og:image" content={meta.image} />}
             {type === "article" && articleMeta && (
                 <>

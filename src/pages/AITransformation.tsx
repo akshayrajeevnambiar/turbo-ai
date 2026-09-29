@@ -2,8 +2,8 @@ import { Container, Section } from "../components/Container";
 import { Helmet } from "react-helmet-async";
 import { useReveal } from "../hooks/useReveal";
 import { SectionLink } from "../components/SectionLink";
-import processImage from "../assets/ai-trans-img1.jpg";
 import networkingImage from "../assets/ai-trans-networkinglines.jpg";
+import "./ai-transformation.css";
 import { SEO } from "../components/SEO";
 import { Connect } from "../components/Connect";
 import { EnergyStyleInsights } from "../components/LandingSEOSections";
@@ -177,11 +177,11 @@ export function AITransformation() {
                         <h2 ref={addElement} className="text-3xl md:text-4xl font-heading font-semibold text-white mb-6">
                             From Assessment to Transformation
                         </h2>
-                        <div ref={addElement} className="max-w-4xl mx-auto mb-12">
+                        <div ref={addElement} className="ai-transformation-process-frame max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl shadow-emeraldNeon/10">
                             <img
-                                src={processImage}
-                                alt="Our End-to-End AI Transformation Process"
-                                className="w-full h-auto rounded-xl border border-white/10 shadow-2xl shadow-emeraldNeon/10"
+                                src="/blog/fresh/05-transformation.jpg"
+                                alt="Two professionals discussing plans at a table with a laptop"
+                                className="ai-transformation-process-photo w-full aspect-[16/9] object-cover"
 
                             />
                         </div>

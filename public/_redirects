@@ -1,2 +1,4 @@
-# SPA Fallback for all routes
-/*    /index.html   200
+# Keep deep links into the protected admin UI available.
+/admin/*    /index.html   200
+# Published public routes have prerendered files. Unknown URLs return a real 404.
+/*    /404.html   404

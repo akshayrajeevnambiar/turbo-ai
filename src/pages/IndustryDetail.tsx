@@ -7,13 +7,18 @@ import { SectionLink } from "../components/SectionLink";
 import { SEO } from "../components/SEO";
 import { industriesWeServe } from "../content/enterprisePages";
 import { industryJourneyAdditions, industryLandingContent } from "../content/industryLandingContent";
+import { useCmsPage } from "../cms/hooks";
+import { CmsContent } from "../cms/CmsContentPage";
+import { CmsExtraContent } from "../cms/CmsExtraContent";
 
 export function IndustryDetail() {
+  const cms = useCmsPage();
   const { slug } = useParams();
   const industry = industriesWeServe.find((item) => item.href === `/industries/${slug}`);
   const content = slug ? industryLandingContent[slug] : undefined;
   const addition = slug ? industryJourneyAdditions[slug] : undefined;
 
+  if ((!industry || !content || !addition) && cms) return <CmsContent entry={cms} />;
   if (!industry || !content || !addition) return <Navigate to="/industries-we-serve" replace />;
 
   const title = `AI for ${industry.name} | Turbo AI`;
@@ -34,17 +39,19 @@ export function IndustryDetail() {
       <SEO title={title} description={content.intro} image={new URL(industry.image, siteUrl).href} url={url} keywords={`${industry.name}, enterprise AI, data engineering, operational intelligence`} />
       <Helmet><script type="application/ld+json">{JSON.stringify(breadcrumb)}</script></Helmet>
       <section className="relative min-h-[640px] overflow-hidden pt-28">
-        <img src={industry.image} alt={industry.alt} className="absolute inset-0 h-full w-full object-cover opacity-45" />
+        <img src={cms?.hero_image || industry.image} alt={industry.alt} className="absolute inset-0 h-full w-full object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-[#020617]/35" />
         <Container className="relative z-10 flex min-h-[520px] items-center">
           <div className="max-w-4xl">
             <p className="kicker text-blue-200">Industries We Serve</p>
-            <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl md:text-7xl">AI for {industry.name}</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">{content.intro}</p>
-            <div className="mt-8 flex flex-wrap gap-4"><SectionLink href="#connect" className="inline-flex min-h-12 items-center rounded-md bg-blue-500 px-6 py-3 font-bold text-white transition hover:bg-blue-400">{content.cta}</SectionLink><SectionLink href="/industries-we-serve" className="inline-flex min-h-12 items-center rounded-md border border-white/30 px-6 py-3 font-bold text-white transition hover:border-blue-300">View all industries</SectionLink></div>
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl md:text-7xl">{cms?.hero_title || `AI for ${industry.name}`}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">{cms?.hero_description || content.intro}</p>
+            <div className="mt-8 flex flex-wrap gap-4"><SectionLink href={cms?.cta_url || "#connect"} className="inline-flex min-h-12 items-center rounded-md bg-blue-500 px-6 py-3 font-bold text-white transition hover:bg-blue-400">{cms?.cta_text || content.cta}</SectionLink><SectionLink href="/industries-we-serve" className="inline-flex min-h-12 items-center rounded-md border border-white/30 px-6 py-3 font-bold text-white transition hover:border-blue-300">View all industries</SectionLink></div>
           </div>
         </Container>
       </section>
+
+      <CmsExtraContent entry={cms} />
 
       <Section className="border-y border-white/10 bg-[#050B16]">
         <Container>

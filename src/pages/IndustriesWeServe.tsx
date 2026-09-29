@@ -5,9 +5,25 @@ import { Connect } from "../components/Connect";
 import { LatestPerspectives } from "../components/EnterprisePage";
 import { industriesHero, industriesWeServe } from "../content/enterprisePages";
 import { useReveal } from "../hooks/useReveal";
+import { cmsPublicEnabled } from "../cms/client";
+import { usePublishedEntries, useCmsPage } from "../cms/hooks";
 
 export function IndustriesWeServe() {
   const { addElement } = useReveal(35);
+  const cms = useCmsPage();
+  const { entries, loading, failed } = usePublishedEntries("industry");
+  const cards = cmsPublicEnabled ? [...entries].sort((a, b) => {
+    const rank = (slug: string) => {
+      const index = industriesWeServe.findIndex((item) => item.href === `/industries/${slug}`);
+      return index < 0 ? industriesWeServe.length : index;
+    };
+    return rank(a.slug) - rank(b.slug);
+  }).map((entry) => {
+    const authored = industriesWeServe.find((item) => item.href === `/industries/${entry.slug}`);
+    return { name: entry.title, description: entry.summary, image: entry.hero_image || authored?.image || "",
+      alt: authored?.alt || entry.title, applications: entry.features.length ? entry.features : authored?.applications || [],
+      href: `/industries/${entry.slug}` };
+  }) : industriesWeServe;
 
   return (
     <main className="bg-[#020617] text-white" role="main">
@@ -15,7 +31,7 @@ export function IndustriesWeServe() {
 
       <section className="relative min-h-[680px] overflow-hidden pt-28">
         <img
-          src={industriesHero.image}
+          src={cms?.hero_image || industriesHero.image}
           alt={industriesHero.alt}
           className="absolute inset-0 h-full w-full object-cover opacity-45"
           loading="eager"
@@ -27,10 +43,10 @@ export function IndustriesWeServe() {
               {industriesHero.eyebrow}
             </p>
             <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-7xl">
-              {industriesHero.title}
+              {cms?.hero_title || industriesHero.title}
             </h1>
             <p className="mt-5 text-2xl font-semibold text-blue-200 md:text-3xl">
-              {industriesHero.subtitle}
+              {cms?.hero_description || industriesHero.subtitle}
             </p>
             <p ref={addElement} className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200">
               Turbo AI applies AI, data engineering, software delivery, cloud, and governance capabilities to real operating environments where technology has to be useful, secure, and measurable.
@@ -49,8 +65,10 @@ export function IndustriesWeServe() {
             </p>
           </div>
 
+          {loading && <p data-cms-loading className="mb-6 text-slate-300">Loading industries…</p>}
+          {failed && <p data-cms-error role="alert" className="mb-6 text-rose-300">Industries are temporarily unavailable.</p>}
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {industriesWeServe.map((industry) => (
+            {cards.map((industry) => (
               <article
                 key={industry.name}
                 ref={addElement}

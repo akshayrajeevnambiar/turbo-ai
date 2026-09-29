@@ -800,10 +800,38 @@
       gap: 1rem;
     }
 
-    .footer-meta-actions > .flex {
+    .footer-social-links {
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
+    }
+
+    .footer-legal-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: center;
+      gap: 0.5rem;
+      width: min(100%, 20rem);
+      margin-inline: auto;
+    }
+
+    .footer-legal-links > * {
+      width: 100%;
+      text-align: center;
+      line-height: 1.4;
+    }
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    .footer-legal-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: none;
+    }
+
+    .footer-legal-links > * {
+      width: auto;
+      white-space: nowrap;
     }
   }
 

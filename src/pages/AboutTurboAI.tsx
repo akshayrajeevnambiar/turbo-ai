@@ -5,8 +5,10 @@ import { SectionLink } from "../components/SectionLink";
 import { SEO } from "../components/SEO";
 import { aboutTurboAI } from "../content/enterprisePages";
 import { useReveal } from "../hooks/useReveal";
+import { useCmsPage } from "../cms/hooks";
 
 export function AboutTurboAI() {
+  const cms = useCmsPage();
   const { addElement } = useReveal(40);
 
   return (
@@ -15,7 +17,7 @@ export function AboutTurboAI() {
 
       <section className="relative min-h-[680px] overflow-hidden pt-28">
         <img
-          src={aboutTurboAI.image}
+          src={cms?.hero_image || aboutTurboAI.image}
           alt={aboutTurboAI.alt}
           className="absolute inset-0 h-full w-full object-cover opacity-40"
           loading="eager"
@@ -27,12 +29,12 @@ export function AboutTurboAI() {
               {aboutTurboAI.eyebrow}
             </p>
             <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-7xl">
-              {aboutTurboAI.title}
+              {cms?.hero_title || aboutTurboAI.title}
             </h1>
             <p className="mt-5 max-w-3xl text-2xl font-semibold leading-snug text-blue-200 md:text-3xl">
-              {aboutTurboAI.subtitle}
+              {cms?.hero_description || aboutTurboAI.subtitle}
             </p>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200">{aboutTurboAI.introduction}</p>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-200">{cms?.summary || aboutTurboAI.introduction}</p>
           </div>
         </Container>
       </section>

@@ -4,6 +4,8 @@ import { Connect } from "../components/Connect";
 import { LandingFAQ, RelatedInsights } from "../components/LandingSEOSections";
 import { SectionLink } from "../components/SectionLink";
 import { SEO } from "../components/SEO";
+import { cmsPublicEnabled } from "../cms/client";
+import { usePublishedEntries } from "../cms/hooks";
 
 const platforms = [
   {
@@ -60,6 +62,27 @@ function PlatformFlow({ steps, name }: { steps: string[]; name: string }) {
 }
 
 export function ProductsIndex() {
+  const { entries: cmsProducts, loading, failed } = usePublishedEntries("product");
+  const shownPlatforms = cmsPublicEnabled
+    ? cmsProducts.filter((entry) => entry.slug !== "dci-360")
+      .sort((a, b) => {
+        const rank = (slug: string) => slug === "i-lakehouse" ? 0 : slug === "adrs" ? 1 : 2;
+        return rank(a.slug) - rank(b.slug) || a.title.localeCompare(b.title);
+      })
+      .map((entry) => ({
+        id: entry.slug, name: entry.title, description: entry.summary,
+        problem: entry.hero_description || entry.summary,
+        architecture: entry.sections[0]?.body || entry.summary,
+        workflow: entry.features.slice(0, 5).length ? entry.features.slice(0, 5) : [entry.title],
+        capabilities: entry.features,
+        useCases: entry.benefits,
+        value: entry.summary,
+        href: `/products/${entry.slug}`,
+        relatedHref: entry.related_industries[0] ? `/industries/${entry.related_industries[0]}` : "/enterprise-ai-solutions",
+        relatedLabel: entry.related_industries[0] ? "Related industry" : "Enterprise AI Solutions",
+      }))
+    : platforms;
+  const showDci = !cmsPublicEnabled || cmsProducts.some((entry) => entry.slug === "dci-360");
   return (
     <main className="bg-[#020617] text-white">
       <SEO pageKey="turboAIProducts" />
@@ -70,13 +93,14 @@ export function ProductsIndex() {
           <p className="mt-6 max-w-3xl text-xl font-semibold text-blue-200 md:text-3xl">Data foundations and detection-to-response intelligence.</p>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg">i-Lakehouse and ADRS address different parts of the enterprise technology stack: trusted data for analytics and AI, and a controlled workflow for identifying and responding to risk.</p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <a href="#i-lakehouse" className="inline-flex min-h-12 items-center rounded-md bg-blue-500 px-5 py-3 font-bold text-white hover:bg-blue-400">Explore i-Lakehouse</a>
-            <a href="#adrs" className="inline-flex min-h-12 items-center rounded-md border border-blue-300/40 px-5 py-3 font-bold text-blue-100 hover:border-blue-200">Explore ADRS</a>
+            {shownPlatforms.slice(0, 2).map((platform, index) => <a key={platform.id} href={`#${platform.id}`} className={index === 0 ? "inline-flex min-h-12 items-center rounded-md bg-blue-500 px-5 py-3 font-bold text-white hover:bg-blue-400" : "inline-flex min-h-12 items-center rounded-md border border-blue-300/40 px-5 py-3 font-bold text-blue-100 hover:border-blue-200"}>Explore {platform.name}</a>)}
           </div>
         </Container>
       </section>
 
-      {platforms.map((platform, index) => (
+      {loading && <p data-cms-loading className="py-10 text-center text-slate-300">Loading products…</p>}
+      {failed && <p data-cms-error role="alert" className="py-10 text-center text-rose-300">Products are temporarily unavailable.</p>}
+      {shownPlatforms.map((platform, index) => (
         <section id={platform.id} key={platform.id} className="scroll-mt-24 border-b border-white/10 py-20 md:py-28">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
@@ -103,7 +127,7 @@ export function ProductsIndex() {
         </section>
       ))}
 
-      <Section className="border-b border-white/10 bg-[#07111f]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Product Family</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">More ways to explore Turbo AI</h2></div><div className="grid gap-5 sm:grid-cols-2"><SectionLink href="https://seismicai.ca" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">Seismic AI</h3><p className="mt-2 text-sm text-slate-300">Visit the existing Seismic AI website.</p></SectionLink><SectionLink href="/products/dci-360" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">DCI 360</h3><p className="mt-2 text-sm text-slate-300">Explore data centre infrastructure management.</p></SectionLink></div></div></Container></Section>
+      <Section className="border-b border-white/10 bg-[#07111f]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Product Family</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">More ways to explore Turbo AI</h2></div><div className="grid gap-5 sm:grid-cols-2"><SectionLink href="https://seismicai.ca" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">Seismic AI</h3><p className="mt-2 text-sm text-slate-300">Visit the existing Seismic AI website.</p></SectionLink>{showDci && <SectionLink href="/products/dci-360" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">DCI 360</h3><p className="mt-2 text-sm text-slate-300">Explore data centre infrastructure management.</p></SectionLink>}</div></div></Container></Section>
       <Section className="bg-[#020617]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Future Platforms</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">Built around emerging enterprise needs</h2></div><p className="text-lg leading-relaxed text-slate-300">Turbo AI continues to develop technology capabilities where data, AI, and operational workflows meet. New products will be introduced here when their scope and availability are confirmed.</p></div></Container></Section>
       <Section className="border-y border-white/10 bg-[#07111f]"><Container><div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Why Turbo AI Platforms</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">Products connected to enterprise delivery</h2></div><div className="grid gap-5 md:grid-cols-2">{[
         ["Problem-led scope", "Each platform is framed around a specific enterprise data or operational workflow rather than a general AI promise."],

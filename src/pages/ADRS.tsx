@@ -6,6 +6,9 @@ import { ProductFAQ, ProductRelatedLinks, ProductSEO } from "../components/Produ
 import { SectionLink } from "../components/SectionLink";
 import "./products.css";
 import "./products-theme.css";
+import { useCmsProduct } from "../cms/hooks";
+import { CmsProductSections } from "../cms/CmsProductSections";
+import { hasCmsProductContent } from "../cms/types";
 
 const workflow = [
   { name: "Detection", icon: SignalIcon, detail: "Bring a defined set of security or operational signals into view and record where each event originated. Data quality and timing checks help distinguish a real event from a missing feed." },
@@ -28,24 +31,26 @@ const faqs = [
 ];
 
 export function ADRS() {
+  const cmsEntry = useCmsProduct();
   return (
-    <main className="product-page adrs-page">
-      <ProductSEO pageKey="adrs" />
-      <section className="product-hero adrs-hero">
+    <main className={`product-page adrs-page ${hasCmsProductContent(cmsEntry) ? "cms-has-content" : ""}`}>
+      <ProductSEO pageKey="adrs" cmsEntry={cmsEntry} />
+      <section className="product-hero adrs-hero" style={cmsEntry?.hero_image ? { backgroundImage: `url(${cmsEntry.hero_image})` } : undefined}>
         <Container className="adrs-hero-layout">
           <div className="adrs-hero-copy">
             <p className="product-eyebrow">DETECTION TO RESPONSE</p>
-            <h1>ADRS</h1>
-            <p className="product-hero-subtitle">Autonomous Detection<br />&amp; Response System</p>
-            <p className="product-hero-intro">Follow detection, analysis and response in one clear security-operations workflow.</p>
-            <a className="product-button adrs-button" href="#adrs-workflow">Explore ADRS <ArrowLongRightIcon aria-hidden="true" /></a>
+            <h1>{cmsEntry?.hero_title || cmsEntry?.title || "ADRS"}</h1>
+            <p className="product-hero-subtitle">{cmsEntry?.hero_description || <>Autonomous Detection<br />&amp; Response System</>}</p>
+            <p className="product-hero-intro">{cmsEntry?.summary || "Follow detection, analysis and response in one clear security-operations workflow."}</p>
+            <a className="product-button adrs-button" href={cmsEntry?.cta_url || "#adrs-workflow"}>{cmsEntry?.cta_text || "Explore ADRS"} <ArrowLongRightIcon aria-hidden="true" /></a>
           </div>
           <div className="adrs-hero-visual" role="img" aria-label="Conceptual detection-to-response signal visualization">
-            <div className="adrs-radar"><span className="adrs-radar-ring" /><span className="adrs-radar-ring" /><span className="adrs-radar-ring" /><ShieldCheckIcon aria-hidden="true" /><i className="adrs-radar-node node-one" /><i className="adrs-radar-node node-two" /><i className="adrs-radar-node node-three" /></div>
+            <div className="adrs-radar"><span className="adrs-radar-sweep" aria-hidden="true" /><span className="adrs-radar-ring" /><span className="adrs-radar-ring" /><span className="adrs-radar-ring" /><ShieldCheckIcon aria-hidden="true" /><i className="adrs-radar-node node-one" /><i className="adrs-radar-node node-two" /><i className="adrs-radar-node node-three" /></div>
             <div className="adrs-radar-caption">DETECT <span /> ASSESS <span /> RESPOND</div>
           </div>
         </Container>
       </section>
+      <CmsProductSections entry={cmsEntry} />
       <section className="product-section product-copy-section"><Container className="product-copy-layout"><div><p className="product-eyebrow">WHAT IT IS</p><h2>A controlled path from signal to action.</h2></div><div><p>ADRS, the Autonomous Detection &amp; Response System, is Turbo AI's detection-to-response product concept for teams that need a clearer way to investigate and coordinate security or operational risk. It connects incoming signals with analysis, risk identification, alerting, and a defined response path.</p><p>It is intended for security operations, infrastructure, and risk teams handling high-volume events across existing tools. The page illustrates the operating model; it does not promise a specific connector, autonomous remediation, or deployment outcome. The useful starting point is a bounded incident workflow with a named owner.</p></div></Container></section>
       <section id="adrs-workflow" className="product-section adrs-workflow"><Container><div className="product-section-heading"><div><p className="product-eyebrow">01 / THE WORKFLOW</p><h2>From detection<br />to response.</h2></div><p>A clear sequence for identifying and addressing risk.</p></div><ol className="adrs-flow">{workflow.map(({ name, icon: Icon }, index) => <li key={name}><div className="adrs-flow-top"><span>0{index + 1}</span><Icon aria-hidden="true" /></div><h3>{name}</h3>{index < workflow.length - 1 && <ArrowLongRightIcon className="adrs-flow-arrow" aria-hidden="true" />}</li>)}</ol></Container></section>
       <section className="product-section product-copy-section product-copy-alt"><Container><p className="product-eyebrow">WORKFLOW IN PRACTICE</p><h2>Every stage has a decision.</h2><div className="product-copy-grid">{workflow.map(({ name, detail }, index) => <article key={name}><span>0{index + 1}</span><h3>{name}</h3><p>{detail}</p></article>)}</div></Container></section>

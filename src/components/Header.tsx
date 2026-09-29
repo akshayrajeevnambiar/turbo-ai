@@ -5,8 +5,15 @@ import { Dropdown } from "./Dropdown";
 import { MobileDropdown } from "./MobileDropdown";
 import { site, tokens } from "../content/turboai";
 import turboAiLogo from "../assets/turbo-ai-logo-removebg-preview.png";
+import { cmsPublicEnabled } from "../cms/client";
+import { usePublishedEntries } from "../cms/hooks";
 
 export function Header() {
+  const { entries: cmsProducts, loading: productsLoading, failed: productsFailed } = usePublishedEntries("product");
+  const navItems = site.nav.items.map((item) => {
+    if (!cmsPublicEnabled || item.label !== "Products" || !("dropdown" in item)) return item;
+    return { ...item, dropdown: [...(item.dropdown ?? []).slice(0, 1), ...cmsProducts.map((entry) => ({ label: entry.title, href: `/products/${entry.slug}` }))] };
+  });
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState<string>("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -98,6 +105,8 @@ export function Header() {
       style={{ height: `${tokens.layout.headerH}px` }}
       role="banner"
     >
+      {cmsPublicEnabled && productsLoading && <span hidden data-cms-loading />}
+      {cmsPublicEnabled && productsFailed && <span hidden data-cms-error />}
       <div className="w-full max-w-[1536px] mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         {/* Logo */}
         <SectionLink
@@ -119,7 +128,7 @@ export function Header() {
           className="hidden lg:flex items-center"
         >
           <ul className="flex items-center gap-3 xl:gap-5 2xl:gap-6">
-            {site.nav.items.map((item) => (
+            {navItems.map((item) => (
               <li key={item.label} className="flex items-center">
                 {item.dropdown ? (
                   <Dropdown label={item.label} items={item.dropdown} />
@@ -192,7 +201,7 @@ export function Header() {
                 className="py-2"
               >
                 <ul className="space-y-0">
-                  {site.nav.items.map((item) => (
+                  {navItems.map((item) => (
                     <li key={item.label}>
                       {item.dropdown ? (
                         <MobileDropdown

@@ -137,7 +137,7 @@ export function Footer() {
           </div>
           <div className="footer-meta-actions flex items-center gap-6">
             {/* Social Media Links */}
-            <div className="flex gap-4">
+            <div className="footer-social-links flex gap-4">
               {blog.posts.map((post) => (
                 <a
                   key={post.url}
@@ -182,7 +182,7 @@ export function Footer() {
               ))}
             </div>
             {/* Legal Links */}
-            <div className="flex gap-6 text-xs">
+            <div className="footer-legal-links flex gap-6 text-xs">
               <a href="/image-credits.html" className="text-midGray hover:text-white transition-colors duration-200">Image Credits</a>
               <button
                 onClick={() => setIsPrivacyModalOpen(true)}

@@ -2,9 +2,39 @@ import puppeteer from 'puppeteer';
 import { spawn, spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { loadEnv } from 'vite';
+import { createClient } from '@supabase/supabase-js';
+
+const env = loadEnv('production', process.cwd(), 'VITE_');
+const cmsEnabled = env.VITE_CMS_ENABLED === 'true';
+const baseUrl = (env.VITE_BASE_URL || 'https://turbo-ai.ca').replace(/\/$/, '');
+const cmsPath = (entry) => entry.kind === 'page'
+    ? entry.slug === 'home' ? '/' : `/${entry.slug}`
+    : entry.kind === 'solution' ? `/solutions/${entry.slug}`
+    : `/${entry.kind === 'industry' ? 'industries' : entry.kind === 'product' ? 'products' : 'blog'}/${entry.slug}`;
+
+async function publishedCmsRoutes() {
+    if (!env.VITE_SUPABASE_URL || !env.VITE_SUPABASE_PUBLISHABLE_KEY) {
+        throw new Error('CMS is enabled but Supabase URL or publishable key is missing.');
+    }
+    const client = createClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_PUBLISHABLE_KEY,
+        { auth: { persistSession: false, autoRefreshToken: false } });
+    const entries = [];
+    for (let offset = 0; ; offset += 500) {
+        const { data, error } = await client.from('cms_entries')
+            .select('kind,slug,robots,updated_at').eq('status', 'published')
+            .order('kind').order('slug').range(offset, offset + 499);
+        if (error) throw error;
+        entries.push(...(data || []));
+        if (!data || data.length < 500) break;
+    }
+    if (!entries.length) throw new Error('CMS is enabled but no published content exists. Import and review the seed first.');
+    return entries;
+}
 
 async function prerender() {
     console.log('Starting pre-rendering...');
+    const cmsEntries = cmsEnabled ? await publishedCmsRoutes() : [];
 
     // Start the preview server
     const preview = spawn('npm', ['run', 'preview'], {
@@ -102,7 +132,7 @@ async function prerender() {
 
     // Dynamic blog routes from the authored post collections.
     const blogRoutes = [];
-    try {
+    if (!cmsEnabled) try {
         for (const filename of ['blog.ts', 'industryInsights.ts']) {
           const blogContentPath = path.resolve('src', 'content', filename);
           if (!fs.existsSync(blogContentPath)) continue;
@@ -118,7 +148,10 @@ async function prerender() {
         console.warn('Could not auto-discover blog posts:', e);
     }
 
-    const routes = [...staticRoutes, ...blogRoutes];
+    const routes = cmsEnabled
+        ? [...new Set(cmsEntries.map(cmsPath))]
+        : [...new Set([...staticRoutes, ...blogRoutes])];
+    const cmsByPath = new Map(cmsEntries.map((entry) => [cmsPath(entry), entry]));
 
     try {
         for (const route of routes) {
@@ -128,7 +161,14 @@ async function prerender() {
             await page.goto(`${serverUrl}${route === '/' ? '' : route}`, { waitUntil: 'domcontentloaded' });
 
             // Wait for the root element to be populated
-            await page.waitForSelector('#root div');
+            await page.waitForSelector('main');
+            if (cmsEnabled) {
+                await page.waitForFunction(() => !document.querySelector('[data-cms-loading]'), { timeout: 30000 });
+                if (await page.$('[data-cms-error]')) throw new Error(`CMS failed while rendering ${route}.`);
+                if (await page.$('[data-cms-ready="true"] h1:first-child')) {
+                    throw new Error(`Published CMS route ${route} rendered a not-found page.`);
+                }
+            }
 
             // Give it a moment for any final animations or effects
             await new Promise(r => setTimeout(r, 500));
@@ -162,33 +202,19 @@ async function prerender() {
         // We can't easily use vite's loadEnv in this script without complex setup if vite isn't fully initialized.
         // EASIER: Manually parse .env for this simple script or use a regex since we know the format.
 
-        let baseUrl = 'https://turbo-ai.ca'; // default fallback
-        try {
-            const envPath = path.resolve(process.cwd(), '.env');
-            if (fs.existsSync(envPath)) {
-                const envContent = fs.readFileSync(envPath, 'utf-8');
-                const match = envContent.match(/VITE_BASE_URL=(.*)/);
-                if (match && match[1]) {
-                    baseUrl = match[1].trim();
-                }
-            }
-        } catch (e) {
-            console.warn('Could not read .env file, using default base URL:', e);
-        }
-
         console.log(`Generating SEO files for base URL: ${baseUrl}`);
 
         // Generate robots.txt
-        const robotsContent = `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml`;
+        const robotsContent = `User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: ${baseUrl}/sitemap.xml`;
         fs.writeFileSync(path.resolve('dist', 'robots.txt'), robotsContent);
         console.log('Generated dist/robots.txt');
 
         // Generate sitemap.xml
         const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
+${routes.filter((route) => !cmsEnabled || cmsByPath.get(route)?.robots !== 'noindex,nofollow').map(route => `  <url>
     <loc>${baseUrl}${route === '/' ? '' : route}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${cmsByPath.get(route)?.updated_at?.split('T')[0] || new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${route === '/' ? '1.0' : '0.8'}</priority>
   </url>`).join('\n')}
@@ -196,6 +222,8 @@ ${routes.map(route => `  <url>
 
         fs.writeFileSync(path.resolve('dist', 'sitemap.xml'), sitemapContent);
         console.log('Generated dist/sitemap.xml');
+        fs.writeFileSync(path.resolve('dist', '404.html'), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Page not found | Turbo AI</title><style>body{margin:0;background:#020617;color:white;font:16px system-ui}main{min-height:100vh;display:grid;place-content:center;text-align:center;padding:24px}h1{font-size:clamp(36px,6vw,64px);margin:0}a{color:#93c5fd}</style></head><body><main><h1>Page not found</h1><p>This page does not exist or is not published.</p><a href="/">Return home</a></main></body></html>`);
+        console.log('Generated dist/404.html');
 
     } catch (err) {
         console.error('Error during pre-rendering:', err);

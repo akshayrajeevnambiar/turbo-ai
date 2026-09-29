@@ -10,9 +10,13 @@ import { blogPosts } from "../content/blog";
 import type { Diagram, EnterprisePageContent } from "../content/enterprisePages";
 import { seoConfig } from "../content/seo";
 import { serviceLandingContent } from "../content/serviceLandingContent";
+import { useCmsPage } from "../cms/hooks";
 
 interface EnterprisePageProps {
   content: EnterprisePageContent;
+  technologyLogos?: Record<string, string>;
+  technologyLogoOnly?: string[];
+  technologyBadges?: Record<string, string>;
 }
 
 const relatedByService: Record<string, { title: string; href: string; reason: string }[]> = {
@@ -112,7 +116,8 @@ function LatestPerspectives() {
   );
 }
 
-export function EnterprisePage({ content }: EnterprisePageProps) {
+export function EnterprisePage({ content, technologyLogos, technologyLogoOnly, technologyBadges }: EnterprisePageProps) {
+  const cms = useCmsPage();
   const { addElement } = useReveal(40);
   const journey = serviceLandingContent[content.seoKey];
   const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
@@ -132,7 +137,7 @@ export function EnterprisePage({ content }: EnterprisePageProps) {
 
       <section className="relative min-h-[720px] overflow-hidden pt-28">
         <img
-          src={content.heroImage}
+          src={cms?.hero_image || content.heroImage}
           alt={content.heroAlt}
           className="absolute inset-0 h-full w-full object-cover opacity-45"
           loading="eager"
@@ -148,20 +153,20 @@ export function EnterprisePage({ content }: EnterprisePageProps) {
             <h1
               className="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-7xl"
             >
-              {content.title}
+              {cms?.hero_title || content.title}
             </h1>
             <p className="mt-5 max-w-3xl text-2xl font-semibold leading-snug text-blue-200 md:text-3xl">
-              {content.subtitle}
+              {cms?.hero_description || content.subtitle}
             </p>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-200 md:text-xl">
-              {content.intro}
+              {cms?.summary || content.intro}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <SectionLink
-                href="#connect"
+                href={cms?.cta_url || "#connect"}
                 className="inline-flex min-h-12 items-center rounded-md bg-blue-500 px-6 py-3 font-bold text-white shadow-[0_0_28px_rgba(59,130,246,0.35)] transition hover:bg-blue-400"
               >
-                Schedule a Consultation
+                {cms?.cta_text || "Schedule a Consultation"}
               </SectionLink>
               <SectionLink
                 href="/products"
@@ -268,21 +273,26 @@ export function EnterprisePage({ content }: EnterprisePageProps) {
       {content.technologies && (
         <Section className="bg-[#020617] border-t border-white/5">
           <Container>
-            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div>
+            <div className={technologyLogos || technologyBadges ? "space-y-8" : "grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"}>
+              <div className={technologyLogos || technologyBadges ? "max-w-3xl" : undefined}>
                 <p className="kicker text-blue-300">Technology Ecosystem</p>
                 <h2 className="text-3xl font-bold text-white md:text-5xl">Selective, practical technology alignment</h2>
                 <p className="mt-4 text-slate-300">
                   These names identify relevant technologies and frameworks. They do not imply formal partnerships or certifications.
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className={`grid grid-cols-2 gap-3 ${technologyLogos ? "sm:grid-cols-3 lg:grid-cols-5" : technologyBadges ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
                 {content.technologies.map((technology) => (
                   <div
                     key={technology}
-                    className="flex min-h-20 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 text-center font-bold text-white"
+                    className={`flex min-w-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 text-center font-bold text-white ${technologyLogos ? "min-h-28 flex-col gap-3 py-4" : "min-h-20"}`}
                   >
-                    {technology}
+                    {technologyLogos?.[technology] && (
+                      <img src={technologyLogos[technology]} alt={`${technology} logo`} className={`h-11 w-full max-w-28 object-contain ${technology === "OpenAI" ? "brightness-0 invert" : ""}`} loading="lazy" />
+                    )}
+                    {!technologyLogoOnly?.includes(technology) && (
+                      <span className={technologyBadges?.[technology] ?? "text-sm leading-tight"}>{technology}</span>
+                    )}
                   </div>
                 ))}
               </div>

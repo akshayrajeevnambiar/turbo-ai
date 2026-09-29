@@ -1,0 +1,13 @@
+.ai-transformation-process-photo {
+  animation: transformation-photo-drift 16s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+@keyframes transformation-photo-drift {
+  from { transform: scale(1.03) translateX(-0.6%); }
+  to { transform: scale(1.09) translateX(0.6%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-transformation-process-photo { animation: none; transform: none; }
+}
