@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Navigate, Routes, Route, useLocation } from "react-router-dom";
+import { Navigate, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
@@ -36,11 +36,18 @@ const page = (slug: string, content: React.ReactNode) => <CmsExistingRoute kind=
 const AdminApp = lazy(() => import("./cms/AdminApp").then((module) => ({ default: module.AdminApp })));
 
 function App() {
-  const { pathname, hash } = useLocation();
+  const { pathname, search, hash } = useLocation();
+  const navigate = useNavigate();
   const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
 
   // Handle scroll to hash on route change
   useEffect(() => {
+    // Keep bookmarked hero links working with a clean homepage URL.
+    if (pathname === "/" && hash === "#hero") {
+      navigate({ pathname, search, hash: "" }, { replace: true });
+      return;
+    }
+
     // If there is a hash, scroll to it
     if (hash) {
       const sectionId = hash.replace("#", "");
@@ -71,7 +78,7 @@ function App() {
       // If no hash and path changed, scroll to top
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash]);
+  }, [pathname, search, hash, navigate]);
 
   return (
     <>

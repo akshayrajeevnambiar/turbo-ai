@@ -33,7 +33,7 @@ export const site = {
   },
   nav: {
     items: [
-      { label: "Home", href: "#hero" },
+      { label: "Home", href: "/" },
       { label: "About", href: "/about" },
       {
         label: "Services",
@@ -390,10 +390,16 @@ export const blog = {
   lead: "Stay updated with our latest insights and announcements.",
   posts: [
     {
-      title: "LinkedIn Update",
-      url: "https://www.linkedin.com/feed/update/urn:li:activity:7403675619848470528",
+      title: "LinkedIn Profile",
+      url: "https://ca.linkedin.com/company/turbo-ai",
       platform: "LinkedIn",
       icon: "linkedin",
+    },
+    {
+      title: "Instagram Profile",
+      url: "https://www.instagram.com/turbo.aicanada/",
+      platform: "Instagram",
+      icon: "instagram",
     },
     {
       title: "Twitter/X Post",

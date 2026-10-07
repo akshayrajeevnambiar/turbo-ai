@@ -56,6 +56,9 @@ export function Header() {
   }, [pathname]);
 
   const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" && activeSection === "hero";
+    }
     if (href.startsWith("/#") || href.startsWith("#")) {
       const cleanSection = href.replace("/#", "").replace("#", "");
       return pathname === "/" && activeSection === cleanSection;
@@ -110,7 +113,7 @@ export function Header() {
       <div className="w-full max-w-[1536px] mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         {/* Logo */}
         <SectionLink
-          href="/#hero"
+          href="/"
           className="flex items-center select-none cursor-pointer py-1"
           aria-label="Turbo AI home"
         >

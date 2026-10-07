@@ -55,7 +55,8 @@ export function SEO({ pageKey, title, description, image, url, keywords, robots,
             "Enterprise AI", "Cloud Solutions", "Cyber Security", "Data Analytics"
         ],
         "sameAs": [
-            "https://www.linkedin.com/company/turbo-ai",
+            "https://ca.linkedin.com/company/turbo-ai",
+            "https://www.instagram.com/turbo.aicanada/",
             "https://twitter.com/_turbo_ai_",
             "https://www.facebook.com/turboai"
         ],
