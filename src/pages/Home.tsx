@@ -7,6 +7,7 @@ import { Partners } from "../components/PartnersMarquee";
 import { PartnersMarqueeMobile } from "../components/PartnersMarqueeMobile";
 import { TechnologyEcosystem } from "../components/TechnologyEcosystem";
 import { ProductShowcase } from "../components/ProductShowcase";
+import { CertificationsShowcase } from "../components/CertificationsShowcase";
 import { Perspectives } from "../components/Perspectives";
 import { Connect } from "../components/Connect";
 import { SEO } from "../components/SEO";
@@ -20,6 +21,7 @@ export function Home() {
                 <About />
                 <CredentialsGrid />
                 <Expertise />
+                <CertificationsShowcase />
                 <Impact />
                 <ProductShowcase />
                 <div className="hidden md:block">
