@@ -138,8 +138,8 @@ export function IndustryMegaMenu({ mobile = false, onItemClick }: IndustryMegaMe
           ref={panelRef}
           id={panelId}
           className={mobile
-            ? "border-b border-white/10 bg-[#0b1628] px-6 py-7"
-            : "absolute inset-x-8 top-full z-50 mx-auto max-w-[1440px] overflow-y-auto overscroll-contain rounded-b-2xl border border-white/10 bg-[#0b1628] shadow-[0_24px_60px_rgba(0,0,0,0.45)]"}
+            ? "border-b border-white/10 bg-charcoalDeep/95 backdrop-blur-md px-6 py-7"
+            : "absolute inset-x-8 top-full z-50 mx-auto max-w-[1440px] overflow-y-auto overscroll-contain rounded-b-2xl border border-white/10 bg-charcoalDeep/95 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.45)]"}
           style={mobile ? undefined : { maxHeight: `calc(100dvh - ${tokens.layout.headerH + 16}px)` }}
         >
           <div className={mobile ? "space-y-7" : "grid grid-cols-[1.1fr_repeat(3,minmax(0,1fr))] gap-8 p-8 2xl:gap-10 2xl:p-10"}>
