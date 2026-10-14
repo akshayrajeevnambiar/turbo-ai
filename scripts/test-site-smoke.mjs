@@ -58,7 +58,8 @@ try {
   const checkIndustryMenu = async (navigation) => {
     const trigger = `nav[aria-label="${navigation}"] button[aria-label="Industries We Serve menu"]`;
     await page.waitForSelector(trigger, { visible: true });
-    await page.click(trigger);
+    if (navigation === 'Main navigation') await page.hover(trigger);
+    else await page.click(trigger);
     await page.waitForSelector(`${trigger}[aria-expanded="true"]`);
     const links = await page.$eval(trigger, (button) => [...button.parentElement.querySelectorAll('a[href^="/industries/"]')]
       .map((link) => ({ label: link.textContent.trim(), href: link.getAttribute('href') })));
@@ -68,6 +69,20 @@ try {
   };
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'domcontentloaded' });
   await checkIndustryMenu('Main navigation');
+  const desktopIndustryTrigger = 'nav[aria-label="Main navigation"] button[aria-label="Industries We Serve menu"]';
+  await page.hover('nav[aria-label="Main navigation"] a[href="/industries/mining"]');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  assert.equal(await page.$eval(desktopIndustryTrigger, (button) => button.getAttribute('aria-expanded')), 'true',
+    'The industry menu must stay open while hovering its links.');
+  await page.mouse.move(10, 850);
+  await page.waitForSelector(`${desktopIndustryTrigger}[aria-expanded="false"]`);
+  await page.focus(desktopIndustryTrigger);
+  await page.keyboard.press('ArrowDown');
+  await page.waitForSelector(`${desktopIndustryTrigger}[aria-expanded="true"]`);
+  await page.keyboard.press('Escape');
+  await page.waitForSelector(`${desktopIndustryTrigger}[aria-expanded="false"]`);
+  await page.hover(desktopIndustryTrigger);
+  await page.waitForSelector(`${desktopIndustryTrigger}[aria-expanded="true"]`);
   await page.click('nav[aria-label="Main navigation"] a[href="/industries/mining"]');
   await page.waitForFunction(() => location.pathname === '/industries/mining' && document.querySelector('main h1')?.textContent === 'AI for Mining');
 

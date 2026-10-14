@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { industryNavigation, tokens } from "../content/turboai";
 import { SectionLink } from "./SectionLink";
@@ -13,45 +13,86 @@ export function IndustryMegaMenu({ mobile = false, onItemClick }: IndustryMegaMe
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof window.setTimeout> | undefined>(undefined);
+  const clickPointerTypeRef = useRef<string | undefined>(undefined);
   const panelId = useId();
   const { pathname } = useLocation();
   const isActive = pathname === industryNavigation.href || pathname.startsWith("/industries/");
 
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current !== undefined) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = undefined;
+    }
+  }, []);
+
   const closeAfterNavigation = () => {
+    clearCloseTimer();
     setIsOpen(false);
     onItemClick?.();
   };
 
   useEffect(() => {
+    clearCloseTimer();
     setIsOpen(false);
-  }, [pathname]);
+  }, [pathname, clearCloseTimer]);
+
+  useEffect(() => clearCloseTimer, [clearCloseTimer]);
 
   useEffect(() => {
     if (!isOpen) return;
 
     const dismissOutside = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) setIsOpen(false);
+      if (!containerRef.current?.contains(event.target as Node)) {
+        clearCloseTimer();
+        setIsOpen(false);
+      }
     };
     const breakpoint = window.matchMedia("(min-width: 1280px)");
-    const dismissOnResize = () => setIsOpen(false);
+    const dismissOnResize = () => {
+      clearCloseTimer();
+      setIsOpen(false);
+    };
     document.addEventListener("pointerdown", dismissOutside);
     breakpoint.addEventListener("change", dismissOnResize);
     return () => {
+      clearCloseTimer();
       document.removeEventListener("pointerdown", dismissOutside);
       breakpoint.removeEventListener("change", dismissOnResize);
     };
-  }, [isOpen]);
+  }, [isOpen, clearCloseTimer]);
 
   return (
     <div
       ref={containerRef}
+      onPointerEnter={(event) => {
+        if (mobile || event.pointerType !== "mouse") return;
+        clearCloseTimer();
+        setIsOpen(true);
+      }}
+      onPointerLeave={(event) => {
+        if (mobile || event.pointerType !== "mouse") return;
+        clearCloseTimer();
+        // Allow the pointer to cross the space between the trigger and panel.
+        closeTimerRef.current = window.setTimeout(() => {
+          closeTimerRef.current = undefined;
+          const focusedElement = document.activeElement;
+          const hasFocusedLink = panelRef.current?.contains(focusedElement);
+          const hasKeyboardTrigger = focusedElement === triggerRef.current && focusedElement?.matches(":focus-visible");
+          if (!hasFocusedLink && !hasKeyboardTrigger) setIsOpen(false);
+        }, 200);
+      }}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node)) setIsOpen(false);
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+          clearCloseTimer();
+          setIsOpen(false);
+        }
       }}
       onKeyDown={(event) => {
         if (event.key === "Escape" && isOpen) {
           event.preventDefault();
           event.stopPropagation();
+          clearCloseTimer();
           setIsOpen(false);
           triggerRef.current?.focus();
         }
@@ -66,10 +107,19 @@ export function IndustryMegaMenu({ mobile = false, onItemClick }: IndustryMegaMe
         aria-expanded={isOpen}
         aria-controls={panelId}
         aria-label={`${industryNavigation.label} menu`}
-        onClick={() => setIsOpen(!isOpen)}
+        onPointerDown={(event) => {
+          clickPointerTypeRef.current = event.pointerType;
+        }}
+        onClick={(event) => {
+          clearCloseTimer();
+          // A mouse click keeps the panel opened by hover; touch and keyboard toggle it.
+          const mouseClick = !mobile && event.detail > 0 && clickPointerTypeRef.current === "mouse";
+          setIsOpen(mouseClick || !isOpen);
+        }}
         onKeyDown={(event) => {
           if (event.key === "ArrowDown") {
             event.preventDefault();
+            clearCloseTimer();
             setIsOpen(true);
             requestAnimationFrame(() => panelRef.current?.querySelector<HTMLAnchorElement>("a")?.focus());
           }
