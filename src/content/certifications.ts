@@ -1,10 +1,13 @@
-// The six groups selected by the user from Strategic Mix's Corresponding Frameworks column.
-// Preserve their order and repeated groups, which correspond to separate service lines.
-export const frameworkGroups = [
-  { id: "ai-strategy", label: "ISO 42001" },
-  { id: "generative-ai", label: "ISO 42001, SOC 2" },
-  { id: "data-engineering", label: "ISO 27001, GDPR" },
-  { id: "ai-engineering", label: "SOC 2, CIS Benchmarks" },
-  { id: "cybersecurity", label: "NIST, ISO 27001" },
-  { id: "cloud-infrastructure", label: "SOC 2, CIS Benchmarks" },
-] as const;
+import clientFrameworkLogos from "../assets/frameworks/client-framework-logos.png";
+
+// Display each mark from the original client-supplied transparent sheet.
+// SVG viewBoxes preserve each mark's proportions; display filters improve dark-background contrast.
+export const frameworkLogoSheet = { src: clientFrameworkLogos, width: 1536, height: 1024 } as const;
+export const frameworkLogos = {
+  iso42001: { name: "ISO 42001", viewBox: "77 88 363 379", filter: "brightness(1.6)" },
+  iso27001: { name: "ISO 27001", viewBox: "592 82 357 403", filter: "brightness(1.6)" },
+  gdpr: { name: "GDPR", viewBox: "1087 78 375 374", filter: "none" },
+  soc2: { name: "SOC 2", viewBox: "75 542 379 381", filter: "brightness(0) invert(1)" },
+  cisBenchmarks: { name: "CIS Benchmarks", viewBox: "529 577 447 327", filter: "brightness(0) invert(1)" },
+  nist: { name: "NIST", viewBox: "1010 626 480 225", filter: "brightness(0) invert(1)" },
+} as const;
