@@ -70,6 +70,14 @@ try {
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'domcontentloaded' });
   await checkIndustryMenu('Main navigation');
   const desktopIndustryTrigger = 'nav[aria-label="Main navigation"] button[aria-label="Industries We Serve menu"]';
+  const hoverBridge = await page.$eval(desktopIndustryTrigger, (button) => {
+    const rect = button.getBoundingClientRect();
+    return { x: rect.x + rect.width / 2, y: rect.bottom + 8 };
+  });
+  await page.mouse.move(hoverBridge.x, hoverBridge.y);
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  assert.equal(await page.$eval(desktopIndustryTrigger, (button) => button.getAttribute('aria-expanded')), 'true',
+    'The industry menu must stay open while moving slowly through the gap below its label.');
   await page.hover('nav[aria-label="Main navigation"] a[href="/industries/mining"]');
   await new Promise((resolve) => setTimeout(resolve, 300));
   assert.equal(await page.$eval(desktopIndustryTrigger, (button) => button.getAttribute('aria-expanded')), 'true',

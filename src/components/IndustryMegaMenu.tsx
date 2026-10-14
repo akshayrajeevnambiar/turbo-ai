@@ -65,6 +65,8 @@ export function IndustryMegaMenu({ mobile = false, onItemClick }: IndustryMegaMe
   return (
     <div
       ref={containerRef}
+      className={mobile ? undefined : "flex items-center"}
+      style={mobile ? undefined : { height: tokens.layout.headerH }}
       onPointerEnter={(event) => {
         if (mobile || event.pointerType !== "mouse") return;
         clearCloseTimer();
