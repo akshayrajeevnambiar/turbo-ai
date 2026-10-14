@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { SectionLink } from "./SectionLink";
 import { Dropdown } from "./Dropdown";
 import { MobileDropdown } from "./MobileDropdown";
-import { site, tokens } from "../content/turboai";
+import { IndustryMegaMenu } from "./IndustryMegaMenu";
+import { industryNavigation, site, tokens } from "../content/turboai";
 import turboAiLogo from "../assets/turbo-ai-logo-removebg-preview.png";
 import { cmsPublicEnabled } from "../cms/client";
 import { usePublishedEntries } from "../cms/hooks";
@@ -17,6 +18,7 @@ export function Header() {
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState<string>("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -85,6 +87,26 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        mobileMenuButtonRef.current?.focus();
+      }
+    };
+    const breakpoint = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => {
+      if (breakpoint.matches) setIsMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    breakpoint.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      breakpoint.removeEventListener("change", closeOnDesktop);
+    };
+  }, [isMobileMenuOpen]);
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -128,12 +150,14 @@ export function Header() {
         <nav
           role="navigation"
           aria-label="Main navigation"
-          className="hidden lg:flex items-center"
+          className="hidden xl:flex items-center"
         >
           <ul className="flex items-center gap-3 xl:gap-5 2xl:gap-6">
             {navItems.map((item) => (
               <li key={item.label} className="flex items-center">
-                {item.dropdown ? (
+                {item.href === industryNavigation.href ? (
+                  <IndustryMegaMenu />
+                ) : item.dropdown ? (
                   <Dropdown label={item.label} items={item.dropdown} />
                 ) : (
                   <SectionLink
@@ -152,7 +176,8 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="mobile-menu-button lg:hidden p-2 text-white/80 hover:text-white transition-colors"
+          ref={mobileMenuButtonRef}
+          className="mobile-menu-button relative z-50 xl:hidden p-2 text-white/80 hover:text-white transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
@@ -188,7 +213,7 @@ export function Header() {
           <>
             {/* Backdrop overlay */}
             <div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 xl:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-hidden="true"
             />
@@ -196,7 +221,8 @@ export function Header() {
             {/* Mobile menu */}
             <div
               id="mobile-menu"
-              className="mobile-menu absolute top-full left-0 right-0 bg-charcoal border border-emeraldTint/20 shadow-2xl lg:hidden z-50"
+              className="mobile-menu absolute top-full left-0 right-0 overflow-y-auto overscroll-contain bg-charcoal border border-emeraldTint/20 shadow-2xl xl:hidden z-50"
+              style={{ maxHeight: `calc(100dvh - ${tokens.layout.headerH}px)` }}
             >
               <nav
                 role="navigation"
@@ -206,7 +232,9 @@ export function Header() {
                 <ul className="space-y-0">
                   {navItems.map((item) => (
                     <li key={item.label}>
-                      {item.dropdown ? (
+                      {item.href === industryNavigation.href ? (
+                        <IndustryMegaMenu mobile onItemClick={handleLinkClick} />
+                      ) : item.dropdown ? (
                         <MobileDropdown
                           label={item.label}
                           items={item.dropdown}

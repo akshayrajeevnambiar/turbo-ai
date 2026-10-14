@@ -52,6 +52,18 @@
     Cache-Control = "public, max-age=86400"
 
 [[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/offshore-development"
+  to = "/ai-engineering-software-development"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/admin/*"
   to = "/index.html"
   status = 200

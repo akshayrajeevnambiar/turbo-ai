@@ -14,12 +14,25 @@ import tangentLogo from "../assets/tangent-logo.png";
 import teyseerSecurityLogo from "../assets/teyseer-security-logo.jpg";
 import toddBrickhouseLogo from "../assets/todd-brickhouse-logo.png";
 import zeibartLogo from "../assets/zeibart-logo.png";
+import { industriesWeServe } from "./enterprisePages";
 
 export interface DropdownItem {
   label: string;
   href: string;
   external?: boolean;
 }
+
+const industryLinks: DropdownItem[] = industriesWeServe.map(({ name, href }) => ({ label: name, href }));
+
+export const industryNavigation = {
+  label: "Industries We Serve",
+  href: "/industries-we-serve",
+  groups: [
+    { label: "Services & Industry", items: industryLinks.slice(0, 6) },
+    { label: "Resources & Commerce", items: industryLinks.slice(6, 12) },
+    { label: "Infrastructure & Public Sector", items: industryLinks.slice(12) },
+  ],
+};
 
 export const site = {
   meta: {
@@ -48,14 +61,9 @@ export const site = {
         ],
       },
       {
-        label: "Industries",
-        href: "#",
-        dropdown: [
-          {
-            label: "Industries We Serve",
-            href: "/industries-we-serve",
-          },
-        ],
+        label: industryNavigation.label,
+        href: industryNavigation.href,
+        dropdown: industryLinks,
       },
       { label: "Solutions", href: "/enterprise-ai-solutions" },
       {

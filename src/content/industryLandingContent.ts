@@ -1,4 +1,7 @@
 export interface IndustryLandingContent {
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string;
   intro: string;
   challenges: { title: string; body: string }[];
   solutions: { title: string; body: string }[];
@@ -196,6 +199,108 @@ export const industryLandingContent: Record<string, IndustryLandingContent> = {
     products: [{ title: "i-Lakehouse", href: "/products/i-lakehouse" }],
     insights: [{ title: "Predictive Maintenance That Fits Manufacturing Workflows", href: "/blog/manufacturing-predictive-maintenance-workflow" }, { title: "AI-Assisted Exception Management in Logistics", href: "/blog/logistics-exception-management-ai" }],
     cta: "Map an automotive quality or service workflow.",
+  },
+  mining: {
+    seoTitle: "Mining AI Solutions | Turbo AI",
+    seoDescription: "Explore mining AI solutions for Saskatoon teams: equipment health, processing analytics, operational data and source-linked knowledge with expert review.",
+    seoKeywords: "Mining AI Solutions Saskatoon, mining artificial intelligence, mining predictive maintenance, mining data analytics",
+    intro: "Mining teams need to connect equipment condition, processing performance, and field records across sites and planning offices. For organizations evaluating mining AI solutions in Saskatoon, Turbo AI helps turn those sources into practical maintenance, production, and knowledge workflows that engineers and operators can validate.",
+    challenges: [
+      { title: "Asset signals lack operating context", body: "An unusual vibration or temperature reading means little without the asset's load, operating state, and maintenance history. Isolated alerts make it difficult to distinguish an inspection priority from a normal process change." },
+      { title: "Processing records are difficult to reconcile", body: "Feed characteristics, laboratory results, equipment settings, and production totals may use different timestamps or identifiers. That makes it harder to investigate variation across a processing circuit." },
+      { title: "Site knowledge is scattered", body: "Shift logs, inspection notes, work orders, and technical procedures often sit in separate systems. Teams lose time reconstructing an issue or checking whether guidance is current and applicable to an asset." },
+    ],
+    solutions: [
+      { title: "Equipment health intelligence", body: "Connect telemetry with asset hierarchies, operating modes, and maintenance records. Prioritize unusual behaviour with visible supporting evidence so reliability teams can decide which inspections to schedule." },
+      { title: "Processing performance analytics", body: "Align production measurements, sample results, and process events in a traceable timeline. Engineers can compare conditions and investigate variation before proposing changes to operating parameters." },
+      { title: "Site-to-office data foundations", body: "Create governed data pipelines for site systems, maintenance applications, and planning records. Make delayed feeds, missing measurements, and inconsistent asset identifiers visible to the people using the analysis." },
+      { title: "Technical knowledge retrieval", body: "Make approved maintenance procedures, inspection reports, and operating guidance searchable with citations and revision dates. Keep asset applicability and access permissions attached to each answer." },
+    ],
+    useCases: [
+      { title: "Critical asset maintenance review", body: "Combine condition changes and recent work orders for a pump, conveyor, or other selected asset. A reliability engineer reviews the evidence and raises an inspection through the existing maintenance process." },
+      { title: "Processing variance investigation", body: "Bring throughput, sample results, downtime events, and operating conditions into one review. Process engineers can test possible explanations without treating a statistical association as a confirmed cause." },
+      { title: "Shift handover preparation", body: "Draft a summary of verified production events, unresolved equipment issues, and outstanding work from approved records. Supervisors confirm the handover before the next shift relies on it." },
+      { title: "Inspection evidence search", body: "Help authorized teams retrieve relevant inspection findings and technical procedures for a specific asset. The source record stays accessible for engineering review and follow-up." },
+    ],
+    outcomes: ["More focused equipment inspections with supporting evidence", "Clearer investigation of processing and production variation", "Better continuity between site operations and planning teams"],
+    faqs: [
+      { question: "How can mining AI solutions support teams in Saskatoon?", answer: "A scoped workflow can connect site equipment, processing, and maintenance records to the teams coordinating work from Saskatoon. Start with one asset class or operational question, identify the data owner, and validate recommendations with site personnel." },
+      { question: "What data is needed for a mining AI pilot?", answer: "For equipment health, begin with reliable asset identifiers, timestamped measurements, operating states, and work orders. For processing analytics, add production events and relevant sample results. Check coverage and data quality before selecting a model." },
+      { question: "Can AI change mine or processing equipment settings?", answer: "The workflows described here provide analysis and decision support. Qualified personnel retain control of operational settings, maintenance approvals, and safety decisions under the site's established procedures." },
+      { question: "How should mining teams evaluate results?", answer: "Measure whether alerts lead to useful inspections, how often engineers override recommendations, and how long investigations take. Compare the pilot with a documented baseline before extending it to other assets or sites." },
+    ],
+    services: [{ title: "Data Engineering", href: "/data-engineering-ai-foundations" }, { title: "Enterprise AI Solutions", href: "/enterprise-ai-solutions" }, { title: "Generative & Agentic AI", href: "/generative-ai-agentic-ai" }, { title: "AI Governance", href: "/ai-governance-cybersecurity" }],
+    products: [{ title: "i-Lakehouse", href: "/products/i-lakehouse" }],
+    insights: [{ title: "Predictive Maintenance That Fits Manufacturing Workflows", href: "/blog/manufacturing-predictive-maintenance-workflow" }, { title: "Connecting Construction Data to Project Decisions", href: "/blog/construction-project-intelligence" }],
+    cta: "Discuss a mining AI workflow for your operations team.",
+  },
+  "real-estate": {
+    seoTitle: "Real Estate AI Solutions | Turbo AI",
+    seoDescription: "Explore real estate AI solutions for Toronto teams: lease document intelligence, property operations, portfolio analytics and reviewed service workflows.",
+    seoKeywords: "Real Estate AI Solutions Toronto, real estate artificial intelligence, property management AI, lease document intelligence",
+    intro: "Real estate teams coordinate property records, leases, maintenance, and service requests across a changing portfolio. For organizations exploring real estate AI solutions in Toronto, Turbo AI connects these sources to support document review, property operations, and portfolio planning with clear human ownership.",
+    challenges: [
+      { title: "Property records are fragmented", body: "Lease documents, amendments, accounting records, and building information may describe the same property differently. Inconsistent identifiers and versions slow portfolio reviews and everyday decisions." },
+      { title: "Lease details require careful review", body: "Dates, obligations, renewal options, and exceptions can be spread across a lease and its amendments. A summary that loses the source clause can create expensive follow-up work." },
+      { title: "Service requests lose context", body: "Maintenance messages arrive through multiple channels and may omit the building, unit, or prior issue. Property teams need enough context to route a request and track its resolution." },
+    ],
+    solutions: [
+      { title: "Source-linked lease intelligence", body: "Classify documents and propose key dates or obligations with citations to the relevant clause and amendment. Property or legal specialists validate extracted details before they inform commitments." },
+      { title: "Portfolio data integration", body: "Align property, unit, lease, and work-order identifiers across approved systems. Make reporting definitions, source dates, and incomplete records visible in portfolio analysis." },
+      { title: "Property operations assistance", body: "Organize incoming service requests by property and issue type, identify missing details, and prepare routing suggestions. Property staff retain control of priorities and communications." },
+      { title: "Reviewed planning scenarios", body: "Combine authorized occupancy, lease expiry, operating cost, and maintenance information to compare portfolio scenarios. Show assumptions and uncertainty so teams can evaluate a recommendation before acting." },
+    ],
+    useCases: [
+      { title: "Lease abstract preparation", body: "Extract proposed commencement dates, renewal windows, and relevant obligations from a lease package. A reviewer checks each field against the source documents and records corrections." },
+      { title: "Maintenance request triage", body: "Link an incoming request to the correct property and existing work history, then suggest the responsible queue. Staff apply established urgent-response procedures and confirm the next step." },
+      { title: "Portfolio review preparation", body: "Bring lease expiries, occupancy, costs, and planned work into a consistent view. Asset managers can identify questions for investigation using source-linked figures and explicit assumptions." },
+      { title: "Property knowledge assistant", body: "Help authorized staff retrieve approved building procedures, vendor information, and service policies. Access controls separate internal operational documents from information suitable for resident or tenant communications." },
+    ],
+    outcomes: ["Less repetitive lease and property document review", "Clearer service handoffs with property context", "More consistent portfolio reporting and planning assumptions"],
+    faqs: [
+      { question: "Where can real estate AI solutions help Toronto property teams?", answer: "Useful starting points include lease abstraction, maintenance request routing, and portfolio reporting. Select a workflow with approved records, a responsible reviewer, and measurable handling time or rework so the pilot has a clear basis for evaluation." },
+      { question: "Can AI interpret lease obligations on its own?", answer: "AI can retrieve clauses, compare document versions, and prepare an abstract, but a qualified reviewer should confirm the interpretation and any proposed action. Keep the original lease and amendments attached to each extracted field." },
+      { question: "How is tenant and resident information handled?", answer: "Limit the workflow to the information required for its purpose, apply role-based access, and define retention before connecting records. Test that retrieval and generated responses do not reveal information about other occupants." },
+      { question: "Does a portfolio model replace a professional valuation or tenant decision?", answer: "No. These workflows organize evidence and compare planning assumptions. Professional valuations, leasing decisions, and other consequential actions remain with accountable people using the required review process." },
+    ],
+    services: [{ title: "Generative & Agentic AI", href: "/generative-ai-agentic-ai" }, { title: "Data Engineering", href: "/data-engineering-ai-foundations" }, { title: "Enterprise AI Solutions", href: "/enterprise-ai-solutions" }, { title: "AI Governance", href: "/ai-governance-cybersecurity" }],
+    products: [{ title: "i-Lakehouse", href: "/products/i-lakehouse" }],
+    insights: [{ title: "Connecting Construction Data to Project Decisions", href: "/blog/construction-project-intelligence" }, { title: "Document Intelligence for Insurance Claims Teams", href: "/blog/insurance-claims-document-intelligence" }],
+    cta: "Explore a real estate document or property operations workflow.",
+  },
+  "oil-and-gas": {
+    seoTitle: "Oil & Gas AI Solutions | Turbo AI",
+    seoDescription: "Explore oil and gas AI solutions for Calgary teams: equipment reliability, production analytics, technical knowledge and governed operational data.",
+    seoKeywords: "Oil and Gas AI Solutions Calgary, oil and gas artificial intelligence, energy predictive maintenance, oil and gas data analytics",
+    intro: "Oil and gas teams need dependable context across field assets, production records, maintenance, and engineering documents. For organizations considering oil and gas AI solutions in Calgary, Turbo AI connects operational data and technical knowledge to support reliability, investigation, and planning workflows under expert review.",
+    challenges: [
+      { title: "Field and office records diverge", body: "Equipment telemetry, production reports, work orders, and engineering records may use different asset names and update schedules. Teams spend time reconciling a picture of what happened before they can investigate." },
+      { title: "Equipment alerts need prioritization", body: "A condition alert is difficult to assess without operating mode, maintenance history, and the asset's role in the process. Reliability teams need evidence that explains why an inspection deserves attention." },
+      { title: "Technical guidance changes", body: "Procedures, equipment manuals, and engineering revisions can remain in separate repositories. Finding an outdated or inapplicable document can undermine a maintenance or planning review." },
+    ],
+    solutions: [
+      { title: "Governed operational data", body: "Align asset hierarchies, time-series measurements, production events, and maintenance records. Preserve timestamps, units, and source lineage so engineers can identify missing or conflicting information." },
+      { title: "Reliability decision support", body: "Compare equipment behaviour within the appropriate operating state and show the measurements behind a flag. Engineers validate the finding and choose the inspection or maintenance response." },
+      { title: "Production variance analysis", body: "Bring confirmed downtime, operating conditions, and production records into one investigation view. Analysts can distinguish a possible process issue from a reporting gap and document what needs field verification." },
+      { title: "Approved engineering knowledge", body: "Retrieve technical procedures and equipment documentation with citations, revision dates, and asset applicability. Permission-aware access keeps sensitive operational information within the authorized team." },
+    ],
+    useCases: [
+      { title: "Rotating equipment health review", body: "Combine condition trends and maintenance history for selected pumps or compressors. Reliability specialists inspect the supporting evidence before raising work through existing approval processes." },
+      { title: "Production exception investigation", body: "Connect a reported variance with downtime events, measurement quality, and relevant operating conditions. The operations team confirms the cause and decides what action is appropriate." },
+      { title: "Maintenance planning preparation", body: "Assemble open work, inspection findings, required parts, and current technical documents for a planned maintenance window. Planners validate dependencies before approving scope or schedules." },
+      { title: "Operations handover summary", body: "Prepare a cited summary of verified events, outstanding issues, and assigned follow-up from approved logs. Supervisors review the summary so uncertain observations do not become confirmed facts." },
+    ],
+    outcomes: ["More actionable reliability reviews with asset context", "Less effort reconciling production and maintenance records", "Better access to current, applicable engineering knowledge"],
+    faqs: [
+      { question: "How can oil and gas AI solutions support Calgary teams?", answer: "They can connect field records with reliability, engineering, and planning workflows coordinated in Calgary. A practical pilot focuses on one asset group or recurring review task, with site personnel validating the data and recommendations." },
+      { question: "Can these AI workflows control operational equipment?", answer: "The use cases described here provide evidence and decision support. They do not bypass established control systems, operating procedures, safety systems, or engineering authorization for equipment changes." },
+      { question: "Which data sources should be connected first?", answer: "Start with an agreed asset hierarchy, timestamped equipment measurements, maintenance records, and relevant operating events. Verify units, time alignment, source permissions, and missing data before testing analytical models." },
+      { question: "How should an oil and gas AI pilot be measured?", answer: "Track the usefulness of inspection recommendations, false alerts, reviewer corrections, and investigation time against a baseline. Validate performance across relevant operating states before extending the workflow." },
+    ],
+    services: [{ title: "Data Engineering", href: "/data-engineering-ai-foundations" }, { title: "Enterprise AI Solutions", href: "/enterprise-ai-solutions" }, { title: "Generative & Agentic AI", href: "/generative-ai-agentic-ai" }, { title: "AI Governance", href: "/ai-governance-cybersecurity" }],
+    products: [{ title: "i-Lakehouse", href: "/products/i-lakehouse" }],
+    insights: [{ title: "Building Asset Intelligence for Energy Operations", href: "/blog/energy-ai-asset-intelligence-foundations" }, { title: "Predictive Maintenance That Fits Manufacturing Workflows", href: "/blog/manufacturing-predictive-maintenance-workflow" }],
+    cta: "Scope an oil and gas reliability or knowledge workflow.",
   },
   retail: {
     intro: "Retail decisions depend on local demand, available stock, digital behaviour, and service context. Turbo AI helps connect those signals so merchants and store teams can act with better evidence.",
@@ -493,6 +598,18 @@ export const industryJourneyAdditions: Record<string, IndustryJourneyAddition> =
   "automotive-mobility": {
     opportunity: "AI can connect manufacturing, warranty, service, and parts signals across the vehicle lifecycle. Quality and service teams can investigate patterns sooner while retaining engineering review for safety, repair, and process decisions.",
     technology: "The architecture aligns vehicle, component, lot, service, and supplier identifiers in governed data products. Analytics and approved knowledge retrieval then support quality investigation, technician workflows, and parts planning.",
+  },
+  mining: {
+    opportunity: "AI can connect equipment condition, processing records, and site knowledge so mining teams spend less time reconstructing events. The opportunity is earlier, evidence-backed maintenance and production review, with operating decisions retained by qualified site personnel.",
+    technology: "Asset hierarchies, time-series measurements, work orders, sample results, and approved documents feed governed data products. Analytical models and cited retrieval expose source quality and operating context inside engineering, maintenance, and shift workflows.",
+  },
+  "real-estate": {
+    opportunity: "AI can help property and asset teams prepare lease abstracts, organize service requests, and compare portfolio information using consistent records. The value comes from shorter document and coordination tasks while qualified reviewers retain control of legal interpretations, leasing decisions, and commitments.",
+    technology: "Property, unit, lease, accounting, and work-order records are aligned through governed identifiers and permission-aware document processing. Cited extraction, reviewer queues, and planning views preserve amendments, source dates, assumptions, and correction history.",
+  },
+  "oil-and-gas": {
+    opportunity: "AI can bring field measurements, maintenance history, production events, and engineering guidance into one reviewable context. Reliability and operations teams can investigate exceptions and prepare work with stronger evidence while retaining established controls over equipment and safety decisions.",
+    technology: "A governed operational data layer reconciles asset hierarchies, units, timestamps, work orders, and document revisions. Condition analytics and permission-aware retrieval support reliability, planning, and handover applications with monitoring, source lineage, and expert validation.",
   },
   retail: {
     opportunity: "AI can help merchants and store teams interpret local demand, current availability, returns, and service context together. Reviewable forecasts and recommendations support better decisions without treating customers or locations as interchangeable data points.",

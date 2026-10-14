@@ -87,6 +87,9 @@ function App() {
       <Routes>
         <Route path="/admin/*" element={<Suspense fallback={<main className="min-h-screen bg-[#020617] p-10 text-white">Loading admin…</main>}><AdminApp /></Suspense>} />
         <Route path="/" element={page("home", <Home />)} />
+        <Route path="/index.php" element={<Navigate to="/" replace />} />
+        <Route path="/offshore-development" element={<Navigate to="/ai-engineering-software-development" replace />} />
+        <Route path="/404" element={<CmsNotFound resolveRedirects={false} />} />
         <Route path="/ai-transformation" element={page("ai-transformation", <AITransformation />)} />
         <Route path="/strategic-intelligence" element={page("strategic-intelligence", <StrategicIntelligence />)} />
         <Route path="/digital-architecture" element={page("digital-architecture", <DigitalArchitecture />)} />

@@ -21,7 +21,7 @@ export function IndustryDetail() {
   if ((!industry || !content || !addition) && cms) return <CmsContent entry={cms} />;
   if (!industry || !content || !addition) return <Navigate to="/industries-we-serve" replace />;
 
-  const title = `AI for ${industry.name} | Turbo AI`;
+  const title = content.seoTitle || `AI for ${industry.name} | Turbo AI`;
   const siteUrl = import.meta.env.VITE_BASE_URL || "https://turbo-ai.ca";
   const url = `${siteUrl}${industry.href}`;
   const breadcrumb = {
@@ -36,7 +36,7 @@ export function IndustryDetail() {
 
   return (
     <main className="bg-[#020617] text-white">
-      <SEO title={title} description={content.intro} image={new URL(industry.image, siteUrl).href} url={url} keywords={`${industry.name}, enterprise AI, data engineering, operational intelligence`} />
+      <SEO title={title} description={content.seoDescription || content.intro} image={new URL(industry.image, siteUrl).href} url={url} keywords={content.seoKeywords || `${industry.name}, enterprise AI, data engineering, operational intelligence`} />
       <Helmet><script type="application/ld+json">{JSON.stringify(breadcrumb)}</script></Helmet>
       <section className="relative min-h-[640px] overflow-hidden pt-28">
         <img src={cms?.hero_image || industry.image} alt={industry.alt} className="absolute inset-0 h-full w-full object-cover opacity-45" />

@@ -7,6 +7,16 @@
   "devCommand": "npm run dev",
   "redirects": [
     {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/offshore-development",
+      "destination": "/ai-engineering-software-development",
+      "permanent": true
+    },
+    {
       "source": "/industries",
       "destination": "/industries-we-serve",
       "permanent": true

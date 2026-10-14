@@ -135,7 +135,7 @@ export function SEO({ pageKey, title, description, image, url, keywords, robots,
         <Helmet defer={false} prioritizeSeoTags>
             <title>{meta.title}</title>
             <meta name="description" content={meta.description} />
-            {(cms?.robots || robots) && <meta name="robots" content={cms?.robots || robots} />}
+            <meta name="robots" content={cms?.robots || robots || "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"} />
             {meta.keywords && <meta name="keywords" content={meta.keywords} />}
 
             {/* Canonical URL */}

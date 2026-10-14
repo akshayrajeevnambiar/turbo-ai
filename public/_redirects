@@ -1,3 +1,6 @@
+# Send obsolete search results to their current replacements.
+/index.php    /    301!
+/offshore-development    /ai-engineering-software-development    301!
 # Keep deep links into the protected admin UI available.
 /admin/*    /index.html   200
 # Published public routes have prerendered files. Unknown URLs return a real 404.

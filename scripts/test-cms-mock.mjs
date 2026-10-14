@@ -1,10 +1,24 @@
 import fs from 'node:fs';
 import http from 'node:http';
+import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 
 const seed = JSON.parse(fs.readFileSync('supabase/seed/cms-entries.json', 'utf8'));
-const wanted = new Set(['page:home', 'page:blog', 'product:i-lakehouse', 'blog:energy-ai-asset-intelligence-foundations']);
+const newIndustries = [
+  { slug: 'mining', title: 'Mining', city: 'Saskatoon' },
+  { slug: 'real-estate', title: 'Real Estate', city: 'Toronto' },
+  { slug: 'oil-and-gas', title: 'Oil & Gas', city: 'Calgary' },
+];
+const wanted = new Set(['page:home', 'page:blog', 'product:i-lakehouse', 'blog:energy-ai-asset-intelligence-foundations',
+  ...newIndustries.map(({ slug }) => `industry:${slug}`)]);
 const rows = seed.filter((entry) => wanted.has(`${entry.kind}:${entry.slug}`));
+for (const { slug, title, city } of newIndustries) {
+  const entry = rows.find((row) => row.kind === 'industry' && row.slug === slug);
+  assert.ok(entry, `The CMS seed is missing the ${title} industry. Run npm run cms:export first.`);
+  assert.equal(entry.status, 'published', `${title} must be published in the CMS fixture.`);
+  assert.equal(entry.seo_title, `${title} AI Solutions | Turbo AI`);
+  assert.ok(entry.seo_description.includes(city), `${title} metadata must include its target market.`);
+}
 rows.push({ ...seed.find((entry) => entry.kind === 'blog' && entry.slug !== 'energy-ai-asset-intelligence-foundations'), status: 'draft' });
 const server = http.createServer((request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
@@ -39,6 +53,13 @@ server.close();
 if (exitCode !== 0) process.exit(exitCode || 1);
 
 const sitemap = fs.readFileSync('dist/sitemap.xml', 'utf8');
+const notFound = fs.readFileSync('dist/404.html', 'utf8');
+assert.ok(notFound.includes('data-not-found'), 'CMS builds must prerender the branded 404.');
+assert.ok(/<header\b/.test(notFound) && /<footer\b/.test(notFound), 'The CMS 404 must keep the site navigation and footer.');
+assert.ok(/<meta\b(?=[^>]*\bname="robots")[^>]*\bcontent="[^"]*noindex/.test(notFound), 'The CMS 404 must not be indexed.');
+assert.ok(!/<link\b[^>]*\brel="canonical"/.test(notFound), 'The CMS 404 must not inherit a canonical URL.');
+assert.ok(!notFound.includes('data-cms-error'), 'The 404 must work without a CMS entry.');
+assert.ok(!sitemap.includes('/404'), 'The CMS sitemap must exclude the error page.');
 const post = fs.readFileSync('dist/blog/energy-ai-asset-intelligence-foundations/index.html', 'utf8');
 const draft = rows.find((entry) => entry.status === 'draft');
 if (!sitemap.includes('/blog/energy-ai-asset-intelligence-foundations') || sitemap.includes(`/blog/${draft.slug}`)) {
@@ -48,4 +69,19 @@ if (!post.includes('Building Asset Intelligence for Energy Operations') || !post
   throw new Error('Published article was not prerendered with its CMS content.');
 }
 if (fs.existsSync(`dist/blog/${draft.slug}/index.html`)) throw new Error('Draft article was prerendered.');
-console.log('CMS mock passed: published content rendered, draft hidden, sitemap filtered.');
+for (const { slug, title, city } of newIndustries) {
+  const route = `/industries/${slug}`;
+  const html = fs.readFileSync(`dist${route}/index.html`, 'utf8');
+  const encodedTitle = title.replaceAll('&', '&amp;');
+  assert.equal(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1], `${encodedTitle} AI Solutions | Turbo AI`,
+    `${route} must prerender the location-free CMS title.`);
+  assert.equal(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1], `AI for ${encodedTitle}`,
+    `${route} must prerender its own industry heading.`);
+  const description = html.match(/<meta\b(?=[^>]*\bname="description")[^>]*\bcontent="([^"]*)"/i)?.[1];
+  assert.ok(description?.includes(city), `${route} must prerender its target market in the SEO description.`);
+  const canonical = html.match(/<link\b(?=[^>]*\brel="canonical")[^>]*\bhref="([^"]*)"/i)?.[1];
+  assert.ok(canonical, `${route} must prerender a canonical URL.`);
+  assert.equal(new URL(canonical).pathname, route);
+  assert.ok(sitemap.includes(`${route}</loc>`), `${route} must appear in the CMS-generated sitemap.`);
+}
+console.log('CMS mock passed: published content and three industry pages rendered with SEO metadata, branded noindex 404 without CMS errors, draft hidden, sitemap filtered.');

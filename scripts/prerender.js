@@ -12,6 +12,22 @@ const cmsPath = (entry) => entry.kind === 'page'
     ? entry.slug === 'home' ? '/' : `/${entry.slug}`
     : entry.kind === 'solution' ? `/solutions/${entry.slug}`
     : `/${entry.kind === 'industry' ? 'industries' : entry.kind === 'product' ? 'products' : 'blog'}/${entry.slug}`;
+const xmlEscape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
+const publicDocuments = [{ route: '/image-credits', file: 'image-credits.html' }];
+
+// Keep reviewed modification dates; a deployment alone does not change page content.
+function knownModificationDates() {
+    const dates = new Map();
+    const source = fs.readFileSync(path.resolve('public', 'sitemap.xml'), 'utf8');
+    for (const match of source.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+        const location = match[1].match(/<loc>([^<]+)<\/loc>/)?.[1];
+        const modified = match[1].match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
+        if (location && modified && !Number.isNaN(Date.parse(modified))) {
+            dates.set(new URL(location).pathname, modified);
+        }
+    }
+    return dates;
+}
 
 async function publishedCmsRoutes() {
     if (!env.VITE_SUPABASE_URL || !env.VITE_SUPABASE_PUBLISHABLE_KEY) {
@@ -118,6 +134,9 @@ async function prerender() {
         '/industries/manufacturing',
         '/industries/construction',
         '/industries/automotive-mobility',
+        '/industries/mining',
+        '/industries/real-estate',
+        '/industries/oil-and-gas',
         '/industries/retail',
         '/industries/supply-chain-logistics',
         '/industries/telecommunications',
@@ -152,6 +171,8 @@ async function prerender() {
         ? [...new Set(cmsEntries.map(cmsPath))]
         : [...new Set([...staticRoutes, ...blogRoutes])];
     const cmsByPath = new Map(cmsEntries.map((entry) => [cmsPath(entry), entry]));
+    const knownDates = knownModificationDates();
+    const sitemapEntries = new Map();
 
     try {
         for (const route of routes) {
@@ -165,13 +186,26 @@ async function prerender() {
             if (cmsEnabled) {
                 await page.waitForFunction(() => !document.querySelector('[data-cms-loading]'), { timeout: 30000 });
                 if (await page.$('[data-cms-error]')) throw new Error(`CMS failed while rendering ${route}.`);
-                if (await page.$('[data-cms-ready="true"] h1:first-child')) {
-                    throw new Error(`Published CMS route ${route} rendered a not-found page.`);
-                }
             }
 
             // Give it a moment for any final animations or effects
             await new Promise(r => setTimeout(r, 500));
+            if (await page.$('[data-not-found]')) throw new Error(`Route ${route} rendered a not-found page.`);
+
+            const metadata = await page.evaluate(() => ({
+                canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+                robots: document.querySelector('meta[name="robots"]')?.getAttribute('content') || '',
+            }));
+            if (!metadata.robots.toLowerCase().includes('noindex')) {
+                if (!metadata.canonical) throw new Error(`Indexable route ${route} has no canonical URL.`);
+                const canonical = new URL(metadata.canonical);
+                if (canonical.origin === new URL(baseUrl).origin && canonical.pathname === route && !canonical.hash && !canonical.search) {
+                    const modified = cmsByPath.get(route)?.updated_at || knownDates.get(route);
+                    sitemapEntries.set(metadata.canonical, modified && !Number.isNaN(Date.parse(modified)) ? modified : undefined);
+                } else {
+                    console.log(`Omitting ${route} from sitemap because its canonical is ${metadata.canonical}.`);
+                }
+            }
 
             // Get the HTML
             const html = await page.content();
@@ -195,35 +229,41 @@ async function prerender() {
             console.log(`Saved ${route} to ${distPath}`);
         }
 
-        // --- Generate robots.txt and sitemap.xml dynamically ---
+        // Standalone public documents are copied by Vite and served using clean URLs.
+        for (const document of publicDocuments) {
+            const filename = path.resolve('dist', document.file);
+            if (fs.existsSync(filename)) sitemapEntries.set(`${baseUrl}${document.route}`, knownDates.get(document.route));
+        }
 
-        // Load env variables (assume production mode for verify, or development if local)
-        // Since we are running 'vite preview', we might be in production mode context, but let's check .env
-        // We can't easily use vite's loadEnv in this script without complex setup if vite isn't fully initialized.
-        // EASIER: Manually parse .env for this simple script or use a regex since we know the format.
+        // Render the same branded error route used by the app, including its navigation and footer.
+        await page.goto(`${serverUrl}/404`, { waitUntil: 'domcontentloaded' });
+        await page.waitForSelector('main[data-not-found]');
+        await page.waitForFunction(() => !document.querySelector('[data-cms-loading]'), { timeout: 30000 });
+        await page.waitForSelector('header');
+        await page.waitForSelector('footer');
+        await page.waitForFunction(() => document.querySelector('meta[name="robots"]')?.content.includes('noindex') && !document.querySelector('link[rel="canonical"]'));
+        if (await page.$('[data-cms-error]')) throw new Error('CMS failed while rendering the branded 404 page.');
+        fs.writeFileSync(path.resolve('dist', '404.html'), await page.content());
+        console.log('Generated branded dist/404.html');
 
         console.log(`Generating SEO files for base URL: ${baseUrl}`);
 
         // Generate robots.txt
-        const robotsContent = `User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: ${baseUrl}/sitemap.xml`;
+        const robotsContent = fs.readFileSync(path.resolve('public', 'robots.txt'), 'utf8')
+            .replace(/^Sitemap:.*$/m, `Sitemap: ${baseUrl}/sitemap.xml`);
         fs.writeFileSync(path.resolve('dist', 'robots.txt'), robotsContent);
         console.log('Generated dist/robots.txt');
 
         // Generate sitemap.xml
         const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.filter((route) => !cmsEnabled || cmsByPath.get(route)?.robots !== 'noindex,nofollow').map(route => `  <url>
-    <loc>${baseUrl}${route === '/' ? '' : route}</loc>
-    <lastmod>${cmsByPath.get(route)?.updated_at?.split('T')[0] || new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
+${[...sitemapEntries].map(([url, modified]) => `  <url>
+    <loc>${xmlEscape(url)}</loc>${modified ? `\n    <lastmod>${xmlEscape(modified)}</lastmod>` : ''}
   </url>`).join('\n')}
-</urlset>`;
+</urlset>\n`;
 
         fs.writeFileSync(path.resolve('dist', 'sitemap.xml'), sitemapContent);
         console.log('Generated dist/sitemap.xml');
-        fs.writeFileSync(path.resolve('dist', '404.html'), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Page not found | Turbo AI</title><style>body{margin:0;background:#020617;color:white;font:16px system-ui}main{min-height:100vh;display:grid;place-content:center;text-align:center;padding:24px}h1{font-size:clamp(36px,6vw,64px);margin:0}a{color:#93c5fd}</style></head><body><main><h1>Page not found</h1><p>This page does not exist or is not published.</p><a href="/">Return home</a></main></body></html>`);
-        console.log('Generated dist/404.html');
 
     } catch (err) {
         console.error('Error during pre-rendering:', err);

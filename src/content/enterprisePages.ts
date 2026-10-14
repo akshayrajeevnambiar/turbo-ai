@@ -2,6 +2,7 @@ import blogGridImage from "../assets/blog-grid-analytics.jpg";
 import blogMaintenanceImage from "../assets/blog-predictive-maintenance.jpg";
 import blogHydrogenImage from "../assets/blog-hydrogen-facility.jpg";
 import dciImage from "../assets/dci-data-center.webp";
+import oilAndGasImage from "../assets/energy-hero-platform.jpg";
 
 const photo = (name: string) => `/enterprise/${name}`;
 
@@ -548,6 +549,42 @@ export const industriesWeServe: IndustryCard[] = [
     relatedHref: "/ai-engineering-software-development",
     foundation: "Join manufacturing, service, and supply data across the vehicle lifecycle with reliable integration.",
     outcome: "Give teams stronger quality signals and more responsive service workflows.",
+  },
+  {
+    name: "Mining",
+    description:
+      "Mining teams need reliable equipment, connected site data, and clear production signals. AI can support maintenance planning, processing insight, and operational knowledge across remote assets.",
+    image: photo("mining.jpg"),
+    alt: "Open-pit mine with terraced rock benches and processing infrastructure",
+    applications: ["Predictive maintenance", "Processing analytics", "Operational knowledge"],
+    href: "/industries/mining",
+    relatedHref: "/data-engineering-ai-foundations",
+    foundation: "Connect equipment telemetry, maintenance records, production logs, and approved technical documents through consistent asset identifiers. Validate sensor quality and time alignment so site engineers can trace each recommendation back to its source.",
+    outcome: "Help mine teams prioritize inspections, investigate production losses, and plan interventions with evidence from across the operation.",
+  },
+  {
+    name: "Real Estate",
+    description:
+      "Real estate teams coordinate leases, properties, service requests, and portfolio performance. AI can simplify document review and connect building operations to better-informed property decisions.",
+    image: photo("real-estate.jpg"),
+    alt: "Toronto skyline with commercial towers and residential buildings at dusk",
+    applications: ["Lease intelligence", "Property operations", "Portfolio analytics"],
+    href: "/industries/real-estate",
+    relatedHref: "/generative-ai-agentic-ai",
+    foundation: "Organize leases, asset registers, work orders, and authorized property data around a shared property record. Keep document versions, access permissions, and source references visible to leasing and operations teams.",
+    outcome: "Reduce repetitive lease review and help property managers coordinate service, maintenance, and portfolio reporting with clearer context.",
+  },
+  {
+    name: "Oil & Gas",
+    description:
+      "Oil and gas operators manage distributed assets, process data, and complex engineering records. AI can support equipment reliability, production monitoring, and technical knowledge with accountable operational review.",
+    image: oilAndGasImage,
+    alt: "Offshore oil and gas platform with processing equipment and access walkways",
+    applications: ["Asset reliability", "Production intelligence", "Engineering assistants"],
+    href: "/industries/oil-and-gas",
+    relatedHref: "/enterprise-ai-solutions",
+    foundation: "Bring historian data, inspection findings, work orders, and approved engineering documents into governed pipelines. Preserve operating context, asset lineage, and separation from control systems so engineers can evaluate signals before acting.",
+    outcome: "Help operations teams investigate production deviations, prioritize maintenance, and retrieve technical evidence with clear human ownership.",
   },
   {
     name: "Retail",

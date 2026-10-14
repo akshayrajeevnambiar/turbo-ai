@@ -88,8 +88,8 @@ try {
       hero_title: `AI for ${industry.name}`, hero_description: detail?.intro || industry.description,
       hero_image: industry.image, cta_text: detail?.cta || 'Start a conversation',
       cta_url: '#connect', related_products: detail?.products.map((item) => item.href.split('/').pop()) || [],
-      seo_title: `AI for ${industry.name} | Turbo AI`, seo_description: detail?.intro || industry.description,
-      seo_keywords: `${industry.name}, enterprise AI, data engineering, operational intelligence` });
+      seo_title: detail?.seoTitle || `AI for ${industry.name} | Turbo AI`, seo_description: detail?.seoDescription || detail?.intro || industry.description,
+      seo_keywords: detail?.seoKeywords || `${industry.name}, enterprise AI, data engineering, operational intelligence` });
   }
 
   const products = [
@@ -120,7 +120,7 @@ try {
     for (const field of ['hero_image', 'og_image']) {
       const value = entry[field];
       if (!value?.includes('/src/assets/')) continue;
-      const filename = decodeURIComponent(new URL(value).pathname.split('/').pop());
+      const filename = decodeURIComponent(new URL(value, 'http://localhost').pathname.split('/').pop());
       if (!copiedAssets.has(filename)) {
         await fs.mkdir('public/cms-seed', { recursive: true });
         await fs.copyFile(path.resolve('src/assets', filename), path.resolve('public/cms-seed', filename));
