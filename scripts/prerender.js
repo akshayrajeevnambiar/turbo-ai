@@ -14,6 +14,21 @@ const cmsPath = (entry) => entry.kind === 'page'
     : `/${entry.kind === 'industry' ? 'industries' : entry.kind === 'product' ? 'products' : 'blog'}/${entry.slug}`;
 const xmlEscape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 const publicDocuments = [{ route: '/image-credits', file: 'image-credits.html' }];
+const analyticsDomains = ['googletagmanager.com', 'google-analytics.com'];
+
+async function renderedHtml(page) {
+    // Runtime loaders belong to the visitor's session, not the static snapshot.
+    // Keep the original inline GTM bootstrap and noscript fallback intact.
+    await page.evaluate((domains) => {
+        for (const script of document.querySelectorAll('script[src]')) {
+            const hostname = new URL(script.src).hostname;
+            if (domains.some(domain => hostname === domain || hostname.endsWith(`.${domain}`))) {
+                script.remove();
+            }
+        }
+    }, analyticsDomains);
+    return page.content();
+}
 
 // Keep reviewed modification dates; a deployment alone does not change page content.
 function knownModificationDates() {
@@ -104,6 +119,16 @@ async function prerender() {
         });
     }
     const page = await browser.newPage();
+    // Avoid recording build visits or serializing scripts injected by analytics.
+    await page.setRequestInterception(true);
+    page.on('request', async (request) => {
+        const hostname = new URL(request.url()).hostname;
+        if (analyticsDomains.some(domain => hostname === domain || hostname.endsWith(`.${domain}`))) {
+            await request.abort();
+        } else {
+            await request.continue();
+        }
+    });
 
     // Static routes
     const staticRoutes = [
@@ -181,8 +206,13 @@ async function prerender() {
             // Navigate to the page
             await page.goto(`${serverUrl}${route === '/' ? '' : route}`, { waitUntil: 'domcontentloaded' });
 
-            // Wait for the root element to be populated
-            await page.waitForSelector('main');
+            // Vite's fallback may contain the already-saved homepage. Wait for this
+            // route's runtime commit, not that stale HTML or a Suspense fallback.
+            await page.waitForFunction((expectedPath) =>
+                window.__TURBOAI_RENDERED_PATH__ === expectedPath &&
+                document.querySelector('main') &&
+                !document.querySelector('[data-route-loading], [data-cms-loading]'),
+                { timeout: 30000 }, route);
             if (cmsEnabled) {
                 await page.waitForFunction(() => !document.querySelector('[data-cms-loading]'), { timeout: 30000 });
                 if (await page.$('[data-cms-error]')) throw new Error(`CMS failed while rendering ${route}.`);
@@ -208,7 +238,7 @@ async function prerender() {
             }
 
             // Get the HTML
-            const html = await page.content();
+            const html = await renderedHtml(page);
 
             // Determine write path
             let distPath;
@@ -237,13 +267,14 @@ async function prerender() {
 
         // Render the same branded error route used by the app, including its navigation and footer.
         await page.goto(`${serverUrl}/404`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => window.__TURBOAI_RENDERED_PATH__ === '/404', { timeout: 30000 });
         await page.waitForSelector('main[data-not-found]');
         await page.waitForFunction(() => !document.querySelector('[data-cms-loading]'), { timeout: 30000 });
         await page.waitForSelector('header');
         await page.waitForSelector('footer');
         await page.waitForFunction(() => document.querySelector('meta[name="robots"]')?.content.includes('noindex') && !document.querySelector('link[rel="canonical"]'));
         if (await page.$('[data-cms-error]')) throw new Error('CMS failed while rendering the branded 404 page.');
-        fs.writeFileSync(path.resolve('dist', '404.html'), await page.content());
+        fs.writeFileSync(path.resolve('dist', '404.html'), await renderedHtml(page));
         console.log('Generated branded dist/404.html');
 
         console.log(`Generating SEO files for base URL: ${baseUrl}`);

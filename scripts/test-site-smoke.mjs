@@ -42,12 +42,17 @@ try {
   browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+  const waitForRoute = (route) => page.waitForFunction((expectedPath) =>
+    window.__TURBOAI_RENDERED_PATH__ === expectedPath &&
+    document.querySelector('main h1') &&
+    !document.querySelector('[data-route-loading], [data-cms-loading]'),
+    { timeout: 10000 }, route);
   const routes = ['/', '/about', '/products', '/products/i-lakehouse',
     '/enterprise-ai-solutions', '/blog', '/blog/energy-ai-asset-intelligence-foundations',
     ...industryLinks.map(({ href }) => href)];
   for (const route of routes) {
     await page.goto(`http://127.0.0.1:${port}${route}`, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('main h1', { timeout: 10000 });
+    await waitForRoute(route);
     const heading = await page.$eval('main h1', (node) => node.textContent.trim());
     if (!heading) throw new Error(`${route} has no heading.`);
     const industry = industries.find(({ slug }) => route === `/industries/${slug}`);
@@ -68,6 +73,7 @@ try {
       `${navigation} needs a link to the industry overview.`);
   };
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'domcontentloaded' });
+  await waitForRoute('/');
   await checkIndustryMenu('Main navigation');
   const desktopIndustryTrigger = 'nav[aria-label="Main navigation"] button[aria-label="Industries We Serve menu"]';
   const hoverBridge = await page.$eval(desktopIndustryTrigger, (button) => {
@@ -148,17 +154,18 @@ try {
   for (const [legacy, destination] of [['/index.php', '/'], ['/offshore-development', '/ai-engineering-software-development']]) {
     await page.goto(`http://127.0.0.1:${port}${legacy}`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction((route) => location.pathname === route, {}, destination);
-    await page.waitForSelector('main h1');
+    await waitForRoute(destination);
     assert.equal(await page.$('[data-not-found]'), null, `${legacy} must route to its relevant replacement page.`);
   }
 
   await page.goto(`http://127.0.0.1:${port}/admin/login`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('main h1');
+  await waitForRoute('/admin/login');
   const setup = await page.$eval('main h1', (node) => node.textContent.trim());
   if (setup !== 'CMS setup required') throw new Error('Unconfigured admin did not show setup state.');
 
   await page.setViewport({ width: 390, height: 568, deviceScaleFactor: 1 });
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'domcontentloaded' });
+  await waitForRoute('/');
   await page.waitForSelector('button[aria-label="Open menu"]');
   await page.click('button[aria-label="Open menu"]');
   await page.waitForSelector('nav[aria-label="Mobile navigation"]');

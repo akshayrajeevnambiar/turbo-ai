@@ -1,14 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Container, Section, Divider } from "./Container";
 import { SectionLink } from "./SectionLink";
-import { useReveal } from "../hooks/useReveal";
 import { copy } from "../content/turboai";
-import heroVideo from "../assets/hero_bg.mp4";
+import heroVideo from "../assets/hero_bg.optimized.mp4";
+import heroPoster from "../assets/hero_bg.poster.webp";
 import { useCmsPage } from "../cms/hooks";
 
 export function Hero() {
   const cms = useCmsPage();
-  const { addElement } = useReveal(60);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   // Add glow pulse animation to title on mount
@@ -30,6 +29,8 @@ export function Hero() {
         muted
         loop
         playsInline
+        poster={heroPoster}
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
         aria-hidden="true"
       >
@@ -47,12 +48,7 @@ export function Hero() {
         <div className="hero-content max-w-4xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
           {/* Title */}
           <h1
-            ref={(el) => {
-              if (el) {
-                titleRef.current = el;
-                addElement(el);
-              }
-            }}
+            ref={titleRef}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-heading leading-tight px-4 sm:px-0 mt-24"
           >
             {cms?.hero_title || copy.hero.title}
@@ -60,7 +56,6 @@ export function Hero() {
 
           {/* Subhead */}
           <p
-            ref={addElement}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
             {cms?.hero_description || copy.hero.subhead}
@@ -68,14 +63,13 @@ export function Hero() {
 
           {/* Micro copy */}
           <p
-            ref={addElement}
             className="text-sm sm:text-base md:text-lg text-midGray max-w-2xl mx-auto px-4 sm:px-0"
           >
             {copy.hero.micro}
           </p>
 
           {/* CTA */}
-          <div ref={addElement} className="pt-2 sm:pt-4">
+          <div className="pt-2 sm:pt-4">
             <SectionLink
               href={cms?.cta_url || copy.hero.cta.href}
               className="cta-link text-base sm:text-lg lg:text-xl inline-block px-6 py-3"
@@ -88,7 +82,6 @@ export function Hero() {
           {/* Divider */}
           {copy.hero.divider && (
             <div
-              ref={addElement}
               className="pt-6 sm:pt-8 lg:pt-12 max-w-md mx-auto px-4 sm:px-0"
             >
               <Divider animate />

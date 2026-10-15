@@ -14,6 +14,7 @@
     "cms:import": "node scripts/import-cms-seed.mjs",
     "test:cms-mock": "node scripts/test-cms-mock.mjs",
     "test:smoke": "node scripts/test-site-smoke.mjs",
+    "test:loading": "node scripts/test-loading.mjs",
     "preview": "vite preview",
     "analyze": "vite build --mode analyze",
     "lint": "eslint .",

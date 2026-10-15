@@ -1,4 +1,4 @@
-import clientFrameworkLogos from "../assets/frameworks/client-framework-logos.png";
+import clientFrameworkLogos from "../assets/frameworks/client-framework-logos.webp";
 
 // Display each mark from the original client-supplied transparent sheet.
 // SVG viewBoxes preserve each mark's proportions; display filters improve dark-background contrast.
