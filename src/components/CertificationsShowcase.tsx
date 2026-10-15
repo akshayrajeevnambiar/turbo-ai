@@ -19,10 +19,10 @@ export function CertificationsShowcase() {
                   viewBox={logo.viewBox}
                   role="img"
                   aria-label={logo.name}
-                  width={144}
-                  height={144}
+                  width={112}
+                  height={56}
                   preserveAspectRatio="xMidYMid meet"
-                  className="h-32 w-full max-w-36 overflow-hidden sm:h-36"
+                  className="h-11 w-full max-w-28 overflow-hidden md:h-14"
                   style={{ filter: logo.filter }}
                 >
                   <defs>
@@ -32,7 +32,7 @@ export function CertificationsShowcase() {
                   </defs>
                   <image href={frameworkLogoSheet.src} width={frameworkLogoSheet.width} height={frameworkLogoSheet.height} clipPath={`url(#${clipId})`} />
                 </svg>
-                <p className="mt-5 text-sm font-medium leading-relaxed text-white/80 sm:text-base">{logo.name}</p>
+                <p className="mt-3 text-sm font-medium leading-relaxed text-white/80 sm:text-base">{logo.name}</p>
               </li>
             );
           })}
