@@ -63,8 +63,7 @@ export function ProductShowcase() {
             Our Products
           </h2>
         </div>
-        <div className="mt-12 flex justify-center gap-3 sm:gap-4">
-          <div className="grid max-w-2xl grid-cols-2 gap-3 sm:gap-4">
+        <div className="mt-12 grid w-full grid-cols-2 gap-3 sm:gap-4">
             {visibleProducts.map(({ name, href, icon: Icon, color }) => (
               <a
                 key={name}
@@ -80,7 +79,6 @@ export function ProductShowcase() {
               </span>
             </a>
             ))}
-          </div>
         </div>
       </Container>
     </Section>
