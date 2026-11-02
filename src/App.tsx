@@ -6,7 +6,6 @@ import { Home } from "./pages/Home";
 import { tokens } from "./content/turboai";
 import { CmsContentPage, CmsNotFound } from "./cms/CmsContentPage";
 import { Helmet } from "react-helmet-async";
-import { CmsProductRoute } from "./cms/CmsProductRoute";
 import { CmsExistingRoute } from "./cms/CmsExistingRoute";
 
 const page = (slug: string, content: React.ReactNode) => <CmsExistingRoute kind="page" slug={slug}>{content}</CmsExistingRoute>;
