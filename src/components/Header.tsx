@@ -13,7 +13,15 @@ export function Header() {
   const { entries: cmsProducts, loading: productsLoading, failed: productsFailed } = usePublishedEntries("product");
   const navItems = site.nav.items.map((item) => {
     if (!cmsPublicEnabled || item.label !== "Products" || !("dropdown" in item)) return item;
-    return { ...item, dropdown: [...(item.dropdown ?? []).slice(0, 1), ...cmsProducts.map((entry) => ({ label: entry.title, href: `/products/${entry.slug}` }))] };
+    return {
+      ...item,
+      dropdown: [
+        ...(item.dropdown ?? []).slice(0, 1),
+        ...cmsProducts
+          .filter((entry) => item.dropdown?.some((link) => link.href === `/products/${entry.slug}`))
+          .map((entry) => ({ label: entry.title, href: `/products/${entry.slug}` })),
+      ],
+    };
   });
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useState<string>("hero");

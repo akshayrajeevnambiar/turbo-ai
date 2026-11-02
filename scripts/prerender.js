@@ -149,6 +149,7 @@ async function prerender() {
         '/industries-we-serve',
         '/enterprise-ai-solutions',
         '/products',
+        '/products/adrs',
         '/about',
         '/industries/financial-services',
         '/industries/insurance',

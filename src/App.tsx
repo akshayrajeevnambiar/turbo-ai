@@ -7,6 +7,7 @@ import { tokens } from "./content/turboai";
 import { CmsContentPage, CmsNotFound } from "./cms/CmsContentPage";
 import { Helmet } from "react-helmet-async";
 import { CmsExistingRoute } from "./cms/CmsExistingRoute";
+import { CmsProductRoute } from "./cms/CmsProductRoute";
 
 const page = (slug: string, content: React.ReactNode) => <CmsExistingRoute kind="page" slug={slug}>{content}</CmsExistingRoute>;
 const AdminApp = lazy(() => import("./cms/AdminApp").then((module) => ({ default: module.AdminApp })));
@@ -28,6 +29,7 @@ const IndustriesWeServe = lazy(() => import("./pages/IndustriesWeServe").then((m
 const IndustryDetail = lazy(() => import("./pages/IndustryDetail").then((module) => ({ default: module.IndustryDetail })));
 const EnterpriseAISolutions = lazy(() => import("./pages/EnterpriseAISolutions").then((module) => ({ default: module.EnterpriseAISolutions })));
 const ProductsIndex = lazy(() => import("./pages/ProductsIndex").then((module) => ({ default: module.ProductsIndex })));
+const ADRS = lazy(() => import("./pages/ADRS").then((module) => ({ default: module.ADRS })));
 const AboutTurboAI = lazy(() => import("./pages/AboutTurboAI").then((module) => ({ default: module.AboutTurboAI })));
 const BlogList = lazy(() => import("./pages/BlogList").then((module) => ({ default: module.BlogList })));
 const BlogPost = lazy(() => import("./pages/BlogPost").then((module) => ({ default: module.BlogPost })));
@@ -134,6 +136,7 @@ function App() {
           <Route path="/industries-we-serve" element={page("industries-we-serve", <IndustriesWeServe />)} />
           <Route path="/enterprise-ai-solutions" element={page("enterprise-ai-solutions", <EnterpriseAISolutions />)} />
           <Route path="/products" element={page("products", <ProductsIndex />)} />
+          <Route path="/products/adrs" element={<CmsProductRoute slug="adrs"><ADRS /></CmsProductRoute>} />
           <Route path="/products/:slug" element={<CmsContentPage kind="product" />} />
           <Route path="/about" element={page("about", <AboutTurboAI />)} />
           <Route path="/industries" element={<Navigate to="/industries-we-serve" replace />} />
