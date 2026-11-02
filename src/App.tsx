@@ -29,9 +29,6 @@ const IndustriesWeServe = lazy(() => import("./pages/IndustriesWeServe").then((m
 const IndustryDetail = lazy(() => import("./pages/IndustryDetail").then((module) => ({ default: module.IndustryDetail })));
 const EnterpriseAISolutions = lazy(() => import("./pages/EnterpriseAISolutions").then((module) => ({ default: module.EnterpriseAISolutions })));
 const ProductsIndex = lazy(() => import("./pages/ProductsIndex").then((module) => ({ default: module.ProductsIndex })));
-const DCI360 = lazy(() => import("./pages/DCI360").then((module) => ({ default: module.DCI360 })));
-const ILakehouse = lazy(() => import("./pages/ILakehouse").then((module) => ({ default: module.ILakehouse })));
-const ADRS = lazy(() => import("./pages/ADRS").then((module) => ({ default: module.ADRS })));
 const AboutTurboAI = lazy(() => import("./pages/AboutTurboAI").then((module) => ({ default: module.AboutTurboAI })));
 const BlogList = lazy(() => import("./pages/BlogList").then((module) => ({ default: module.BlogList })));
 const BlogPost = lazy(() => import("./pages/BlogPost").then((module) => ({ default: module.BlogPost })));
@@ -138,9 +135,6 @@ function App() {
           <Route path="/industries-we-serve" element={page("industries-we-serve", <IndustriesWeServe />)} />
           <Route path="/enterprise-ai-solutions" element={page("enterprise-ai-solutions", <EnterpriseAISolutions />)} />
           <Route path="/products" element={page("products", <ProductsIndex />)} />
-          <Route path="/products/dci-360" element={<CmsProductRoute slug="dci-360"><DCI360 /></CmsProductRoute>} />
-          <Route path="/products/i-lakehouse" element={<CmsProductRoute slug="i-lakehouse"><ILakehouse /></CmsProductRoute>} />
-          <Route path="/products/adrs" element={<CmsProductRoute slug="adrs"><ADRS /></CmsProductRoute>} />
           <Route path="/products/:slug" element={<CmsContentPage kind="product" />} />
           <Route path="/about" element={page("about", <AboutTurboAI />)} />
           <Route path="/industries" element={<Navigate to="/industries-we-serve" replace />} />

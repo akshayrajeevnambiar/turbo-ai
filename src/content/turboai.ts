@@ -71,9 +71,6 @@ export const site = {
         href: "/products",
         dropdown: [
           { label: "Seismic AI", href: "https://seismicai.ca", external: true },
-          { label: "DCI 360", href: "/products/dci-360" },
-          { label: "i-Lakehouse", href: "/products/i-lakehouse" },
-          { label: "ADRS", href: "/products/adrs" },
         ],
       },
       { label: "Perspectives", href: "/blog" },
