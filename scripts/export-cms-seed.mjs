@@ -43,7 +43,7 @@ try {
     hero_description: enterprise.aboutTurboAI.subtitle, hero_image: enterprise.aboutTurboAI.image,
     ...seo(enterprise.aboutTurboAI.seoKey) });
   add({ kind: 'page', slug: 'products', title: 'Turbo AI Platforms',
-    summary: 'Data foundations and detection-to-response intelligence.', ...seo('turboAIProducts') });
+    summary: 'Detection-to-response intelligence and enterprise AI platforms.', ...seo('turboAIProducts') });
   add({ kind: 'page', slug: 'industries-we-serve', title: enterprise.industriesHero.title,
     summary: enterprise.industriesHero.subtitle, hero_title: enterprise.industriesHero.title,
     hero_description: enterprise.industriesHero.subtitle, hero_image: enterprise.industriesHero.image,
@@ -93,9 +93,7 @@ try {
   }
 
   const products = [
-    ['i-lakehouse', 'i-Lakehouse', 'iLakehouse'],
     ['adrs', 'ADRS', 'adrs'],
-    ['dci-360', 'DCI 360', 'dci360'],
   ];
   for (const [slug, title, seoKey] of products) {
     const meta = seoConfig[seoKey] || {};

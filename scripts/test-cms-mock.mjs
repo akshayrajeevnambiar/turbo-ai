@@ -9,9 +9,26 @@ const newIndustries = [
   { slug: 'real-estate', title: 'Real Estate', city: 'Toronto' },
   { slug: 'oil-and-gas', title: 'Oil & Gas', city: 'Calgary' },
 ];
-const wanted = new Set(['page:home', 'page:blog', 'product:i-lakehouse', 'blog:energy-ai-asset-intelligence-foundations',
+const wanted = new Set(['page:home', 'page:blog', 'product:adrs', 'blog:energy-ai-asset-intelligence-foundations',
   ...newIndustries.map(({ slug }) => `industry:${slug}`)]);
 const rows = seed.filter((entry) => wanted.has(`${entry.kind}:${entry.slug}`));
+const retiredSlugs = ['i-lakehouse', 'ilakehouse', 'dci-360', 'dci360'];
+const retiredNames = /i[-_\s]?lakehouse|dci[-_\s]?360/i;
+const adrs = rows.find((entry) => entry.kind === 'product' && entry.slug === 'adrs');
+assert.ok(adrs, 'The CMS fixture needs the retained ADRS product.');
+// Simulate published records left in a remote CMS after the authored site is cleaned up.
+for (const slug of retiredSlugs) {
+  rows.push({ ...adrs, id: `retired-${slug}`, slug, title: slug,
+    hero_title: slug, canonical_url: `https://turbo-ai.ca/products/${slug}` });
+}
+const home = rows.find((entry) => entry.kind === 'page' && entry.slug === 'home');
+home.seo_description += ' i-Lakehouse and DCI 360 power older deployments.';
+home.sections = [...home.sections, { title: 'Legacy i-Lakehouse and DCI360 references',
+  body: 'Keep this shared CMS content while removing retired platform references.',
+  image: '/cms-seed/dci-data-center.webp' }];
+const article = rows.find((entry) => entry.kind === 'blog' && entry.slug === 'energy-ai-asset-intelligence-foundations');
+article.body += '\n\nLegacy platforms: [i-Lakehouse](/products/i-lakehouse), [DCI360](https://turbo-ai.ca/products/dci360), and [ADRS](/products/adrs).';
+article.seo_keywords += ', i-Lakehouse, DCI360';
 for (const { slug, title, city } of newIndustries) {
   const entry = rows.find((row) => row.kind === 'industry' && row.slug === slug);
   assert.ok(entry, `The CMS seed is missing the ${title} industry. Run npm run cms:export first.`);
@@ -53,6 +70,21 @@ server.close();
 if (exitCode !== 0) process.exit(exitCode || 1);
 
 const sitemap = fs.readFileSync('dist/sitemap.xml', 'utf8');
+assert.ok(!retiredNames.test(sitemap), 'Stale published products must not enter the CMS sitemap.');
+for (const slug of retiredSlugs) {
+  assert.ok(!fs.existsSync(`dist/products/${slug}/index.html`), `Retired CMS product ${slug} must not be prerendered.`);
+}
+for (const filename of fs.readdirSync('dist', { recursive: true }).filter((name) => name.endsWith('.html'))) {
+  const html = fs.readFileSync(`dist/${filename}`, 'utf8');
+  assert.ok(!retiredNames.test(html), `Generated CMS HTML must remove retired names and links: ${filename}`);
+  assert.ok(!html.includes('dci-data-center'), `Generated CMS HTML must remove retired imagery: ${filename}`);
+}
+const homeHtml = fs.readFileSync('dist/index.html', 'utf8');
+assert.ok(homeHtml.includes('Keep this shared CMS content'), 'Sanitization must preserve useful shared CMS content.');
+assert.ok(homeHtml.includes('governed data foundations') && homeHtml.includes('infrastructure management'),
+  'Stale CMS names must be replaced in retained content and metadata.');
+const productHtml = fs.readFileSync('dist/products/adrs/index.html', 'utf8');
+assert.ok(productHtml.includes('ADRS') && sitemap.includes('/products/adrs</loc>'), 'The retained ADRS product must still publish.');
 const notFound = fs.readFileSync('dist/404.html', 'utf8');
 assert.ok(notFound.includes('data-not-found'), 'CMS builds must prerender the branded 404.');
 assert.ok(/<header\b/.test(notFound) && /<footer\b/.test(notFound), 'The CMS 404 must keep the site navigation and footer.');
@@ -68,6 +100,8 @@ if (!sitemap.includes('/blog/energy-ai-asset-intelligence-foundations') || sitem
 if (!post.includes('Building Asset Intelligence for Energy Operations') || !post.includes('Start with an operational question')) {
   throw new Error('Published article was not prerendered with its CMS content.');
 }
+assert.ok(post.includes('Legacy platforms:') && /href="\/products\/adrs"/.test(post),
+  'Sanitization must preserve the shared article and its valid ADRS link.');
 if (fs.existsSync(`dist/blog/${draft.slug}/index.html`)) throw new Error('Draft article was prerendered.');
 for (const { slug, title, city } of newIndustries) {
   const route = `/industries/${slug}`;
@@ -84,4 +118,4 @@ for (const { slug, title, city } of newIndustries) {
   assert.equal(new URL(canonical).pathname, route);
   assert.ok(sitemap.includes(`${route}</loc>`), `${route} must appear in the CMS-generated sitemap.`);
 }
-console.log('CMS mock passed: published content and three industry pages rendered with SEO metadata, branded noindex 404 without CMS errors, draft hidden, sitemap filtered.');
+console.log('CMS mock passed: published content and industry SEO rendered, ADRS retained, stale retired products excluded, shared CMS references cleaned, branded noindex 404, draft hidden, sitemap filtered.');

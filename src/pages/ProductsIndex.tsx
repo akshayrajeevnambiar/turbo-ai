@@ -9,20 +9,6 @@ import { usePublishedEntries } from "../cms/hooks";
 
 const platforms = [
   {
-    id: "i-lakehouse",
-    name: "i-Lakehouse",
-    description: "A hybrid-native data platform that connects DataOps, AI/ML, and governed data across cloud, hybrid, on-premise, and edge environments.",
-    problem: "Fragmented data and disconnected workloads make analytics and AI difficult to trust, maintain, and scale.",
-    architecture: "Enterprise sources feed integration and open lakehouse layers. Governance, lineage, and access controls stay close to the data as analytics and AI workloads consume it.",
-    workflow: ["Enterprise data", "Integration", "i-Lakehouse", "Analytics & AI", "Insight"],
-    capabilities: ["Data integration and DataOps", "Open lakehouse formats", "Streaming and analytics", "AI/ML workloads", "Security and lineage"],
-    useCases: ["Enterprise analytics", "Governed AI data products", "Hybrid and edge data access"],
-    value: "Give teams a more connected foundation for decisions while keeping deployment choice and data governance visible.",
-    href: "/products/i-lakehouse",
-    relatedHref: "/data-engineering-ai-foundations",
-    relatedLabel: "Data Engineering & AI Foundations",
-  },
-  {
     id: "adrs",
     name: "ADRS",
     description: "The Autonomous Detection & Response System presents a clear path from incoming signals through analysis, risk identification, alerting, and response.",
@@ -40,7 +26,7 @@ const platforms = [
 
 const productFaqs = [
   { question: "How do Turbo AI platforms relate to consulting services?", answer: "The platforms provide focused product approaches, while Turbo AI services address strategy, data, software, cloud, security, governance, and implementation around the operating need." },
-  { question: "Which platform should an organization evaluate first?", answer: "Start from the problem. i-Lakehouse fits governed data and AI foundations; ADRS fits detection-to-response workflows; DCI 360 fits data-centre infrastructure visibility. Seismic AI has its own external product site." },
+  { question: "Which platform should an organization evaluate first?", answer: "Start from the problem. ADRS fits detection-to-response workflows. Explore Seismic AI on its dedicated product site, and assess integration and deployment requirements for your environment." },
   { question: "Are all product integrations available by default?", answer: "No. Source systems, APIs, identity, latency, security, and deployment requirements must be assessed for the customer's environment before an integration is confirmed." },
   { question: "Can Turbo AI platforms operate with human oversight?", answer: "Yes. The product descriptions emphasize review, permissions, traceability, and human control for consequential decisions and actions." },
 ];
@@ -64,11 +50,7 @@ function PlatformFlow({ steps, name }: { steps: string[]; name: string }) {
 export function ProductsIndex() {
   const { entries: cmsProducts, loading, failed } = usePublishedEntries("product");
   const shownPlatforms = cmsPublicEnabled
-    ? cmsProducts.filter((entry) => entry.slug !== "dci-360")
-      .sort((a, b) => {
-        const rank = (slug: string) => slug === "i-lakehouse" ? 0 : slug === "adrs" ? 1 : 2;
-        return rank(a.slug) - rank(b.slug) || a.title.localeCompare(b.title);
-      })
+    ? [...cmsProducts].sort((a, b) => a.title.localeCompare(b.title))
       .map((entry) => ({
         id: entry.slug, name: entry.title, description: entry.summary,
         problem: entry.hero_description || entry.summary,
@@ -82,7 +64,6 @@ export function ProductsIndex() {
         relatedLabel: entry.related_industries[0] ? "Related industry" : "Enterprise AI Solutions",
       }))
     : platforms;
-  const showDci = !cmsPublicEnabled || cmsProducts.some((entry) => entry.slug === "dci-360");
   return (
     <main className="bg-[#020617] text-white">
       <SEO pageKey="turboAIProducts" />
@@ -90,8 +71,8 @@ export function ProductsIndex() {
         <Container>
           <p className="text-xs font-bold uppercase text-cyan-200">Turbo AI technology</p>
           <h1 className="mt-4 max-w-5xl text-4xl font-extrabold leading-tight sm:text-5xl md:text-7xl">Turbo AI Platforms</h1>
-          <p className="mt-6 max-w-3xl text-xl font-semibold text-blue-200 md:text-3xl">Data foundations and detection-to-response intelligence.</p>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg">i-Lakehouse and ADRS address different parts of the enterprise technology stack: trusted data for analytics and AI, and a controlled workflow for identifying and responding to risk.</p>
+          <p className="mt-6 max-w-3xl text-xl font-semibold text-blue-200 md:text-3xl">Detection-to-response intelligence for enterprise teams.</p>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg">ADRS connects signals, analysis, risk identification, alerting, and response in a controlled workflow with human oversight. Explore its capabilities and the wider Turbo AI product family.</p>
           <div className="mt-9 flex flex-wrap gap-4">
             {shownPlatforms.slice(0, 2).map((platform, index) => <a key={platform.id} href={`#${platform.id}`} className={index === 0 ? "inline-flex min-h-12 items-center rounded-md bg-blue-500 px-5 py-3 font-bold text-white hover:bg-blue-400" : "inline-flex min-h-12 items-center rounded-md border border-blue-300/40 px-5 py-3 font-bold text-blue-100 hover:border-blue-200"}>Explore {platform.name}</a>)}
           </div>
@@ -127,7 +108,7 @@ export function ProductsIndex() {
         </section>
       ))}
 
-      <Section className="border-b border-white/10 bg-[#07111f]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Product Family</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">More ways to explore Turbo AI</h2></div><div className="grid gap-5 sm:grid-cols-2"><SectionLink href="https://seismicai.ca" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">Seismic AI</h3><p className="mt-2 text-sm text-slate-300">Visit the existing Seismic AI website.</p></SectionLink>{showDci && <SectionLink href="/products/dci-360" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">DCI 360</h3><p className="mt-2 text-sm text-slate-300">Explore data centre infrastructure management.</p></SectionLink>}</div></div></Container></Section>
+      <Section className="border-b border-white/10 bg-[#07111f]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Product Family</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">More ways to explore Turbo AI</h2></div><div className="grid gap-5"><SectionLink href="https://seismicai.ca" className="border-t border-blue-400 p-5 hover:bg-white/5"><h3 className="text-xl font-bold">Seismic AI</h3><p className="mt-2 text-sm text-slate-300">Visit the existing Seismic AI website.</p></SectionLink></div></div></Container></Section>
       <Section className="bg-[#020617]"><Container><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Future Platforms</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">Built around emerging enterprise needs</h2></div><p className="text-lg leading-relaxed text-slate-300">Turbo AI continues to develop technology capabilities where data, AI, and operational workflows meet. New products will be introduced here when their scope and availability are confirmed.</p></div></Container></Section>
       <Section className="border-y border-white/10 bg-[#07111f]"><Container><div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-bold uppercase text-cyan-200">Why Turbo AI Platforms</p><h2 className="mt-3 text-3xl font-bold md:text-5xl">Products connected to enterprise delivery</h2></div><div className="grid gap-5 md:grid-cols-2">{[
         ["Problem-led scope", "Each platform is framed around a specific enterprise data or operational workflow rather than a general AI promise."],

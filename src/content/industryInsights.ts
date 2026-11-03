@@ -144,13 +144,13 @@ const insightDrafts: BlogPost[] = [
     date: "2026-09-11",
     author: "Turbo AI",
     image: "/blog/fresh/33-insight-operations.jpg",
-    tags: ["Data Centres", "Infrastructure", "DCI 360"],
+    tags: ["Data Centres", "Infrastructure", "Capacity Planning"],
     keywords: "data centre capacity intelligence, DCIM analytics, power cooling planning",
     body: `<p>Capacity decisions depend on more than a count of empty racks. Power, cooling, equipment age, and planned workloads all shape whether space is genuinely available.</p>
       <h2>Unify the infrastructure record</h2><p>Connect asset inventories, rack layouts, power feeds, environmental data, and incident history. Keep location and configuration changes current so planning is based on the actual estate.</p>
       <h2>Model operational constraints</h2><p>Compare possible placements against power and cooling limits, maintenance windows, and reliability requirements. Treat model output as planning support rather than an automatic change request.</p>
       <h2>Plan and learn</h2><p>Review forecast accuracy and the operational effect of each decision. A strong capacity view helps teams discuss trade-offs before they become urgent constraints.</p>
-      <p>Explore <a href="/industries/data-centres">AI for data centres</a> and <a href="/products/dci-360">DCI 360</a>.</p>`,
+      <p>Explore <a href="/industries/data-centres">AI for data centres</a> and <a href="/cloud-infrastructure-ai-compute">cloud and AI compute services</a>.</p>`,
   },
 ];
 

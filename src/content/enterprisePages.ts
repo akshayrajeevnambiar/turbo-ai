@@ -1,7 +1,7 @@
 import blogGridImage from "../assets/blog-grid-analytics.jpg";
 import blogMaintenanceImage from "../assets/blog-predictive-maintenance.jpg";
 import blogHydrogenImage from "../assets/blog-hydrogen-facility.jpg";
-import dciImage from "../assets/dci-data-center.webp";
+import dataCentreImage from "../assets/data-centre-infrastructure.webp";
 import oilAndGasImage from "../assets/energy-hero-platform.jpg";
 
 const photo = (name: string) => `/enterprise/${name}`;
@@ -193,12 +193,6 @@ export const enterprisePages: Record<string, EnterprisePageContent> = {
         ],
       },
       {
-        eyebrow: "Proprietary Capability",
-        title: "i-Lakehouse",
-        body:
-          "i-Lakehouse is presented as Turbo AI's modern data and AI foundation capability, helping organizations organize governed enterprise data for analytics, AI, and application use cases.",
-      },
-      {
         eyebrow: "Detection and Response",
         title: "Autonomous Detection & Response System",
         body:
@@ -213,7 +207,7 @@ export const enterprisePages: Record<string, EnterprisePageContent> = {
         items: [
           { title: "Integrate and modernize", body: "Connect existing applications, files, and event streams without assuming every workload must move at once." },
           { title: "Quality and lineage", body: "Validate critical fields, document transformations, and make the origin of important data inspectable." },
-          { title: "i-Lakehouse", body: "Organize open, governed data for analytics and AI across cloud, hybrid, on-premise, and edge environments." },
+          { title: "Governed data architecture", body: "Organize open, governed data for analytics and AI across cloud, hybrid, on-premise, and edge environments." },
           { title: "ADRS", body: "Feed detection and risk-identification workflows with dependable signals; response remains subject to defined controls and oversight." },
         ],
       },
@@ -462,7 +456,7 @@ export const enterprisePages: Record<string, EnterprisePageContent> = {
       {
         title: "Fraud & Anomaly Detection",
         body: "Business problem: risks hidden in high-volume transaction patterns. AI approach: anomaly detection, behavioral modeling, and alert triage. Enterprise application: payment monitoring, claims review, and security operations. Expected value: earlier detection and more focused investigation.",
-        image: dciImage,
+        image: dataCentreImage,
         imageAlt: "Data-centre infrastructure monitored for operational anomalies",
       },
       {
@@ -713,40 +707,6 @@ export const productCards: ProductCard[] = [
       steps: ["Domain Data", "Signal Processing", "AI Analysis", "Expert Review", "Decision Support"],
     },
     ctaHref: "https://seismicai.ca",
-  },
-  {
-    name: "DCI 360",
-    purpose:
-      "A proprietary Turbo AI capability presented for 360-degree enterprise intelligence and decision context.",
-    problem:
-      "Leaders often lack one governed view across operational signals, risks, controls, and decision workflows.",
-    capabilities: [
-      "Enterprise visibility model",
-      "Decision context organization",
-      "Workflow and control alignment",
-    ],
-    diagram: {
-      title: "DCI 360 Conceptual View",
-      steps: ["Signals", "Context", "Controls", "Insights", "Decisions"],
-    },
-    ctaHref: "/#connect",
-  },
-  {
-    name: "i-Lakehouse",
-    purpose:
-      "Turbo AI's modern data and AI foundation capability for organizing governed enterprise data for analytics and AI.",
-    problem:
-      "AI initiatives stall when data is fragmented, poorly governed, or disconnected from business applications.",
-    capabilities: [
-      "Lakehouse foundation planning",
-      "Governance and metadata orientation",
-      "Analytics and AI data readiness",
-    ],
-    diagram: {
-      title: "i-Lakehouse Architecture",
-      steps: ["Sources", "Integration", "Lakehouse", "Governance", "Analytics", "AI Apps"],
-    },
-    ctaHref: "/#connect",
   },
   {
     name: "ADRS",

@@ -26,7 +26,6 @@ const relatedByService: Record<string, { title: string; href: string; reason: st
     { title: "Safe Knowledge Access for Healthcare Teams", href: "/blog/healthcare-ai-knowledge-access", reason: "See a bounded retrieval workflow in context." },
   ],
   dataFoundations: [
-    { title: "i-Lakehouse", href: "/products/i-lakehouse", reason: "Explore the hybrid-native data platform approach." },
     { title: "Building Asset Intelligence for Energy Operations", href: "/blog/energy-ai-asset-intelligence-foundations", reason: "See how source quality shapes an operational decision." },
     { title: "Cloud Infrastructure & AI Compute", href: "/cloud-infrastructure-ai-compute", reason: "Plan where data and model workloads run." },
   ],
@@ -41,7 +40,6 @@ const relatedByService: Record<string, { title: string; href: string; reason: st
     { title: "Generative & Agentic AI", href: "/generative-ai-agentic-ai", reason: "Apply permissions and review to AI systems." },
   ],
   cloudCompute: [
-    { title: "DCI 360", href: "/products/dci-360", reason: "Explore infrastructure operating visibility." },
     { title: "Data Centre Capacity Intelligence", href: "/blog/data-centre-capacity-intelligence", reason: "Read about capacity decisions beyond dashboards." },
     { title: "Data Engineering & AI Foundations", href: "/data-engineering-ai-foundations", reason: "Connect infrastructure to reliable data movement." },
   ],

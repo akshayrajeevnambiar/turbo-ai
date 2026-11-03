@@ -76,7 +76,7 @@ export const serviceLandingContent: Record<string, ServiceLandingContent> = {
     faqs: [
       { question: "What makes data AI-ready?", answer: "It has a defined owner and meaning, sufficient quality and freshness for the use case, traceable transformations, and controlled access." },
       { question: "Do we need to replace our current data platform?", answer: "Not automatically. The architecture can connect existing systems and modernize bounded data products instead of requiring a single large migration." },
-      { question: "How do i-Lakehouse and ADRS relate to data foundations?", answer: "i-Lakehouse represents a governed data-platform approach. ADRS consumes dependable signals in a detection-to-response workflow; each has its own product scope." },
+      { question: "How does ADRS relate to data foundations?", answer: "ADRS consumes dependable signals in a detection-to-response workflow. Governed pipelines, quality controls, and traceable source data help teams assess those signals." },
       { question: "How should a data-foundation project begin?", answer: "Choose one valuable analytics or AI workflow and map its sources, quality gaps, ownership, permissions, and operating measures." },
     ],
     insightSlugs: ["energy-ai-asset-intelligence-foundations", "data-centre-capacity-intelligence", "manufacturing-predictive-maintenance-workflow"],
@@ -179,7 +179,7 @@ export const serviceLandingContent: Record<string, ServiceLandingContent> = {
       { question: "How do you choose between cloud and on-premise AI compute?", answer: "Compare data locality, privacy, latency, utilization, scalability, available skills, resilience, and total operating cost for the specific workload." },
       { question: "Does every AI workload need GPUs?", answer: "No. Compute requirements depend on model size, training or inference, throughput, latency, and available optimized services. Profiling should precede procurement." },
       { question: "What is included in AI infrastructure observability?", answer: "Relevant measures can include service availability, latency, throughput, accelerator utilization, storage and network behaviour, capacity, cost, and security events." },
-      { question: "How does DCI 360 relate to this service?", answer: "DCI 360 focuses on data-centre infrastructure visibility. Cloud and AI compute services address the wider architecture and operation of workload platforms." },
+      { question: "How does facility monitoring relate to AI infrastructure?", answer: "Facility monitoring provides visibility into power, cooling, and capacity constraints. Cloud and AI compute services address the wider architecture and operation of workload platforms." },
     ],
     insightSlugs: ["ai-infrastructure-investment-strategy", "data-centre-capacity-intelligence", "telecom-network-incident-triage"],
   },

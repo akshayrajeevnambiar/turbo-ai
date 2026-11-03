@@ -25,8 +25,6 @@ const routes = [
   "/cloud-infrastructure-ai-compute",
   "/enterprise-ai-solutions",
   "/products",
-  "/products/dci-360",
-  "/products/i-lakehouse",
   "/products/adrs",
   "/about",
 ];

@@ -1,5 +1,3 @@
-import dciImage from "../assets/dci-data-center.webp";
-import lakehouseImage from "../assets/i-lakehouse-infrastructure.webp";
 import adrsImage from "../assets/adrs-security-operations-center.webp";
 import strategyImage from "../assets/Hero Background.jpg";
 import digitalImage from "../assets/digital-architecture-hero.png";
@@ -99,10 +97,10 @@ export const seoConfig: Record<string, PageSEO> = {
     },
     dataFoundations: {
         title: "Data Engineering & AI Foundations | Turbo AI",
-        description: "Data engineering, lakehouse, governance, metadata, quality, lineage, streaming, MLOps, i-Lakehouse, and ADRS foundations for enterprise AI.",
+        description: "Data engineering, lakehouse architecture, governance, metadata, quality, lineage, streaming, and MLOps foundations for enterprise AI.",
         image: `${baseUrl}/enterprise/data-centre-operations.jpg`,
         url: `${baseUrl}/data-engineering-ai-foundations`,
-        keywords: "data engineering, AI foundations, data lakehouse, data governance, MLOps, i-Lakehouse, ADRS",
+        keywords: "data engineering, AI foundations, data lakehouse, data governance, MLOps",
     },
     aiEngineering: {
         title: "AI Engineering & Software Development | Turbo AI",
@@ -140,25 +138,11 @@ export const seoConfig: Record<string, PageSEO> = {
         keywords: "enterprise AI solutions, customer intelligence, document processing, predictive maintenance, intelligent automation, anomaly detection",
     },
     turboAIProducts: {
-        title: "Turbo AI Platforms | i-Lakehouse and ADRS",
-        description: "Explore Turbo AI platforms: i-Lakehouse for governed enterprise data and AI, and ADRS for detection-to-response workflows. View architecture, capabilities, and use cases.",
+        title: "Turbo AI Platforms | ADRS and Seismic AI",
+        description: "Explore ADRS for detection-to-response workflows and visit the Seismic AI product site. View platform architecture, capabilities, and use cases.",
         image: `${baseUrl}/enterprise/semiconductors.jpg`,
         url: `${baseUrl}/products`,
-        keywords: "Turbo AI products, Seismic AI, DCI 360, i-Lakehouse, ADRS, proprietary AI platforms",
-    },
-    dci360: {
-        title: "DCI 360 | Intelligent Data Center Infrastructure Management | Turbo AI",
-        description: "DCI 360 brings data center monitoring, assets, power, cooling and capacity planning into one operational view for infrastructure teams.",
-        image: new URL(dciImage, baseUrl).href,
-        url: `${baseUrl}/products/dci-360`,
-        keywords: "DCI 360, DCIM, data center infrastructure management, data center monitoring, capacity planning, power and cooling",
-    },
-    iLakehouse: {
-        title: "i-Lakehouse | Hybrid-Native Intelligent Data Platform | Turbo AI",
-        description: "i-Lakehouse unifies DataOps, AI/ML and governed data across cloud, hybrid, on-premise and edge environments with open data standards.",
-        image: new URL(lakehouseImage, baseUrl).href,
-        url: `${baseUrl}/products/i-lakehouse`,
-        keywords: "i-Lakehouse, hybrid-native data platform, data lakehouse, DataOps, AI ML, open data formats, data governance",
+        keywords: "Turbo AI products, Seismic AI, ADRS, detection and response, enterprise AI platforms",
     },
     adrs: {
         title: "ADRS | Autonomous Detection & Response System | Turbo AI",

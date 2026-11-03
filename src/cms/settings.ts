@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { cmsClient, cmsPublicEnabled } from "./client";
+import { sanitizeRetiredMedia, sanitizeRetiredText } from "../content/retiredProducts.mjs";
 
 interface SiteSettings { siteName: string; defaultOg: string }
 const fallback: SiteSettings = { siteName: "Turbo AI", defaultOg: "" };
@@ -14,8 +15,8 @@ export function useCmsSiteSettings() {
         .in("key", ["site_name", "default_og_image"]);
         if (error) throw error;
         return (data ?? []).reduce((current, row) => {
-          if (row.key === "site_name") current.siteName = String(row.value);
-          if (row.key === "default_og_image") current.defaultOg = String(row.value);
+          if (row.key === "site_name") current.siteName = sanitizeRetiredText(row.value) || fallback.siteName;
+          if (row.key === "default_og_image") current.defaultOg = sanitizeRetiredMedia(row.value);
           return current;
         }, { ...fallback });
       })().catch(() => fallback);

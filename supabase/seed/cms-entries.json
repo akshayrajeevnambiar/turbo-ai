@@ -63,7 +63,7 @@
   },
   {
     "status": "published",
-    "summary": "Data foundations and detection-to-response intelligence.",
+    "summary": "Detection-to-response intelligence and enterprise AI platforms.",
     "hero_title": "",
     "hero_description": "",
     "hero_image": "",
@@ -75,9 +75,9 @@
     "related_industries": [],
     "cta_text": "",
     "cta_url": "",
-    "seo_title": "Turbo AI Platforms | i-Lakehouse and ADRS",
-    "seo_description": "Explore Turbo AI platforms: i-Lakehouse for governed enterprise data and AI, and ADRS for detection-to-response workflows. View architecture, capabilities, and use cases.",
-    "seo_keywords": "Turbo AI products, Seismic AI, DCI 360, i-Lakehouse, ADRS, proprietary AI platforms",
+    "seo_title": "Turbo AI Platforms | ADRS and Seismic AI",
+    "seo_description": "Explore ADRS for detection-to-response workflows and visit the Seismic AI product site. View platform architecture, capabilities, and use cases.",
+    "seo_keywords": "Turbo AI products, Seismic AI, ADRS, detection and response, enterprise AI platforms",
     "canonical_url": "https://turbo-ai.ca/products",
     "og_title": "",
     "og_description": "",
@@ -200,8 +200,8 @@
     "cta_text": "Make enterprise data usable by intelligent systems.",
     "cta_url": "#connect",
     "seo_title": "Data Engineering & AI Foundations | Turbo AI",
-    "seo_description": "Data engineering, lakehouse, governance, metadata, quality, lineage, streaming, MLOps, i-Lakehouse, and ADRS foundations for enterprise AI.",
-    "seo_keywords": "data engineering, AI foundations, data lakehouse, data governance, MLOps, i-Lakehouse, ADRS",
+    "seo_description": "Data engineering, lakehouse architecture, governance, metadata, quality, lineage, streaming, and MLOps foundations for enterprise AI.",
+    "seo_keywords": "data engineering, AI foundations, data lakehouse, data governance, MLOps",
     "canonical_url": "https://turbo-ai.ca/data-engineering-ai-foundations",
     "og_title": "",
     "og_description": "",
@@ -599,7 +599,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -633,7 +632,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -666,9 +664,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Scope a privacy-aware healthcare AI use case.",
     "cta_url": "#connect",
@@ -700,7 +696,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -733,9 +728,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Discuss a construction project intelligence pilot.",
     "cta_url": "#connect",
@@ -766,9 +759,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Map an automotive quality or service workflow.",
     "cta_url": "#connect",
@@ -799,9 +790,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Discuss a mining AI workflow for your operations team.",
     "cta_url": "#connect",
@@ -832,9 +821,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Explore a real estate document or property operations workflow.",
     "cta_url": "#connect",
@@ -865,9 +852,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Scope an oil and gas reliability or knowledge workflow.",
     "cta_url": "#connect",
@@ -898,9 +883,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Explore a retail demand or service use case.",
     "cta_url": "#connect",
@@ -932,7 +915,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -966,8 +948,7 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "adrs",
-      "i-lakehouse"
+      "adrs"
     ],
     "related_industries": [],
     "cta_text": "Map a network incident triage workflow.",
@@ -1000,7 +981,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -1033,9 +1013,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Discuss an accountable public-service AI workflow.",
     "cta_url": "#connect",
@@ -1067,7 +1045,6 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "i-lakehouse",
       "adrs"
     ],
     "related_industries": [],
@@ -1100,9 +1077,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Explore a semiconductor engineering data workflow.",
     "cta_url": "#connect",
@@ -1133,9 +1108,7 @@
     "sections": [],
     "features": [],
     "benefits": [],
-    "related_products": [
-      "i-lakehouse"
-    ],
+    "related_products": [],
     "related_industries": [],
     "cta_text": "Plan a production-ready SaaS AI feature.",
     "cta_url": "#connect",
@@ -1167,9 +1140,7 @@
     "features": [],
     "benefits": [],
     "related_products": [
-      "dci-360",
-      "adrs",
-      "i-lakehouse"
+      "adrs"
     ],
     "related_industries": [],
     "cta_text": "Review a data-centre capacity or incident workflow.",
@@ -1190,37 +1161,6 @@
     "kind": "industry",
     "slug": "data-centres",
     "title": "Data Centres"
-  },
-  {
-    "status": "published",
-    "summary": "i-Lakehouse unifies DataOps, AI/ML and governed data across cloud, hybrid, on-premise and edge environments with open data standards.",
-    "hero_title": "i-Lakehouse",
-    "hero_description": "i-Lakehouse unifies DataOps, AI/ML and governed data across cloud, hybrid, on-premise and edge environments with open data standards.",
-    "hero_image": "/cms-seed/i-lakehouse-infrastructure.webp",
-    "body": "",
-    "sections": [],
-    "features": [],
-    "benefits": [],
-    "related_products": [],
-    "related_industries": [],
-    "cta_text": "",
-    "cta_url": "",
-    "seo_title": "i-Lakehouse | Hybrid-Native Intelligent Data Platform | Turbo AI",
-    "seo_description": "i-Lakehouse unifies DataOps, AI/ML and governed data across cloud, hybrid, on-premise and edge environments with open data standards.",
-    "seo_keywords": "i-Lakehouse, hybrid-native data platform, data lakehouse, DataOps, AI ML, open data formats, data governance",
-    "canonical_url": "https://turbo-ai.ca/products/i-lakehouse",
-    "og_title": "",
-    "og_description": "",
-    "og_image": "/cms-seed/i-lakehouse-infrastructure.webp",
-    "robots": "index,follow",
-    "author": "Turbo AI",
-    "category": "",
-    "tags": [],
-    "reading_time": 0,
-    "published_at": null,
-    "kind": "product",
-    "slug": "i-lakehouse",
-    "title": "i-Lakehouse"
   },
   {
     "status": "published",
@@ -1255,42 +1195,11 @@
   },
   {
     "status": "published",
-    "summary": "DCI 360 brings data center monitoring, assets, power, cooling and capacity planning into one operational view for infrastructure teams.",
-    "hero_title": "DCI 360",
-    "hero_description": "DCI 360 brings data center monitoring, assets, power, cooling and capacity planning into one operational view for infrastructure teams.",
-    "hero_image": "/cms-seed/dci-data-center.webp",
-    "body": "",
-    "sections": [],
-    "features": [],
-    "benefits": [],
-    "related_products": [],
-    "related_industries": [],
-    "cta_text": "",
-    "cta_url": "",
-    "seo_title": "DCI 360 | Intelligent Data Center Infrastructure Management | Turbo AI",
-    "seo_description": "DCI 360 brings data center monitoring, assets, power, cooling and capacity planning into one operational view for infrastructure teams.",
-    "seo_keywords": "DCI 360, DCIM, data center infrastructure management, data center monitoring, capacity planning, power and cooling",
-    "canonical_url": "https://turbo-ai.ca/products/dci-360",
-    "og_title": "",
-    "og_description": "",
-    "og_image": "/cms-seed/dci-data-center.webp",
-    "robots": "index,follow",
-    "author": "Turbo AI",
-    "category": "",
-    "tags": [],
-    "reading_time": 0,
-    "published_at": null,
-    "kind": "product",
-    "slug": "dci-360",
-    "title": "DCI 360"
-  },
-  {
-    "status": "published",
     "summary": "Learn how energy teams can connect field data, asset records, and maintenance decisions with quality checks, human review, and measurable operational feedback.",
     "hero_title": "Building Asset Intelligence for Energy Operations",
     "hero_description": "Learn how energy teams can connect field data, asset records, and maintenance decisions with quality checks, human review, and measurable operational feedback.",
     "hero_image": "/blog/fresh/23-network-operations.jpg",
-    "body": "Energy operators already collect a large volume of equipment, inspection, and field data. The challenge is connecting those records to a decision that a maintenance or operations team can make with confidence.\n\n## Start with an operational question\n\nChoose a bounded question such as which assets need inspection first. Identify the data owners, the decision maker, and the evidence required before any model is built. This prevents a dashboard from becoming another isolated destination for information.\n\n## Build a dependable signal path\n\nJoin telemetry to asset registers, maintenance history, and operating context. Check completeness, timestamps, and changes in equipment configuration. A predictive signal without this context can be misleading.\n\n## Keep the team in control\n\nUse analytics to rank and explain exceptions, then let qualified people validate the recommendation. Monitor false alerts and missed events after deployment. The value comes from better planning and traceable action, not from claiming that a model can replace field judgment.\n\nExplore [industry intelligence](/industries-we-serve) and [data foundations](/data-engineering-ai-foundations).\n\n## Questions for an asset-intelligence pilot\n\nAsk which decision currently waits on missing information. Is it an inspection route, a maintenance window, or a production constraint? List the records an engineer uses today and the time it takes to assemble them. If equipment identifiers do not align, correct that mapping before treating a predictive score as actionable. Sample periods of normal and abnormal operation should include changes in load, weather, and maintenance state.\n\nSet an explicit standard for an alert: the asset, the observed change, the source readings, a comparison period, and a named reviewer. Agree what happens when a sensor fails or an inspection contradicts the model. A pilot should test the entire handoff into maintenance planning, not just offline model accuracy. Operational teams should be able to explain a decision from the saved evidence months later.\n\nExpansion to another asset class is a new validation exercise. Different failure modes, data coverage, and response options may change the appropriate threshold. Record the costs of inspection and missed issues with the asset owner, then choose an evaluation measure that reflects the real decision. That discipline makes the analytics useful even if the first model is simple.\n\n## Review before expansion\n\nFor every suggested inspection, ask whether the alert would have changed the team's plan and whether the evidence was available early enough. If the answer is no, refine the decision boundary before investing in a more complex model. Reliable identifiers, source freshness, and a technician feedback route often create the first useful improvement.\n\n## The business challenge: different records describe the same asset\n\nA compressor, pipeline segment, or field instrument may have an identifier in the maintenance system, another in telemetry, and a third in an inspection report. Before a predictive model can help, the team needs to know whether those records actually refer to the same equipment. Location, installation date, operating mode, and maintenance events all affect how a signal should be read. Missing or delayed data should be visible, not quietly filled with a plausible value.\n\nAsset intelligence is therefore a data-product problem as much as an AI problem. An asset register, source ownership, time alignment, and a definition of the decision being supported are the starting point. For remote operations, connectivity gaps and delayed uploads may be normal. A system should distinguish that condition from a genuine equipment anomaly.\n\n## A practical implementation path\n\nBegin with one asset family and one decision, such as prioritizing inspections for a particular type of pump. Map the available sensor channels and work-order history. Check whether maintenance events are recorded consistently enough to serve as feedback. Build a baseline for normal operation across load and season rather than treating every change in vibration or temperature as a fault.\n\nNext, present an exception to the maintenance planner with the recent signal, the relevant asset history, and the reason it was prioritized. The planner can accept it, request more evidence, or dismiss it with an explanation. A field inspection closes the loop: the system records what technicians found and whether the alert led to useful action. This review process is more valuable than a model score viewed in isolation.\n\n## Data, safety, and governance considerations\n\nSet permissions for operational and inspection data, document transformations, and retain a route back to original readings. Validate that a model trained on one configuration is not assumed to work unchanged after equipment replacement or sensor recalibration. Changes to maintenance priority should follow existing safety procedures and engineering approval. A low-confidence model output should never silently override a safety-critical rule.\n\nEvaluate the full workflow: alert burden, inspected findings, missed issues, and time from signal to decision. If staff cannot explain why a case was surfaced, improve the evidence view before expanding to more sites. [i-Lakehouse](/products/i-lakehouse) describes a governed data foundation that can support this work; [enterprise AI solutions](/enterprise-ai-solutions) covers maintenance decision support.\n\n## What to do next\n\nChoose the asset and decision owner first, then inventory the available evidence and its quality. A bounded pilot should prove that teams can act on the signal and record the outcome. To discuss an energy asset workflow, [start a conversation with Turbo AI](/#connect).",
+    "body": "Energy operators already collect a large volume of equipment, inspection, and field data. The challenge is connecting those records to a decision that a maintenance or operations team can make with confidence.\n\n## Start with an operational question\n\nChoose a bounded question such as which assets need inspection first. Identify the data owners, the decision maker, and the evidence required before any model is built. This prevents a dashboard from becoming another isolated destination for information.\n\n## Build a dependable signal path\n\nJoin telemetry to asset registers, maintenance history, and operating context. Check completeness, timestamps, and changes in equipment configuration. A predictive signal without this context can be misleading.\n\n## Keep the team in control\n\nUse analytics to rank and explain exceptions, then let qualified people validate the recommendation. Monitor false alerts and missed events after deployment. The value comes from better planning and traceable action, not from claiming that a model can replace field judgment.\n\nExplore [industry intelligence](/industries-we-serve) and [data foundations](/data-engineering-ai-foundations).\n\n## Questions for an asset-intelligence pilot\n\nAsk which decision currently waits on missing information. Is it an inspection route, a maintenance window, or a production constraint? List the records an engineer uses today and the time it takes to assemble them. If equipment identifiers do not align, correct that mapping before treating a predictive score as actionable. Sample periods of normal and abnormal operation should include changes in load, weather, and maintenance state.\n\nSet an explicit standard for an alert: the asset, the observed change, the source readings, a comparison period, and a named reviewer. Agree what happens when a sensor fails or an inspection contradicts the model. A pilot should test the entire handoff into maintenance planning, not just offline model accuracy. Operational teams should be able to explain a decision from the saved evidence months later.\n\nExpansion to another asset class is a new validation exercise. Different failure modes, data coverage, and response options may change the appropriate threshold. Record the costs of inspection and missed issues with the asset owner, then choose an evaluation measure that reflects the real decision. That discipline makes the analytics useful even if the first model is simple.\n\n## Review before expansion\n\nFor every suggested inspection, ask whether the alert would have changed the team's plan and whether the evidence was available early enough. If the answer is no, refine the decision boundary before investing in a more complex model. Reliable identifiers, source freshness, and a technician feedback route often create the first useful improvement.\n\n## The business challenge: different records describe the same asset\n\nA compressor, pipeline segment, or field instrument may have an identifier in the maintenance system, another in telemetry, and a third in an inspection report. Before a predictive model can help, the team needs to know whether those records actually refer to the same equipment. Location, installation date, operating mode, and maintenance events all affect how a signal should be read. Missing or delayed data should be visible, not quietly filled with a plausible value.\n\nAsset intelligence is therefore a data-product problem as much as an AI problem. An asset register, source ownership, time alignment, and a definition of the decision being supported are the starting point. For remote operations, connectivity gaps and delayed uploads may be normal. A system should distinguish that condition from a genuine equipment anomaly.\n\n## A practical implementation path\n\nBegin with one asset family and one decision, such as prioritizing inspections for a particular type of pump. Map the available sensor channels and work-order history. Check whether maintenance events are recorded consistently enough to serve as feedback. Build a baseline for normal operation across load and season rather than treating every change in vibration or temperature as a fault.\n\nNext, present an exception to the maintenance planner with the recent signal, the relevant asset history, and the reason it was prioritized. The planner can accept it, request more evidence, or dismiss it with an explanation. A field inspection closes the loop: the system records what technicians found and whether the alert led to useful action. This review process is more valuable than a model score viewed in isolation.\n\n## Data, safety, and governance considerations\n\nSet permissions for operational and inspection data, document transformations, and retain a route back to original readings. Validate that a model trained on one configuration is not assumed to work unchanged after equipment replacement or sensor recalibration. Changes to maintenance priority should follow existing safety procedures and engineering approval. A low-confidence model output should never silently override a safety-critical rule.\n\nEvaluate the full workflow: alert burden, inspected findings, missed issues, and time from signal to decision. If staff cannot explain why a case was surfaced, improve the evidence view before expanding to more sites. [Data engineering and AI foundations](/data-engineering-ai-foundations) can support this work; [enterprise AI solutions](/enterprise-ai-solutions) covers maintenance decision support.\n\n## What to do next\n\nChoose the asset and decision owner first, then inventory the available evidence and its quality. A bounded pilot should prove that teams can act on the signal and record the outcome. To discuss an energy asset workflow, [start a conversation with Turbo AI](/#connect).",
     "sections": [],
     "features": [],
     "benefits": [],
@@ -1500,7 +1409,7 @@
     "hero_title": "Retail Intelligence Across Demand, Inventory, and Service",
     "hero_description": "Explore how retailers can connect demand, inventory, returns, and service signals while preserving local context, customer privacy, and human decisions.",
     "hero_image": "/blog/fresh/30-telecom.jpg",
-    "body": "Retail decisions span stores, digital channels, stock, promotions, and service. A forecast or recommendation has value only when teams understand the conditions behind it.\n\n## Join signals carefully\n\nBring transaction, inventory, and service data into a consistent view while respecting consent and access rules. Distinguish local store effects from broader demand shifts.\n\n## Make recommendations explainable\n\nShow the demand signal, product availability, and uncertainty behind a suggestion. Store and merchandising teams need room to account for events that a model has not seen.\n\n## Measure more than clicks\n\nReview stock availability, service outcomes, returns, and customer experience together. This prevents one optimized metric from creating problems elsewhere in the operation.\n\nExplore [AI for retail](/industries/retail) and [customer intelligence solutions](/enterprise-ai-solutions).\n\n## Questions for merchants and store teams\n\nWhich decisions are repeated each week, and where does local knowledge override the central forecast? An effective pilot lets a merchant see the projected demand, current stock, upcoming promotion, and uncertainty in one view. Ask stores to record why they disagree with an allocation proposal. Those notes can reveal events or data gaps that the model cannot observe.\n\nDistinguish unmet demand from low demand. An item that was unavailable cannot generate sales, so historical transactions alone can understate its potential. Returns, substitutions, and online searches may add context, but each signal needs its own quality and privacy assessment. Reconcile product and location identifiers before joining digital and store data.\n\nEvaluate outcomes across several measures. A change that improves inventory turnover may increase stockouts; a service assistant that reduces handle time may lower resolution quality. Include staff overrides and customer feedback in the review. Once the workflow is reliable for a bounded category, test whether the same logic holds for other products and locations rather than assuming it will transfer unchanged.\n\n## Review before expansion\n\nA pilot should compare recommendations with merchant decisions, not treat every override as a mistake. Some overrides capture local knowledge; others reveal a missing promotion or inventory correction. Document the reason and test whether adding that context improves the next cycle. Evaluate the result across stores with different demand patterns before expanding the forecast.\n\n## Why a single retail forecast is not enough\n\nA product can appear to have weak demand because it was unavailable, poorly displayed, or excluded from a promotion. A digital click may not translate into local store demand. Returns and service complaints may reveal a product issue that sales alone cannot show. Retail intelligence needs to explain these differences rather than collapse them into one score.\n\nData freshness matters as much as volume. Stock counts, transfers, online availability, and point-of-sale transactions are updated at different intervals. A replenishment recommendation made on an old inventory position can move goods to the wrong place. A useful system records when each source last changed and alerts users when confidence is low.\n\n## Connect the decision workflow\n\nStart with a category and a small group of stores. Join sales, inventory, promotion, fulfilment, and returns data through stable product and location identifiers. Build a baseline forecast with uncertainty, then give merchants the reason for a proposed order or allocation change. Local managers should be able to note a nearby event or display change that the model cannot see.\n\nFor customer service, retrieve approved policy and product knowledge alongside only the order context the employee is entitled to view. The assistant can suggest a response or next step, but the employee confirms it. Customer data should not be reused across marketing and service purposes without a valid basis and clear controls.\n\n## Measure the wider outcome\n\nTrack availability, stockouts, excess inventory, forecast error, returns, and service resolution together. Improving one measure can worsen another; for example, a forecast that minimizes stock may create missed sales or poor fulfilment. Review overrides and the reasons behind them, then update the data or process where staff repeatedly see a blind spot.\n\nRole-based access, consent, retention, and data lineage must be designed into the platform. [Enterprise AI solutions](/enterprise-ai-solutions) covers customer and supply-chain intelligence, while [i-Lakehouse](/products/i-lakehouse) describes the governed data foundation.\n\n## Choose a bounded retail decision\n\nPick one replenishment, service, or assortment decision with an accountable team. Establish what information staff currently use and where it fails. Test whether the new view improves that decision before scaling. [Discuss a retail use case](/#connect).",
+    "body": "Retail decisions span stores, digital channels, stock, promotions, and service. A forecast or recommendation has value only when teams understand the conditions behind it.\n\n## Join signals carefully\n\nBring transaction, inventory, and service data into a consistent view while respecting consent and access rules. Distinguish local store effects from broader demand shifts.\n\n## Make recommendations explainable\n\nShow the demand signal, product availability, and uncertainty behind a suggestion. Store and merchandising teams need room to account for events that a model has not seen.\n\n## Measure more than clicks\n\nReview stock availability, service outcomes, returns, and customer experience together. This prevents one optimized metric from creating problems elsewhere in the operation.\n\nExplore [AI for retail](/industries/retail) and [customer intelligence solutions](/enterprise-ai-solutions).\n\n## Questions for merchants and store teams\n\nWhich decisions are repeated each week, and where does local knowledge override the central forecast? An effective pilot lets a merchant see the projected demand, current stock, upcoming promotion, and uncertainty in one view. Ask stores to record why they disagree with an allocation proposal. Those notes can reveal events or data gaps that the model cannot observe.\n\nDistinguish unmet demand from low demand. An item that was unavailable cannot generate sales, so historical transactions alone can understate its potential. Returns, substitutions, and online searches may add context, but each signal needs its own quality and privacy assessment. Reconcile product and location identifiers before joining digital and store data.\n\nEvaluate outcomes across several measures. A change that improves inventory turnover may increase stockouts; a service assistant that reduces handle time may lower resolution quality. Include staff overrides and customer feedback in the review. Once the workflow is reliable for a bounded category, test whether the same logic holds for other products and locations rather than assuming it will transfer unchanged.\n\n## Review before expansion\n\nA pilot should compare recommendations with merchant decisions, not treat every override as a mistake. Some overrides capture local knowledge; others reveal a missing promotion or inventory correction. Document the reason and test whether adding that context improves the next cycle. Evaluate the result across stores with different demand patterns before expanding the forecast.\n\n## Why a single retail forecast is not enough\n\nA product can appear to have weak demand because it was unavailable, poorly displayed, or excluded from a promotion. A digital click may not translate into local store demand. Returns and service complaints may reveal a product issue that sales alone cannot show. Retail intelligence needs to explain these differences rather than collapse them into one score.\n\nData freshness matters as much as volume. Stock counts, transfers, online availability, and point-of-sale transactions are updated at different intervals. A replenishment recommendation made on an old inventory position can move goods to the wrong place. A useful system records when each source last changed and alerts users when confidence is low.\n\n## Connect the decision workflow\n\nStart with a category and a small group of stores. Join sales, inventory, promotion, fulfilment, and returns data through stable product and location identifiers. Build a baseline forecast with uncertainty, then give merchants the reason for a proposed order or allocation change. Local managers should be able to note a nearby event or display change that the model cannot see.\n\nFor customer service, retrieve approved policy and product knowledge alongside only the order context the employee is entitled to view. The assistant can suggest a response or next step, but the employee confirms it. Customer data should not be reused across marketing and service purposes without a valid basis and clear controls.\n\n## Measure the wider outcome\n\nTrack availability, stockouts, excess inventory, forecast error, returns, and service resolution together. Improving one measure can worsen another; for example, a forecast that minimizes stock may create missed sales or poor fulfilment. Review overrides and the reasons behind them, then update the data or process where staff repeatedly see a blind spot.\n\nRole-based access, consent, retention, and data lineage must be designed into the platform. [Enterprise AI solutions](/enterprise-ai-solutions) covers customer and supply-chain intelligence, while [data engineering and AI foundations](/data-engineering-ai-foundations) addresses governed data pipelines and access.\n\n## Choose a bounded retail decision\n\nPick one replenishment, service, or assortment decision with an accountable team. Establish what information staff currently use and where it fails. Test whether the new view improves that decision before scaling. [Discuss a retail use case](/#connect).",
     "sections": [],
     "features": [],
     "benefits": [],
@@ -1605,7 +1514,7 @@
     "hero_title": "Data Centre Capacity Intelligence Beyond Dashboards",
     "hero_description": "Learn how data-centre teams can assess usable capacity across racks, power, cooling, assets, and planned workloads with traceable engineering review.",
     "hero_image": "/blog/fresh/33-insight-operations.jpg",
-    "body": "Capacity decisions depend on more than a count of empty racks. Power, cooling, equipment age, and planned workloads all shape whether space is genuinely available.\n\n## Unify the infrastructure record\n\nConnect asset inventories, rack layouts, power feeds, environmental data, and incident history. Keep location and configuration changes current so planning is based on the actual estate.\n\n## Model operational constraints\n\nCompare possible placements against power and cooling limits, maintenance windows, and reliability requirements. Treat model output as planning support rather than an automatic change request.\n\n## Plan and learn\n\nReview forecast accuracy and the operational effect of each decision. A strong capacity view helps teams discuss trade-offs before they become urgent constraints.\n\nExplore [AI for data centres](/industries/data-centres) and [DCI 360](/products/dci-360).\n\n## Questions for capacity planners\n\nAsk which constraint most often surprises a placement decision: space, power, cooling, network, or maintenance access. Use a recent proposed workload to trace how teams established available capacity. Compare inventory records with the physical estate and identify who owns corrections. A dashboard value without a reliable rack and feed mapping should be treated as provisional.\n\nDefine a scenario with its assumptions: expected power draw, redundancy requirement, cooling envelope, growth allowance, and deployment date. Show where each input came from and how old it is. Facilities and IT teams can then discuss feasible placements or required upgrades. The tool supports that conversation; it does not approve a change to electrical or cooling systems.\n\nAfter implementation, compare predicted and measured utilization and record unexpected constraints. Review incident history to see whether the chosen placement changed operational risk. A pilot that improves inventory accuracy and cross-team decisions is useful even before advanced forecasting. Expansion should follow a repeatable change-record process so the model remains aligned with the physical estate.\n\n## Review before expansion\n\nAsk facilities and IT planners to compare a proposed placement with their usual approval process. Can the tool show the limiting constraint and the age of its supporting measurement? Record any manual adjustment to power, cooling, or reservation assumptions. Those corrections should update the capacity record so the next decision starts from the current estate.\n\n## Capacity is a set of constraints\n\nSpace is only one input to a data-centre placement decision. A rack may appear available while its power feed has little headroom or the surrounding cooling zone cannot support the proposed load. Network connectivity, resilience requirements, maintenance access, and planned changes also matter. A useful capacity system must show the constraint that limits a placement, not simply a percentage of free floor space.\n\nAsset records drift as hardware moves, fails, or is replaced. Sensor values are time-dependent and sometimes missing. Before forecasting, teams need a consistent mapping among facility, room, rack, device, power path, and service. Each proposed capacity figure should have a timestamp and a source that an engineer can inspect.\n\n## A planning workflow beyond dashboards\n\nStart with one room or cluster. Connect the current asset inventory, rack layout, measured power, cooling and environmental data, incident history, and planned workloads. Validate that these sources describe the same physical configuration. Then compare a proposed workload against power, cooling, space, and resilience limits. Present feasible options with assumptions and uncertainty rather than automatically selecting a rack.\n\nAn infrastructure planner reviews the scenario with facilities and IT teams. They can account for maintenance windows, future reservations, and constraints the data does not yet capture. After a placement or upgrade, record actual utilization and any incident. This feedback makes the next forecast more credible and highlights outdated inventory.\n\n## Monitoring, governance, and response\n\nWhen an alarm appears, link it to affected assets, power or cooling dependencies, and recent changes. Keep an operator responsible for validating impact and choosing an intervention. Changes to facility controls or compute placement should follow approved procedures and permissions. The data platform should preserve provenance for measurements, forecasts, and decisions.\n\nMeasure forecast accuracy, constraint violations caught during planning, inventory corrections, and incident handoff quality. [DCI 360](/products/dci-360) focuses on an integrated infrastructure view, while [cloud and AI compute services](/cloud-infrastructure-ai-compute) address workload and platform planning.\n\n## Start with one capacity question\n\nChoose a planned deployment or expansion and identify the decisions and data owners involved. Validate the physical inventory before modelling scenarios. To explore a data-centre capacity workflow, [contact Turbo AI](/#connect).",
+    "body": "Capacity decisions depend on more than a count of empty racks. Power, cooling, equipment age, and planned workloads all shape whether space is genuinely available.\n\n## Unify the infrastructure record\n\nConnect asset inventories, rack layouts, power feeds, environmental data, and incident history. Keep location and configuration changes current so planning is based on the actual estate.\n\n## Model operational constraints\n\nCompare possible placements against power and cooling limits, maintenance windows, and reliability requirements. Treat model output as planning support rather than an automatic change request.\n\n## Plan and learn\n\nReview forecast accuracy and the operational effect of each decision. A strong capacity view helps teams discuss trade-offs before they become urgent constraints.\n\nExplore [AI for data centres](/industries/data-centres) and [cloud and AI compute services](/cloud-infrastructure-ai-compute).\n\n## Questions for capacity planners\n\nAsk which constraint most often surprises a placement decision: space, power, cooling, network, or maintenance access. Use a recent proposed workload to trace how teams established available capacity. Compare inventory records with the physical estate and identify who owns corrections. A dashboard value without a reliable rack and feed mapping should be treated as provisional.\n\nDefine a scenario with its assumptions: expected power draw, redundancy requirement, cooling envelope, growth allowance, and deployment date. Show where each input came from and how old it is. Facilities and IT teams can then discuss feasible placements or required upgrades. The tool supports that conversation; it does not approve a change to electrical or cooling systems.\n\nAfter implementation, compare predicted and measured utilization and record unexpected constraints. Review incident history to see whether the chosen placement changed operational risk. A pilot that improves inventory accuracy and cross-team decisions is useful even before advanced forecasting. Expansion should follow a repeatable change-record process so the model remains aligned with the physical estate.\n\n## Review before expansion\n\nAsk facilities and IT planners to compare a proposed placement with their usual approval process. Can the tool show the limiting constraint and the age of its supporting measurement? Record any manual adjustment to power, cooling, or reservation assumptions. Those corrections should update the capacity record so the next decision starts from the current estate.\n\n## Capacity is a set of constraints\n\nSpace is only one input to a data-centre placement decision. A rack may appear available while its power feed has little headroom or the surrounding cooling zone cannot support the proposed load. Network connectivity, resilience requirements, maintenance access, and planned changes also matter. A useful capacity system must show the constraint that limits a placement, not simply a percentage of free floor space.\n\nAsset records drift as hardware moves, fails, or is replaced. Sensor values are time-dependent and sometimes missing. Before forecasting, teams need a consistent mapping among facility, room, rack, device, power path, and service. Each proposed capacity figure should have a timestamp and a source that an engineer can inspect.\n\n## A planning workflow beyond dashboards\n\nStart with one room or cluster. Connect the current asset inventory, rack layout, measured power, cooling and environmental data, incident history, and planned workloads. Validate that these sources describe the same physical configuration. Then compare a proposed workload against power, cooling, space, and resilience limits. Present feasible options with assumptions and uncertainty rather than automatically selecting a rack.\n\nAn infrastructure planner reviews the scenario with facilities and IT teams. They can account for maintenance windows, future reservations, and constraints the data does not yet capture. After a placement or upgrade, record actual utilization and any incident. This feedback makes the next forecast more credible and highlights outdated inventory.\n\n## Monitoring, governance, and response\n\nWhen an alarm appears, link it to affected assets, power or cooling dependencies, and recent changes. Keep an operator responsible for validating impact and choosing an intervention. Changes to facility controls or compute placement should follow approved procedures and permissions. The data platform should preserve provenance for measurements, forecasts, and decisions.\n\nMeasure forecast accuracy, constraint violations caught during planning, inventory corrections, and incident handoff quality. An integrated view of facility and asset signals supports these decisions. [Cloud and AI compute services](/cloud-infrastructure-ai-compute) address workload and platform planning.\n\n## Start with one capacity question\n\nChoose a planned deployment or expansion and identify the decisions and data owners involved. Validate the physical inventory before modelling scenarios. To explore a data-centre capacity workflow, [contact Turbo AI](/#connect).",
     "sections": [],
     "features": [],
     "benefits": [],
@@ -1626,7 +1535,7 @@
     "tags": [
       "Data Centres",
       "Infrastructure",
-      "DCI 360"
+      "Capacity Planning"
     ],
     "reading_time": 4,
     "published_at": "2026-09-11T12:00:00.000Z",

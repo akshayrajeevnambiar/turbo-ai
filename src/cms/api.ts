@@ -1,5 +1,6 @@
 import { cmsClient, cmsPublicEnabled, mediaBucket } from "./client";
 import type { CmsEntry, CmsEntryInput, CmsEntrySummary, CmsMedia, ContentKind, ContentStatus } from "./types";
+import { isRetiredProduct, sanitizePublishedEntry } from "../content/retiredProducts.mjs";
 
 const listCache = new Map<string, { expires: number; promise: Promise<CmsEntrySummary[]> }>();
 const entryCache = new Map<string, { expires: number; promise: Promise<CmsEntry | null> }>();
@@ -22,7 +23,8 @@ export async function getPublishedEntries(kind: ContentKind, limit = 100): Promi
     .eq("kind", kind).eq("status", "published")
     .order("published_at", { ascending: false }).limit(limit);
     if (error) throw error;
-    return (data ?? []) as CmsEntrySummary[];
+    return ((data ?? []) as CmsEntrySummary[])
+      .filter((entry) => !isRetiredProduct(entry.kind, entry.slug)).map(sanitizePublishedEntry);
   })();
   listCache.set(cacheKey, { expires: Date.now() + cacheMs, promise });
   promise.catch(() => listCache.delete(cacheKey));
@@ -30,7 +32,7 @@ export async function getPublishedEntries(kind: ContentKind, limit = 100): Promi
 }
 
 export async function getPublishedEntry(kind: ContentKind, slug: string): Promise<CmsEntry | null> {
-  if (!cmsPublicEnabled) return null;
+  if (!cmsPublicEnabled || isRetiredProduct(kind, slug)) return null;
   const cacheKey = `${kind}:${slug}`;
   const cached = entryCache.get(cacheKey);
   if (cached && cached.expires > Date.now()) return cached.promise;
@@ -38,7 +40,7 @@ export async function getPublishedEntry(kind: ContentKind, slug: string): Promis
     const { data, error } = await requireClient().from("cms_entries")
     .select("*").eq("kind", kind).eq("slug", slug).eq("status", "published").maybeSingle();
     if (error) throw error;
-    return data as CmsEntry | null;
+    return data ? sanitizePublishedEntry(data as CmsEntry) : null;
   })();
   entryCache.set(cacheKey, { expires: Date.now() + cacheMs, promise });
   promise.catch(() => entryCache.delete(cacheKey));

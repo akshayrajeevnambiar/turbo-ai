@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { loadEnv } from 'vite';
 import { createClient } from '@supabase/supabase-js';
+import { isRetiredProduct } from '../src/content/retiredProducts.mjs';
 
 const env = loadEnv('production', process.cwd(), 'VITE_');
 const cmsEnabled = env.VITE_CMS_ENABLED === 'true';
@@ -56,7 +57,7 @@ async function publishedCmsRoutes() {
             .select('kind,slug,robots,updated_at').eq('status', 'published')
             .order('kind').order('slug').range(offset, offset + 499);
         if (error) throw error;
-        entries.push(...(data || []));
+        entries.push(...(data || []).filter((entry) => !isRetiredProduct(entry.kind, entry.slug)));
         if (!data || data.length < 500) break;
     }
     if (!entries.length) throw new Error('CMS is enabled but no published content exists. Import and review the seed first.');

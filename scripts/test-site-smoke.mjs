@@ -1,12 +1,14 @@
 import { spawn } from 'node:child_process';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
 import { loadEnv } from 'vite';
 
 const port = 4174;
 const baseUrl = (loadEnv('production', process.cwd(), 'VITE_').VITE_BASE_URL || 'https://turbo-ai.ca').replace(/\/$/, '');
+const retiredRoutes = ['/products/i-lakehouse', '/products/ilakehouse', '/products/dci-360', '/products/dci360'];
+const retiredNames = /i[-_\s]?lakehouse|dci[-_\s]?360/i;
 const industries = [
   { label: 'Financial Services', slug: 'financial-services' },
   { label: 'Insurance', slug: 'insurance' },
@@ -47,7 +49,7 @@ try {
     document.querySelector('main h1') &&
     !document.querySelector('[data-route-loading], [data-cms-loading]'),
     { timeout: 10000 }, route);
-  const routes = ['/', '/about', '/products', '/products/i-lakehouse',
+  const routes = ['/', '/about', '/products', '/products/adrs',
     '/enterprise-ai-solutions', '/blog', '/blog/energy-ai-asset-intelligence-foundations',
     ...industryLinks.map(({ href }) => href)];
   for (const route of routes) {
@@ -57,6 +59,19 @@ try {
     if (!heading) throw new Error(`${route} has no heading.`);
     const industry = industries.find(({ slug }) => route === `/industries/${slug}`);
     if (industry) assert.equal(heading, `AI for ${industry.label}`, `${route} must render its own industry page.`);
+  }
+  for (const route of retiredRoutes) {
+    await page.goto(`http://127.0.0.1:${port}${route}`, { waitUntil: 'domcontentloaded' });
+    await waitForRoute(route);
+    assert.equal(await page.title(), 'Page not found | Turbo AI', `${route} must render the error title.`);
+    assert.ok(await page.$('main[data-not-found]'), `${route} must render the branded error page.`);
+    assert.ok(await page.$('header nav[aria-label="Main navigation"]') && await page.$('footer'),
+      `${route} must keep the site navigation and footer.`);
+    assert.ok((await page.$eval('meta[name="robots"]', (node) => node.content)).includes('noindex'),
+      `${route} must not be indexed.`);
+    assert.equal(await page.$('link[rel="canonical"]'), null, `${route} must not inherit a valid page canonical.`);
+    assert.ok(!retiredNames.test(await page.content()), `${route} must not expose retired product names or links.`);
+    assert.ok(!existsSync(path.resolve('dist', route.slice(1), 'index.html')), `${route} must not have generated product HTML.`);
   }
 
   // Check the actual dropdown content and one navigation action at both breakpoints.
@@ -104,6 +119,15 @@ try {
   const staticPage = await browser.newPage();
   await staticPage.setJavaScriptEnabled(false);
   const sitemap = readFileSync(path.resolve('dist', 'sitemap.xml'), 'utf8');
+  assert.ok(!retiredNames.test(sitemap), 'The generated sitemap must exclude retired products.');
+  assert.ok(!retiredNames.test(readFileSync(path.resolve('public', 'sitemap.xml'), 'utf8')),
+    'The public sitemap must exclude retired products.');
+  for (const directory of ['public', 'dist']) {
+    for (const filename of readdirSync(directory, { recursive: true }).filter((name) => name.endsWith('.html'))) {
+      assert.ok(!retiredNames.test(readFileSync(path.resolve(directory, filename), 'utf8')),
+        `${directory}/${filename} must not contain retired product names or links.`);
+    }
+  }
   const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]));
   const publicUrls = [...readFileSync(path.resolve('public', 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((match) => new URL(match[1]));
@@ -184,7 +208,7 @@ try {
   await page.click(finalLink);
   await page.waitForFunction(() => location.pathname === '/industries/data-centres' && document.querySelector('main h1')?.textContent === 'AI for Data Centres');
   await page.waitForSelector('nav[aria-label="Mobile navigation"]', { hidden: true });
-  console.log(`Smoke passed: ${routes.length} public routes, three prerendered industry pages with SEO metadata, ${sitemapUrls.length} sitemap URLs, 18 desktop/mobile industry links, branded 404, legacy redirects, admin setup, and small-screen mobile navigation.`);
+  console.log(`Smoke passed: ${routes.length} public routes, four retired product URLs return branded noindex errors, clean public/generated HTML and sitemaps, three prerendered industry pages with SEO metadata, ${sitemapUrls.length} sitemap URLs, 18 desktop/mobile industry links, branded 404, legacy redirects, admin setup, and small-screen mobile navigation.`);
 } finally {
   if (browser) await browser.close();
   if (process.platform === 'win32' && preview.pid) {

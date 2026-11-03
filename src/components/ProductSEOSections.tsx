@@ -7,7 +7,7 @@ import { SectionLink } from "./SectionLink";
 import { CmsSEO } from "../cms/CmsSEO";
 import type { CmsEntry } from "../cms/types";
 
-type ProductPageKey = "dci360" | "iLakehouse" | "adrs";
+type ProductPageKey = "adrs";
 
 export function ProductSEO({ pageKey, cmsEntry }: { pageKey: ProductPageKey; cmsEntry?: CmsEntry | null }) {
   const meta = seoConfig[pageKey];
@@ -18,7 +18,7 @@ export function ProductSEO({ pageKey, cmsEntry }: { pageKey: ProductPageKey; cms
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
       { "@type": "ListItem", position: 2, name: "Products", item: `${siteUrl}/products` },
-      { "@type": "ListItem", position: 3, name: pageKey === "dci360" ? "DCI 360" : pageKey === "iLakehouse" ? "i-Lakehouse" : "ADRS", item: meta.url },
+      { "@type": "ListItem", position: 3, name: "ADRS", item: meta.url },
     ],
   };
 

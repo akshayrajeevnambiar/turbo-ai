@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { cmsClient } from "./client";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { isRetiredProduct, isRetiredProductPath } from "../content/retiredProducts.mjs";
 
 export function CmsContent({ entry }: { entry: CmsEntry }) {
   return <main data-cms-ready="true" className="min-h-screen bg-[#020617] text-white">
@@ -29,6 +30,7 @@ export function CmsContent({ entry }: { entry: CmsEntry }) {
 export function CmsContentPage({ kind }: { kind: ContentKind }) {
   const { slug } = useParams();
   const { entry, loading, failed } = usePublishedEntry(kind, slug);
+  if (slug && isRetiredProduct(kind, slug)) return <CmsNotFound resolveRedirects={false} />;
   if (!cmsPublicEnabled) return <CmsNotFound />;
   if (loading) return <main data-cms-loading className="min-h-screen bg-[#020617] pt-40 text-center text-slate-300">Loading…</main>;
   if (failed) return <CmsUnavailable />;
@@ -44,10 +46,10 @@ export function CmsNotFound({ resolveRedirects = true }: { resolveRedirects?: bo
   const { pathname } = useLocation();
   const [redirect, setRedirect] = useState<{ from: string; to: string } | null>(null);
   useEffect(() => {
-    if (!resolveRedirects || !cmsPublicEnabled || !cmsClient) return;
+    if (!resolveRedirects || isRetiredProductPath(pathname) || !cmsPublicEnabled || !cmsClient) return;
     let active = true;
     cmsClient.from("cms_redirects").select("target_path").eq("old_path", pathname).maybeSingle()
-      .then(({ data }) => { if (active && data?.target_path && data.target_path !== pathname) setRedirect({ from: pathname, to: data.target_path }); });
+      .then(({ data }) => { if (active && data?.target_path && data.target_path !== pathname && !isRetiredProductPath(data.target_path)) setRedirect({ from: pathname, to: data.target_path }); });
     return () => { active = false; };
   }, [pathname, resolveRedirects]);
 

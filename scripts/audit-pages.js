@@ -9,7 +9,7 @@ const routes = [
   '/data-engineering-ai-foundations', '/ai-engineering-software-development',
   '/ai-governance-cybersecurity', '/cloud-infrastructure-ai-compute',
   '/industries-we-serve', '/enterprise-ai-solutions', '/products', '/about',
-  '/products/dci-360', '/products/i-lakehouse', '/products/adrs',
+  '/products/adrs',
   '/blog/retail-demand-customer-intelligence',
   '/industries/financial-services', '/industries/insurance', '/industries/healthcare',
   '/industries/manufacturing', '/industries/construction', '/industries/automotive-mobility',
@@ -81,7 +81,7 @@ try {
         pageTitles.set(title, route);
       }
       console.log(`${width} ${route}: ${issues.length ? issues.join('; ') : 'OK'}`);
-      if (['/products', '/products/dci-360', '/industries-we-serve', '/ai-transformation'].includes(route)) {
+      if (['/products', '/products/adrs', '/industries-we-serve', '/ai-transformation'].includes(route)) {
         const routeName = route.slice(1).replaceAll('/', '-');
         const filename = `turbo-${width}-${routeName}.png`;
         await page.screenshot({ path: path.join(os.tmpdir(), filename) });
